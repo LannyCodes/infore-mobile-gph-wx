@@ -4,7 +4,7 @@
  * @type {{$AppProjectName: string}}
  */
 let config = {
-  $ModuleName: 'map'
+  $ModuleName: 'water_open'
 };
 
 if (process.env.NODE_ENV === 'production') {

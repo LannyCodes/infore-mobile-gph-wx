@@ -1,13 +1,23 @@
 <template>
   <div>
+    <div v-for="item in waterOpenList">
+      <div>{{item.name}}</div>
+    </div>
   </div>
 </template>
 <script>
   import {mapState, mapActions} from 'vuex'
+  import {getWaterOpenList} from '../../api/request'
+
   export default {
-    components: {XHeader},
     mounted() {
       let me = this;
+      getWaterOpenList(this, null, (succ) => {
+        console.log(succ);
+        me.waterOpenList = succ;
+      }, (err) => {
+        console.log(err);
+      })
     },
     data() {
       return {
