@@ -68,13 +68,13 @@ const webpackConfig = {
     ],
   },
   plugins: [
-    // 3. 配置全局使用 jquery
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      jquery: 'jquery',
-      'window.jQuery': 'jquery'
-    })
+    // // 3. 配置全局使用 jquery
+    // new webpack.ProvidePlugin({
+    //   $: 'jquery',
+    //   jQuery: 'jquery',
+    //   jquery: 'jquery',
+    //   'window.jQuery': 'jquery'
+    // })
   ],
   externals: {
     'AMap': 'AMap',

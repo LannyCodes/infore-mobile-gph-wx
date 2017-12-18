@@ -10,12 +10,13 @@ let config = {
 if (process.env.NODE_ENV === 'production') {
   // 生产环境
   Object.assign(config, {
-    WebServerUrl: '',
+    WebServerUrl: 'http://192.168.39.88:10086',
   })
 } else {
   // 开发环境
   Object.assign(config, {
-    WebServerUrl: 'http://localhost:10086',
+    // WebServerUrl: 'http://localhost:10086',
+    WebServerUrl: 'http://192.168.39.88:10086',
   })
 }
 
