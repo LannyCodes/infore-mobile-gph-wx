@@ -1,0 +1,42 @@
+[
+  {
+    "url": "/gph/app/wateropen/getWaterOpenList",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "",
+      "body": [
+        {
+          "time": "2017-09",
+          "position": "大良街道",
+          "name": "石排涌"
+        },
+        {
+          "time": "2017-09",
+          "position": "大良街道",
+          "name": "古鉴涌"
+        },
+        {
+          "time": "2017-09",
+          "position": "大良街道",
+          "name": "云路初街涌"
+        },
+        {
+          "time": "2017-09",
+          "position": "大良街道",
+          "name": "龙公涌"
+        },
+        {
+          "time": "2017-09",
+          "position": "大良街道",
+          "name": "合耕围涌"
+        },
+        {
+          "time": "2017-09",
+          "position": "大良街道",
+          "name": "大东公路涌"
+        }
+      ]
+    }
+  }
+]
