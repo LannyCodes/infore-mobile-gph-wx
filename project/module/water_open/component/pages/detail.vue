@@ -1,16 +1,36 @@
 <template>
   <div>
-    <div v-transfer-dom>
+    <div class="popup-tip-dom" v-transfer-dom>
       <popup v-model="showTip" class="popup-tip" height="100%">
-        <div class="popup-tip-content">
-          <p>水质类别说明</p>
-          <div><span>I</span>主要适用于源头水、国家自然保护区</div><div class="vux-1px"></div>
-          <div><span>II</span>主要适用于源头水、国家自然保护区</div><div class="vux-1px"></div>
-          <div><span>III</span>主要适用于源头水、国家自然保护区</div><div class="vux-1px"></div>
-          <div><span>V</span>主要适用于源头水、国家自然保护区</div><div class="vux-1px"></div>
-          <div><span>IV</span>主要适用于源头水、国家自然保护区</div><div class="vux-1px"></div>
-          <div><span>劣V</span>主要适用于源头水、国家自然保护区</div><div class="vux-1px"></div>
-          <x-button>确定</x-button>
+        <div>
+          <div class="popup-tip-content">
+            <p>水质类别说明</p>
+            <div class="text">
+              <div class="icon" style="background-color: #35BBE0">I</div>
+              主要适用于源头水、国家自然保护区
+            </div>
+            <div class="text">
+              <div class="icon" style="background-color: #3DE697">II</div>
+              主要适用于源头水、国家自然保护区
+            </div>
+            <div class="text">
+              <div class="icon" style="background-color: #FFD55E">III</div>
+              主要适用于源头水、国家自然保护区
+            </div>
+            <div class="text">
+              <div class="icon" style="background-color: #BB55D0">V</div>
+              主要适用于源头水、国家自然保护区
+            </div>
+            <div class="text">
+              <div class="icon" style="background-color: #F63D78">IV</div>
+              主要适用于源头水、国家自然保护区
+            </div>
+            <div class="text">
+              <div class="icon" style="background-color: #627498">劣V</div>
+              主要适用于源头水、国家自然保护区
+            </div>
+          </div>
+          <div class="popup-tip-btn" @click="showTip=false">确定</div>
         </div>
       </popup>
     </div>
@@ -20,7 +40,7 @@
       <div class="basic-item">行政区域 <span class="basic-catch">{{basic.location}}</span></div>
       <div class="basic-item">所在河涌 <span class="basic-catch">{{basic.atWater}}</span></div>
       <div class="basic-item">水质类别 <span class="basic-catch">{{basic.waterType}}类</span>
-        <i class="fa fa-info-circle" aria-hidden="true"></i></div>
+        <i class="fa fa-info-circle" aria-hidden="true" @click="showTip=true"></i></div>
       <div class="basic-item">数据来源 <span class="basic-catch">{{basic.source}}</span></div>
     </div>
     <p class="title">{{place}}水质监测项</p>
@@ -109,7 +129,7 @@
     },
     data() {
       return {
-        showTip: true,
+        showTip: false,
         place: "",
         checker: "0",
         basic: {},
@@ -253,10 +273,44 @@
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.2);
     .popup-tip-content {
+      background-color: white;
+      padding: 20px;
       text-align: center;
-      p{
-        
+      border-radius: 8px 8px 0 0;
+      color: #888;
+      font-size: 15px;
+      .text {
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        padding: 5px;
+        align-items: center;
       }
+      .icon {
+        color: white;
+        background-color: #10aeff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid;
+        border-radius: 20%;
+        margin-right: 10px;
+      }
+      p {
+        font-size: 17px;
+        color: #222;
+      }
+    }
+    .popup-tip-btn {
+      font-size: 16px;
+      color: white;
+      background-color: #398DFE;
+      border-radius: 0 0 8px 8px;
+      text-align: center;
+      padding: 10px;
     }
   }
 </style>
