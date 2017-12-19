@@ -16,9 +16,9 @@ import 'vux/src/styles/close.less' // 叉号
 const FastClick = require('fastclick') // 防重复点击
 FastClick.attach(document.body)
 
-Vue.use(Vuex)
-Vue.use(ToastPlugin)
-Vue.use(WechatPlugin)
+Vue.use(Vuex);
+Vue.use(ToastPlugin);
+Vue.use(WechatPlugin);
 
 const loadingConfig = require('@/config/loading.config.js')
 sync(store, router)

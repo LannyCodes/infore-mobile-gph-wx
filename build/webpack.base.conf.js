@@ -39,7 +39,7 @@ const webpackConfig = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('core'), resolve('project'), resolve('test')]
+        include: [resolve('core'), resolve('project'), resolve('test'), resolve('node_modules/vue-echarts')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -68,13 +68,13 @@ const webpackConfig = {
     ],
   },
   plugins: [
-    // // 3. 配置全局使用 jquery
-    // new webpack.ProvidePlugin({
-    //   $: 'jquery',
-    //   jQuery: 'jquery',
-    //   jquery: 'jquery',
-    //   'window.jQuery': 'jquery'
-    // })
+    // 3. 配置全局使用 jquery
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      jquery: 'jquery',
+      'window.jQuery': 'jquery'
+    })
   ],
   externals: {
     'AMap': 'AMap',

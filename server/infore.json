@@ -56,5 +56,29 @@
         }
       ]
     }
+  },
+  {
+    "url": "/gph/app/wateropen/getWaterOpenDetail",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "",
+      "body": {
+        "basic": {
+          "name": "增江",
+          "location": "增城区",
+          "atWater": "伦教大涌",
+          "waterType": "I",
+          "source": "顺德区国土城建和水利局"
+        },
+        "echart":
+          {
+            "DO":[3.72,5.12,5.72,6.73,7.72,5.52],
+            "CDO":[3.72,5.12,5.72,6.73,7.72,5.52],
+            "NH3-N":[3.72,5.12,5.72,6.73,7.72,5.52],
+            "TP":[3.72,5.12,5.72,6.73,7.72,5.52]
+          }
+      }
+    }
   }
 ]
