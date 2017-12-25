@@ -48,15 +48,17 @@
       <i class="fa fa-filter" aria-hidden="true" @click="showFilter=!showFilter"></i>
     </div>
     <div class="container" v-for="(item,index) in waterOpenList" :key="index">
-      <div class="water-item" :id="item.index" @click="enterDetail">
+      <div class="rain-item" :id="item.index"  @click="enterDetail">
         <div>
-          <div class="water-item-icon">I</div>
-          <div>
-            <div class="item-time">监测时间 {{item.time}}</div>
-            <div class="item-position"><i class="fa fa-map-marker" aria-hidden="true"></i> 行政区域 {{item.position}}</div>
-          </div>
+          <div class="item-name">{{item.name}}</div>
+          <p>行政区域 {{item.position}}</p>
         </div>
-        <div class="water-name">{{item.name}}</div>
+        <div>
+          <p class="item-rainsize">{{item.rainsize}}</p>
+          <p>累计降雨量</p>
+          <p>{{item.starttime}}至</p>
+          <p>{{item.endtime}}</p>
+        </div>
       </div>
     </div>
     <LetterSection :letters="letterList" @onCurrentLetter="currentLetter"></LetterSection>
@@ -64,7 +66,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import { getWaterOpenList } from "../../api/request";
+import { getRainDistributionList } from "../../api/request";
 import LetterSection from "~/components/letter-section";
 import TransferDom from "vux/src/directives/transfer-dom/index.js";
 import Popup from "vux/src/components/popup/index.vue";
@@ -89,7 +91,7 @@ export default {
   },
   mounted() {
     let me = this;
-    getWaterOpenList(
+    getRainDistributionList(
       this,
       null,
       succ => {
@@ -130,7 +132,7 @@ export default {
       this.$router.push({
         name: "Detail",
         query: {
-          name: "增江"
+          name: "伦教"
         }
       });
     }
@@ -153,47 +155,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.water-item > div {
-  display: flex;
-}
-
-.water-item {
-  background-color: white;
-  padding: 15px 22px 15px 10px;
-  width: 95%;
-  border-radius: 10px;
-  margin: 5px 0 5px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .water-item-icon {
-    width: 50px;
-    height: 50px;
-    background-color: #35bbe0;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    color: white;
-  }
-  .water-item-icon + div {
-    margin-left: 15px;
-    font-size: 14px;
-    color: #222222;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .item-position {
-      color: #999999;
-    }
-  }
-  .water-name {
-    color: #222222;
-    font-size: 16px;
-  }
 }
 
 .time-filter {
@@ -264,6 +225,27 @@ export default {
   .sure {
     background-color: #398dee;
     color: white;
+  }
+}
+
+.rain-item {
+  width: 96%;
+  margin: 5px 0 5px 0;
+  height: 120px;
+  color: white;
+  font-size: 13px;
+  background-color: #398dee;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  .item-name {
+     font-size: 25px;
+     margin-bottom: 5px;
+  }
+  .item-rainsize{
+    font-size:15px;
   }
 }
 </style>

@@ -80,5 +80,91 @@
           }
       }
     }
+  },
+  {
+    "url": "/gph/app/raindistibution/getRainDistributionList",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "",
+      "body": [
+        {
+          "starttime": "2017-09-21 8:00",
+          "endtime":"2017-09-21 11:00",
+          "position": "大良街道",
+          "rainsize":"0.3mm",
+          "name": "蛇河",
+          "index": "S"
+        },
+        {
+          "starttime": "2017-09-21 8:00",
+          "endtime":"2017-09-21 11:00",
+          "position": "勒河街道",
+          "rainsize":"0.3mm",
+          "name": "勒河",
+          "index": "L"
+        },{
+          "starttime": "2017-09-21 8:00",
+          "endtime":"2017-09-21 11:00",
+          "position": "乐从街道",
+          "rainsize":"0.3mm",
+          "name": "乐从",
+          "index": "L"
+        },{
+          "starttime": "2017-09-21 8:00",
+          "endtime":"2017-09-21 11:00",
+          "position": "鞍山街道",
+          "rainsize":"0.3mm",
+          "name": "鞍山",
+          "index": "A"
+        },{
+          "starttime": "2017-09-21 8:00",
+          "endtime":"2017-09-21 11:00",
+          "position": "大良街道",
+          "rainsize":"0.3mm",
+          "name": "大良",
+          "index": "D"
+        },{
+          "starttime": "2017-09-21 8:00",
+          "endtime":"2017-09-21 11:00",
+          "position": "大良街道",
+          "rainsize":"0.3mm",
+          "name": "岔河",
+          "index": "C"
+        },{
+          "starttime": "2017-09-21 8:00",
+          "endtime":"2017-09-21 11:00",
+          "position": "大良街道",
+          "rainsize":"0.3mm",
+          "name": "平庄",
+          "index": "P"
+        }
+      ]
+    }
+  },
+  {
+    "url": "/gph/app/raindistibution/getRainDistributionDetail",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "",
+      "body": {
+        "location":"顺德区",
+        "dataSource":"顺德区国土城建和水利局",
+        "rainAll":{
+          "size":"0.8mm",
+          "startTime":"2017-11-23 1:00",
+          "endTime":"2017-11-24 11:00"
+        },
+        "rainHigh":{
+          "size":"0.2mm",
+          "time":"2017-11-23 1:00"
+        },
+        "rainLow":{
+          "size":"0mm",
+          "time":"2017-11-23 21:00"
+        }
+      }
+    }
   }
 ]

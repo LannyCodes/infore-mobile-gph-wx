@@ -23,7 +23,6 @@
 
 <script>
   export default {
-    name: "letter-section",
     props: {
       letters: {
         type: Array,

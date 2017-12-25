@@ -4,19 +4,18 @@
  * @type {{$AppProjectName: string}}
  */
 let config = {
-  $ModuleName: 'water_open'
+  $ModuleName: 'rain_distribution'
 };
 
 if (process.env.NODE_ENV === 'production') {
-  // 生产环境
   Object.assign(config, {
-    WebServerUrl: 'http://192.168.39.45:10086',
+    WebServerUrl: 'http://192.168.39.46:10086',
   })
 } else {
   // 开发环境
   Object.assign(config, {
     // WebServerUrl: 'http://localhost:10086',
-    WebServerUrl: 'http://192.168.39.45:10086',
+    WebServerUrl: 'http://192.168.39.46:10086',
   })
 }
 
