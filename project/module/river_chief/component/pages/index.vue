@@ -36,7 +36,7 @@
             <x-button style="font-size: 15px" @click.native="showFilter=!showFilter">取消</x-button>
           </flexbox-item>
           <flexbox-item>
-            <x-button style="font-size: 15px" class="sure" @click.native="showFilter=!showFilter">确定</x-button>
+            <x-button style="font-size: 15px"  class="sure" @click.native="showFilter=!showFilter">确定</x-button>
           </flexbox-item>
         </flexbox>
       </popup>
@@ -44,20 +44,22 @@
 
     <div class="time-filter">
       <i class="fa" aria-hidden="true"></i>
-      <p>2017-09</p>
+      <p>全部</p>
       <div class="filter" @click="showFilter=!showFilter"></div>
     </div>
-    <div class="container" v-for="(item,index) in waterOpenList" :key="index">
-      <div class="rain-item" :id="item.index" @click="enterDetail">
-        <div>
-          <div class="item-name">{{item.name}}</div>
-          <p>行政区域 {{item.position}}</p>
+    <div class="container" v-for="(item,index) in riverChiefList" :key="index">
+      <div class="river-item" :id="item.index" @click="enterDetail(item.river)">
+        <div class="row">
+          <div class="river">{{item.river}}</div>
+          <div style="margin-left: 10px">
+            <p>{{item.level}} {{item.name}}</p>
+            <p style="color: #999999;">起 {{item.start}}</p>
+            <p style="color: #999999;">终 {{item.end}}</p>
+          </div>
         </div>
-        <div>
-          <p class="item-rainsize">{{item.rainsize}}</p>
-          <p>累计降雨量</p>
-          <p>{{item.starttime}}至</p>
-          <p>{{item.endtime}}</p>
+        <div style="color: #398DEE; margin-right: 10px" class="row">
+          <div class="river-length"></div>
+          <div>{{item.length}}m</div>
         </div>
       </div>
     </div>
@@ -66,7 +68,7 @@
 </template>
 <script>
   import {mapState} from "vuex";
-  import {getRainDistributionList} from "../../api/request";
+  import {getRiverChiefList} from "../../api/request";
   import LetterSection from "~/components/letter-section";
   import TransferDom from "vux/src/directives/transfer-dom/index.js";
   import Popup from "vux/src/components/popup/index.vue";
@@ -91,13 +93,13 @@
     },
     mounted() {
       let me = this;
-      getRainDistributionList(
+      getRiverChiefList(
         this,
         null,
         succ => {
           let tempArr = [];
-          me.waterOpenList = succ.sort(this.sortList);
-          me.waterOpenList.map(val => {
+          me.riverChiefList = succ.sort(this.sortList);
+          me.riverChiefList.map(val => {
             tempArr.push(val.index);
           });
           me.letterList = [...new Set(tempArr)]; // 数组去重
@@ -109,7 +111,7 @@
     },
     data() {
       return {
-        waterOpenList: [],
+        riverChiefList: [],
         letterList: [],
         showFilter: false
       };
@@ -120,7 +122,7 @@
         return a.index.charCodeAt(0) - b.index.charCodeAt(0);
       },
       currentLetter(letter) {
-        letter === this.letterList[0] && $('body,html').animate({scrollTop: 0}, 100);
+        letter === this.letterList[0]&& $('body,html').animate({scrollTop:0},100);
         let target = document.getElementById(letter);
         if (target) {
           target.scrollIntoView();
@@ -129,11 +131,11 @@
       onItemClick(value, disabled) {
         console.log(value, disabled);
       },
-      enterDetail() {
+      enterDetail(river) {
         this.$router.push({
           name: "Detail",
           query: {
-            name: "伦教"
+            name: river
           }
         });
       }
@@ -155,6 +157,12 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
     align-items: center;
   }
 
@@ -229,24 +237,39 @@
     }
   }
 
-  .rain-item {
+  .river-item {
     width: 96%;
     margin: 5px 0 5px 0;
-    height: 120px;
-    color: white;
+    color: #222222;
     font-size: 13px;
-    background-color: #398dee;
+    background-color: white;
     border-radius: 4px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    .item-name {
-      font-size: 25px;
-      margin-bottom: 5px;
-    }
-    .item-rainsize {
+    padding: 10px;
+    .river {
+      width: 80px;
+      height: 80px;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      text-align: center;
       font-size: 15px;
+      color: white;
+      background: linear-gradient(to bottom right, #04C6D7, #5D7BEB);
+      border-radius: 4px;
+    }
+    p {
+      margin-bottom: 3px;
+    }
+    .river-length{
+      width: 14px;
+      height: 14px;
+      margin-right: 3px;
+      background:url("../../../../assets/images/icon_water_length.png") no-repeat;
+      background-size: cover;
     }
   }
 </style>

@@ -10,13 +10,13 @@
   import {mapState} from 'vuex'
 
   export default {
-    name: 'rain_distribution',
+    name: 'river_chief',
     components: {
       Loading
     },
     computed: {
       ...mapState({
-        isLoading: state => state.loading.isLoadingDAD
+        isLoading: state => state.loading.isLoading
       })
     }
   }

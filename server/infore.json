@@ -166,5 +166,165 @@
         }
       }
     }
+  },
+  {
+    "url": "/gph/app/riverchief/getRiverChiefList",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "",
+      "body": [
+        {
+          "river":"辉子河",
+          "level":"区级河长",
+          "name":"辉子",
+          "length":"13500",
+          "start":"桂畔海水利枢纽",
+          "end":"桂畔海顺德大良实验中学",
+          "index":"H"
+        },
+        {
+          "river":"潘玮柏河",
+          "level":"区级河长",
+          "name":"潘玮柏",
+          "length":"13500",
+          "start":"桂畔海水利枢纽",
+          "end":"桂畔海顺德大良实验中学",
+          "index":"P"
+        },
+        {
+          "river":"热河",
+          "level":"区级河长",
+          "name":"热狗",
+          "length":"13500",
+          "start":"桂畔海水利枢纽",
+          "end":"桂畔海顺德大良实验中学",
+          "index":"R"
+        },
+        {
+          "river":"欧阳靖河",
+          "level":"区级河长",
+          "name":"欧阳靖",
+          "length":"13500",
+          "start":"桂畔海水利枢纽",
+          "end":"桂畔海顺德大良实验中学",
+          "index":"O"
+        },
+        {
+          "river":"吴亦凡河",
+          "level":"区级河长",
+          "name":"吴亦凡",
+          "length":"13500",
+          "start":"桂畔海水利枢纽",
+          "end":"桂畔海顺德大良实验中学",
+          "index":"W"
+        },
+        {
+          "river":"VAVA河",
+          "level":"区级河长",
+          "name":"VAVA",
+          "length":"13500",
+          "start":"桂畔海水利枢纽",
+          "end":"桂畔海顺德大良实验中学",
+          "index":"V"
+        },
+        {
+          "river":"TT河",
+          "level":"区级河长",
+          "name":"Tizzy T",
+          "length":"13500",
+          "start":"桂畔海水利枢纽",
+          "end":"桂畔海顺德大良实验中学",
+          "index":"T"
+        },
+        {
+          "river":"PG ONE河",
+          "level":"区级河长",
+          "name":"皮几万",
+          "length":"13500",
+          "start":"桂畔海水利枢纽",
+          "end":"桂畔海顺德大良实验中学",
+          "index":"P"
+        }
+      ]
+    }
+  },
+  {
+    "url": "/gph/app/riverchief/getRiverChiefDetail",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "",
+      "body": {
+          "riverChiefDetail":[
+          {
+            "level":"区级河长",
+            "name":"gai",
+            "tab":"顺德区区长"
+          },
+          {
+            "level":"镇级河长",
+            "name":"艾福杰尼",
+            "tab":"大良街道办主任"
+          },
+          {
+            "level":"村级河长",
+            "name":"黄旭",
+            "tab":"新滘居委会书记"
+          },
+          {
+            "level":"村级河长",
+            "name":"bridge",
+            "tab":"北区居委会书记"
+          },
+          {
+            "level":"村级河长",
+            "name":"小青龙",
+            "tab":"南区居委会书记"
+          },
+          {
+            "level":"村级河长",
+            "name":"孙八一",
+            "tab":"东区居委会书记"
+          },
+          {
+            "level":"村级河长",
+            "name":"鬼卞",
+            "tab":"小学语文老师"
+          }
+        ],
+        "basicDetail":{
+          "name":"鹿颈涌",
+          "location":"广东省佛山市顺德区大良街区查理街84号",
+          "jd":"东经100°",
+          "wd":"北纬91°",
+          "pq":"东南沿海",
+          "ly":"东南沿海",
+          "lw":"东南沿海",
+          "sx":"东南沿海",
+          "start":"大良",
+          "end":"伦教",
+          "length":"13800",
+          "width":"27m",
+          "deep":"28m",
+          "pdeep":"26m"
+        },
+        "waterDetail":[
+          {
+            "xzq":"顺德区",
+            "szhy":"合益涌",
+            "jcsj":"2017.09",
+            "szlb":"劣五类",
+            "name":"合益涌"
+          },{
+            "xzq":"顺德区",
+            "szhy":"合益涌",
+            "jcsj":"2017.09",
+            "szlb":"劣五类",
+            "name":"合益涌"
+          }
+        ]
+      }
+    }
   }
 ]

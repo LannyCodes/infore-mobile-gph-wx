@@ -33,10 +33,10 @@
         </div>
         <flexbox class="btn-tab">
           <flexbox-item>
-            <x-button @click.native="showFilter=!showFilter">取消</x-button>
+            <x-button style="font-size: 15px" @click.native="showFilter=!showFilter">取消</x-button>
           </flexbox-item>
           <flexbox-item>
-            <x-button class="sure" @click.native="showFilter=!showFilter">确定</x-button>
+            <x-button style="font-size: 15px" class="sure" @click.native="showFilter=!showFilter">确定</x-button>
           </flexbox-item>
         </flexbox>
       </popup>
@@ -45,7 +45,7 @@
     <div class="time-filter">
       <i class="fa" aria-hidden="true"></i>
       <p>2017-09</p>
-      <i class="fa fa-filter" aria-hidden="true" @click="showFilter=!showFilter"></i>
+      <div class="filter" @click="showFilter=!showFilter"></div>
     </div>
     <div class="container" v-for="(item,index) in waterOpenList" :key="index">
       <div class="water-item" :id="item.index" @click="enterDetail">
@@ -118,6 +118,7 @@ export default {
       return a.index.charCodeAt(0) - b.index.charCodeAt(0);
     },
     currentLetter(letter) {
+      letter === this.letterList[0]&& $('body,html').animate({scrollTop:0},100);
       let target = document.getElementById(letter);
       if (target) {
         target.scrollIntoView();
@@ -260,7 +261,7 @@ export default {
 }
 
 .btn-tab {
-  padding: 10px 3px 10px 3px;
+  padding: 10px 6px 10px 6px;
   .sure {
     background-color: #398dee;
     color: white;

@@ -13,7 +13,8 @@
           class="char-item"
           v-for="(char,index) in letters"
           :key="index"
-        ><p :style="getLiStyle(char)">{{char}}</p>
+        >
+          <div :style="getLiStyle(char)">{{char}}</div>
         </li>
       </ul>
     </div>
@@ -37,13 +38,15 @@
         liStyle: ''
       };
     },
+
     computed: {
       // 通过letterHeight来控制top
       boxClientTop: function () {
-        return (document.body.clientHeight - ((this.letters.length + 1) * 14 + (this.letters.length + 2) * 10)) / 2;
+        console.log((document.body.clientHeight - ((this.letters.length) * 10 + (this.letters.length) * 10)) / 2);
+        return (document.body.clientHeight - ((this.letters.length + 1) * 10 + (this.letters.length + 1) * 6)) / 2;
       },
       charTop: function () {
-        const top = this.boxClientTop - 20;
+        const top = this.boxClientTop - 10;
         return `top:${top}px`
       },
     },
@@ -88,13 +91,15 @@
 
 <style lang="less" scoped>
   .char-list-border {
-    padding: 10px 0 10px 0;
+    color:#666;
+    font-size: 10px;
+    padding: 3px 0 3px 0;
     background-color: #F7F8FA;
-    border-radius: 20px;
+    border-radius: 25px;
     border: 1px solid #E3E4E5;
     position: fixed;
     right: 5px;
-    width: 25px;
+    width: 20px;
     margin: 0;
     box-sizing: border-box;
     text-align: center;
@@ -106,6 +111,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    align-items: center;
     box-sizing: border-box;
   }
 
@@ -114,12 +120,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    padding: 1px 0 1px 0;
-    p {
+    div {
+      text-align: center;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 50%;
-      width: 80%;
-      height: 80%;
+      width: 16px;
+      height: 16px;
     }
   }
 
