@@ -13,6 +13,7 @@ import 'vux/src/styles/1px.less' // 边框
 import ToastPlugin from 'vux/src/plugins/toast' // Toast
 import WechatPlugin from 'vux/src/plugins/wechat' //wechat
 import 'vux/src/styles/close.less' // 叉号
+import 'weui/dist/style/weui.min.css'//weui
 const FastClick = require('fastclick') // 防重复点击
 FastClick.attach(document.body)
 
