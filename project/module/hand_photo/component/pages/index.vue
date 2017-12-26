@@ -1,15 +1,92 @@
 <template>
   <div>
-    <div v-for="item in waterOpenList">
-      <div>{{item.name}}</div>
+    <div style="padding: 0 0 0 0; background-color: #ffffff;align-items: center;display: block;">
+     <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
+            <span style="font-size: 15px;color:#000000;margin-right: 20px">污染类型</span>
+       <!--<span class="dirty-style">水漏啦</span>-->
+       <input class="dirty-style" placeholder="水漏啦" v-model="inputValue"/>
+            <i class="fa fa-angle-right "></i>
+     </span>
+      <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
+      <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
+            <span style="font-size: 15px;color:#000000;margin-right: 20px">现场位置</span>
+        <x-input class="dirty-style" placeholder="请选择现场位置" v-model="location"></x-input>
+            <!--<span class="dirty-style">请选择现场位置</span>-->
+            <i class="fa fa-paper-plane "></i>
+     </span>
+      <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5);margin-left: 20px"></div>
+      <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
+            <span class="dirty-location">请输入现场位置</span>
+     </span>
+      <x-textarea :max="20" placeholder="请描述现场污染情况" @on-focus="onEvent('focus')"
+                  @on-blur="onEvent('blur')"></x-textarea>
+      <!--<div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>-->
+      <!--<div class="uploader">图片/视频</div>-->
+      <div class="page">
+        <div class="page__bd">
+          <div class="weui-gallery" id="gallery">
+            <span class="weui-gallery__img" id="galleryImg"></span>
+            <div class="weui-gallery__opr">
+              <a href="javascript:" class="weui-gallery__del">
+                <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+              <div class="weui-cell__bd">
+                <div class="weui-uploader">
+                  <div class="weui-uploader__hd">
+                    <p class="weui-uploader__title">图片上传</p>
+                    <!--<div class="weui-uploader__info">0/2</div>-->
+                  </div>
+                  <div class="weui-uploader__bd">
+                    <ul class="weui-uploader__files" id="uploaderFiles">
+                    </ul>
+                    <div class="weui-uploader__input-box">
+                      <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*"
+                             capture="camera" multiple/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
+      <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
+            <span style="font-size: 15px;color:#000000;margin-right: 20px">联系电话</span>
+            <span class="dirty-style">请输入联系方式</span>
+     </span>
+      <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
+      <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
+            <span style="font-size: 15px;color:#000000;margin-right: 35px">联系人</span>
+            <span class="dirty-style">请输入联系人</span>
+     </span>
+
     </div>
+    <x-button class="btn-confirm" @click="this.submit">
+      上报
+    </x-button>
   </div>
 </template>
 <script>
-  import {mapState, mapActions} from 'vuex'
-  import {getWaterOpenList} from '../../api/request'
-
+  //  import weui from '../../static/js/weui.min';
+  //  import $ from 'jquery';
+  import { mapState, mapActions } from 'vuex'
+  import { getWaterOpenList } from '../../api/request'
+  import XTextarea from '../../../../../node_modules/vux/src/components/x-textarea/index.vue'
+  import XButton from '../../../../../node_modules/vux/src/components/x-button/index.vue'
+  import handleEvent from './handleEvent.js';
+  import XInput from '../../../../../node_modules/vux/src/components/x-input/index'
   export default {
+
+    components: {
+      XInput,
+      XTextarea,
+    },
     mounted() {
       let me = this;
       getWaterOpenList(this, null, (succ) => {
@@ -21,7 +98,9 @@
     },
     data() {
       return {
-        waterOpenList: []
+        waterOpenList: [],
+        inputValue: '',
+        location:'',
       }
     },
     computed: {
@@ -29,6 +108,59 @@
         route: state => state.route,
         path: state => state.route.path,
       })
+    },
+    methods: {
+      submit(e){
+        console.log(this.inputValue);
+        console.log(this.location);
+      }
     }
   }
 </script>
+<style lang="less" scoped>
+  .dirty-style {
+    flex: 1;
+    margin-right: 10px;
+    color: #888888;
+    font-size: 15px;
+    /*outline:none*/
+  }
+
+  .dirty-location {
+    margin-left: 23%;
+    flex: 1;
+    margin-right: 10px;
+    color: #888888;
+    font-size: 15px;
+    /*outline:none*/
+  }
+
+  .dirty-disc {
+    margin-left: 20px;
+    color: #000000;
+    font-size: 15px;
+  }
+
+  .uploader {
+    font-size: 14px;
+    color: #000000;
+    margin-left: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .btn-confirm {
+    border-radius: 5px;
+    background-color: #398DEE;
+    display: flex;
+    width: auto;
+    height: 45px;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+</style>

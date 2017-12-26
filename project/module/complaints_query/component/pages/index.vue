@@ -118,7 +118,7 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   .filter-wrap {
     top: 0;
     position: absolute;
