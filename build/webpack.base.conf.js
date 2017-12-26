@@ -24,8 +24,7 @@ const webpackConfig = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('core'),
-      '~': resolve('project'),
-      'jquery':path.resolve(__dirname,'../node_modules/jquery/src/jquery')
+      '~': resolve('project')
     },
     symlinks: false
   },
