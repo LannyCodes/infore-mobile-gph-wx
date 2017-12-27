@@ -9,7 +9,7 @@
       <span class="filter" @click='filterClick'><i class="fa fa-filter" aria-hidden="true"></i></span>
     </flexbox>
     <div style="margin-top: 50px">
-      <div v-for="item in items">
+      <div v-for="item in items" @click="itemJump">
         <span class="complaint_item_wrap">
           <x-img class="complaint_item_img"
                  webpSrc="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=73459982,1504765409&fm=27&gp=0.jpg"></x-img>
@@ -38,7 +38,7 @@
           <span style="display: flex;padding: 10px 20px 10px 0;">
             <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
             <span class="time-select">2017-11-21</span>
-            <i class="fa fa-angle-right " ></i>
+            <i class="fa fa-angle-right "></i>
           </span>
           <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
           <span style="display: flex;padding: 10px 20px 10px 0;">
@@ -114,6 +114,10 @@
       },
       confirmClick(){
         alert('fewfwefw')
+      },
+      //列表项跳转
+      itemJump(){
+        this.$router.push({path: '/detail'})
       }
     }
   }
