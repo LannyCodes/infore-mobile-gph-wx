@@ -9,9 +9,12 @@
     </div>
     <div class="basic deepFontColor">
       <div class="size-item">
-        <div>
-          <p>{{data.rainAll.size}}</p>
-          <p>累积雨量</p>
+        <div class="row">
+          <div class="icon_2"></div>
+          <div>
+            <p>{{data.rainAll.size}}</p>
+            <p>累积雨量</p>
+          </div>
         </div>
         <div>
           <div>开始时间 {{data.rainAll.startTime}}</div>
@@ -19,18 +22,24 @@
         </div>
       </div>
       <div class="size-item">
-        <div>
-          <p>{{data.rainHigh.size}}</p>
-          <p>最高雨量</p>
+        <div class="row">
+          <div class="icon_3"></div>
+          <div>
+            <p>{{data.rainHigh.size}}</p>
+            <p>最高雨量</p>
+          </div>
         </div>
         <div>
           <div>发生时间 {{data.rainHigh.time}}</div>
         </div>
       </div>
       <div class="size-item">
-        <div>
-          <p>{{data.rainLow.size}}</p>
-          <p>最低雨量</p>
+        <div class="row">
+          <div class="icon_1"></div>
+          <div>
+            <p>{{data.rainLow.size}}</p>
+            <p>最低雨量</p>
+          </div>
         </div>
         <div>
           <div>发生时间 {{data.rainLow.time}}</div>
@@ -173,6 +182,8 @@
   .row {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
   .basic {
@@ -188,7 +199,8 @@
       width: 100%;
     }
   }
-  .size-item{
+
+  .size-item {
     background-color: white;
     width: 100%;
     padding: 10px;
@@ -198,5 +210,25 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .icon(@url: "../../../../assets/images/ic_rain_size_1.png") {
+    background: url(@url) no-repeat;
+    background-size: cover;
+    margin-right: 10px;
+    height: 26px;
+    width: 26px;
+  }
+
+  .icon_1 {
+    .icon("../../../../assets/images/ic_rain_size_1.png");
+  }
+
+  .icon_2 {
+    .icon("../../../../assets/images/ic_rain_size_2.png");
+  }
+
+  .icon_3 {
+    .icon("../../../../assets/images/ic_rain_size_3.png");
   }
 </style>

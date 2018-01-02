@@ -4,18 +4,19 @@
  * @type {{$AppProjectName: string}}
  */
 let config = {
-  $ModuleName: 'river_chief'
+  $ModuleName: 'envir_knowledge'
+  // $ModuleName: '*' // * flag   is building all modules or dev.
 };
 
 if (process.env.NODE_ENV === 'production') {
   Object.assign(config, {
-    WebServerUrl: 'http://192.168.39.229:10086',
+    WebServerUrl: 'http://192.168.39.172:10086',
   })
 } else {
   // 开发环境
   Object.assign(config, {
     // WebServerUrl: 'http://localhost:10086',
-    WebServerUrl: 'http://192.168.39.229:10086',
+    WebServerUrl: 'http://192.168.39.172:10086',
   })
 }
 

@@ -50,12 +50,20 @@
     <div class="container" v-for="(item,index) in waterOpenList" :key="index">
       <div class="rain-item" :id="item.index" @click="enterDetail">
         <div>
-          <div class="item-name">{{item.name}}</div>
+          <div class="row">
+            <div class="item-name">{{item.name}}</div>
+            <div class="icon_1"></div>
+          </div>
           <p>行政区域 {{item.position}}</p>
         </div>
         <div>
-          <p class="item-rainsize">{{item.rainsize}}</p>
-          <p>累计降雨量</p>
+          <div class="row">
+            <div>
+              <p class="item-rainsize">{{item.rainsize}}</p>
+              <p>累计降雨量</p>
+            </div>
+            <div class="icon_2"></div>
+          </div>
           <p>{{item.starttime}}至</p>
           <p>{{item.endtime}}</p>
         </div>
@@ -150,6 +158,12 @@
 <style lang="less" scoped>
   @sectionBack: #f7f8fa;
   @sectionChoose: #4379ce;
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   .container {
     width: 100%;
     height: 100%;
@@ -235,7 +249,8 @@
     height: 120px;
     color: white;
     font-size: 13px;
-    background-color: #398dee;
+    background: url("../../../../assets/images/ic_rain_bg.png") no-repeat;
+    background-size: cover;
     border-radius: 4px;
     display: flex;
     flex-direction: row;
@@ -248,5 +263,19 @@
     .item-rainsize {
       font-size: 15px;
     }
+  }
+  .icon_1 {
+    height: 26px;
+    width: 26px;
+    background: url("../../../../assets/images/ic_rain_1.png") no-repeat;
+    background-size: cover;
+    margin-left: 10px;
+  }
+  .icon_2 {
+    height: 24px;
+    width: 24px;
+    background: url("../../../../assets/images/ic_rain_2.png") no-repeat;
+    background-size: cover;
+    margin-left: 10px;
   }
 </style>

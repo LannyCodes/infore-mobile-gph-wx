@@ -125,7 +125,7 @@
   }
 
   .icon(@url: "../../../../assets/images/icon_river_title_0.png") {
-    background: url(@url);
+    background: url(@url) no-repeat;
     background-size: cover;
   }
 
