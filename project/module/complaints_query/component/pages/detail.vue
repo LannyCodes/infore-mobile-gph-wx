@@ -37,13 +37,22 @@
         <span style="color: #B2B2B2;font-size: 14px;margin-left: 7px;">2017-11-21 8:20</span>
       </div>
     </div>
+
     <x-button class="btn-confirm" @click="this.submit">
       关闭
     </x-button>
-    <big-img v-if="show" :imgSrc="imgSrc" @clickBigImg="dismiss" ></big-img>
+
+    <big-img v-if="show" @clickBigImg="dismiss">
+      <img v-if="showType()===false" :src="urlStr" class="big-img"/>
+      <video v-else-if="showType()===true" autoplay="autoplay" class="__cov-video" controls="controls">
+        <source :src="urlStr" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+    </big-img>
   </div>
 </template>
 <script>
+  import VueVideo from 'vue-video'
   import BigImg from './bigImg.vue'
   import XButton from '../../../../../node_modules/vux/src/components/x-button/index.vue'
   import XImg from '../../../../../node_modules/vux/src/components/x-img/index'
@@ -52,7 +61,8 @@
     components: {
       XImg,
       XButton,
-      BigImg
+      BigImg,
+      VueVideo
     },
     data(){
       return {
@@ -64,14 +74,25 @@
           'https://o5omsejde.qnssl.com/demo/test7.jpg',
           'https://o5omsejde.qnssl.com/demo/test8.jpg'],
         show: false,
-        imgSrc: '',
-        extend:false,
+        urlStr: '',
+        extend: false,
+        video: {
+          sources: [{
+            src: 'http://vjs.zencdn.net/v/oceans.mp4',
+            type: 'video/mp4'
+          }],
+          options: {
+            autoplay: true,
+            volume: 0.6,
+            poster: 'http://covteam.u.qiniudn.com/poster.png'
+          }
+        }
       }
     },
     methods: {
       toggle(e){
         e.preventDefault();
-        this.imgSrc = e.target.src;
+        this.urlStr = e.target.src;
         this.show = true;
       },
       dismiss(e){
@@ -79,7 +100,18 @@
         this.show = false;
       },
       funExtend(){
-        this.extend= !this.extend;
+        this.extend = !this.extend;
+      },
+      showType(){
+//        console.log('showTypeshowType')
+       let index = this.urlStr.lastIndexOf('.');
+       let str= this.urlStr.substring(index);
+       if(str === '.mp4'|| str === '.rmvb'|| str==='.avi'|| str==='.ts'){//视频格式
+         return true;
+       }else if(str === '.bmp'|| str==='.png'||str==='.gif'||str==='.jpg'||str==='.jpeg'){
+         return false
+       }
+       return false;//默认是图片
       }
     }
   }
@@ -139,26 +171,30 @@
     width: 103px;
     height: 103px;
   }
-.extend{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-  .extendContent{
-    width:auto;
+
+  .extend {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .extendContent {
+    width: auto;
     height: 50px;
     background-color: #9998ee;
   }
-  .confirm-unit{
+
+  .confirm-unit {
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 14px;
     padding-right: 14px;
     flex-direction: row;
   }
+
   .btn-confirm {
     border-radius: 5px;
     background-color: #398DEE;
@@ -173,4 +209,20 @@
     align-items: center;
     color: white;
   }
+
+  .big-img {
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    max-width: 100%;
+  }
+  .__cov-video {
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+  }
+
 </style>

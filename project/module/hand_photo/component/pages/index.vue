@@ -45,7 +45,7 @@
                     <ul class="weui-uploader__files" id="uploaderFiles">
                     </ul>
                     <div class="weui-uploader__input-box">
-                      <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*"
+                      <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*;audio/*"
                              capture="camera" multiple/>
                     </div>
                   </div>
