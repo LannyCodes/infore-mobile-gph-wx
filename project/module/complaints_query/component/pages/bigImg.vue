@@ -1,7 +1,7 @@
 <template>
   <!--<transition name="fade">-->
-    <div class="overlay" @click="$emit('clickBigImg')">
-      <img :src="imgSrc" class="big-img"/>
+    <div class="overlay-style" @click="$emit('clickBigImg')">
+      <slot></slot>
     </div>
   <!--</transition>-->
 
@@ -11,7 +11,6 @@
     props: [
       'imgSrc'
     ],
-    methods: {}
   }
 </script>
 <style lang="less" scoped>
@@ -26,9 +25,9 @@
     transform: translate3D(100%, 0, 0);
   }
 
-  .overlay {
-    /*justify-content: center;*/
-    /*align-items: center;*/
+  .overlay-style {
+    display: flex;
+    align-items: center;
     background-color: #000000;
     opacity: 2;
     position: fixed;
@@ -38,16 +37,5 @@
     left: 0;
     width: 100%;
     height: 100%;
-
-  }
-
-  .big-img {
-    position: absolute;
-    z-index: 1000;
-    left: 0;
-    right: 0;
-    margin: auto;
-    display: block;
-    max-width: 100%;
   }
 </style>
