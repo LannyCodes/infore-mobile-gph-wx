@@ -3,20 +3,18 @@
     <div style="padding: 0 0 0 0; background-color: #ffffff;align-items: center;display: block;">
      <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
             <span style="font-size: 15px;color:#000000;margin-right: 20px">污染类型</span>
-       <!--<span class="dirty-style">水漏啦</span>-->
        <input class="dirty-style" placeholder="水漏啦" v-model="inputValue"/>
-            <i class="fa fa-angle-right "></i>
+            <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
      </span>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
             <span style="font-size: 15px;color:#000000;margin-right: 20px">现场位置</span>
-        <x-input class="dirty-style" placeholder="请选择现场位置" v-model="location"></x-input>
-            <!--<span class="dirty-style">请选择现场位置</span>-->
-            <i class="fa fa-paper-plane "></i>
+            <input class="dirty-style" placeholder="请选择现场位置" v-model="location"/>
+            <img src="../../../../assets/images/destination.png" class="mark-img"/>
      </span>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5);margin-left: 20px"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
-            <span class="dirty-location">请输入现场位置</span>
+            <input class="dirty-location" placeholder="请输入现场位置"/>
      </span>
       <x-textarea :max="20" placeholder="请描述现场污染情况" @on-focus="onEvent('focus')"
                   @on-blur="onEvent('blur')"></x-textarea>
@@ -58,12 +56,12 @@
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
             <span style="font-size: 15px;color:#000000;margin-right: 20px">联系电话</span>
-            <span class="dirty-style">请输入联系方式</span>
+            <input class="dirty-style" placeholder="请输入联系方式" />
      </span>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
             <span style="font-size: 15px;color:#000000;margin-right: 35px">联系人</span>
-            <span class="dirty-style">请输入联系人</span>
+            <input class="dirty-style" placeholder="请输入联系人"/>
      </span>
 
     </div>
@@ -100,7 +98,7 @@
       return {
         waterOpenList: [],
         inputValue: '',
-        location:'',
+        location: '',
       }
     },
     computed: {
@@ -123,7 +121,19 @@
     margin-right: 10px;
     color: #888888;
     font-size: 15px;
-    /*outline:none*/
+    border: none;
+  }
+  input::-webkit-input-placeholder{
+    color: #B2B2B2;
+    font-size: 15px;
+  }
+  input:-moz-placeholder{
+    color: #B2B2B2;
+    font-size: 15px;
+  }
+  input:-ms-input-placeholder{
+    color: #B2B2B2;
+    font-size: 15px;
   }
 
   .dirty-location {
@@ -132,7 +142,7 @@
     margin-right: 10px;
     color: #888888;
     font-size: 15px;
-    /*outline:none*/
+    border:none;
   }
 
   .dirty-disc {
@@ -162,5 +172,9 @@
     justify-content: center;
     align-items: center;
     color: white;
+  }
+  .mark-img{
+    width:11px;
+    height:15px;
   }
 </style>

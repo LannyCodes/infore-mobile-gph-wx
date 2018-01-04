@@ -52,7 +52,6 @@
   </div>
 </template>
 <script>
-  import VueVideo from 'vue-video'
   import BigImg from './bigImg.vue'
   import XButton from '../../../../../node_modules/vux/src/components/x-button/index.vue'
   import XImg from '../../../../../node_modules/vux/src/components/x-img/index'
@@ -62,7 +61,6 @@
       XImg,
       XButton,
       BigImg,
-      VueVideo
     },
     data(){
       return {

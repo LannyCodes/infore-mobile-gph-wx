@@ -6,13 +6,12 @@
         <span>~</span>
         <span class="filter_time">2017-11-21</span>
       </flexbox-item>
-      <span class="filter" @click='filterClick'><i class="fa fa-filter" aria-hidden="true"></i></span>
+      <div class="filter filter1" @click='showPopup = !showPopup'></div>
     </flexbox>
     <div style="margin-top: 50px">
       <div v-for="item in items" @click="itemJump">
         <span class="complaint_item_wrap">
-          <x-img class="complaint_item_img"
-                 webpSrc="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=73459982,1504765409&fm=27&gp=0.jpg"></x-img>
+          <img class="complaint_item_img" src="../../../../assets/images/answer.png"/>
           <span class="complaint_item_right">
             <span class="complaint_item_right_top">
               <span class="complaint_item_right_top_title">{{item.title}}</span>
@@ -47,10 +46,10 @@
             <i class="fa fa-angle-right "></i>
           </span>
         </div>
-        <span style="margin-top: 10px;width: 100%;height: 35px;display: inline-flex;margin-bottom: 10px">
-          <button class="btn-cancel" @click="cancelClick">取消</button>
-          <button class="btn-confirm" @click="confirmClick">确定</button>
-        </span>
+        <div style="margin-top: 10px;width: 100%;height: 35px;display: inline-flex;margin-bottom: 10px">
+          <button class="btn-cancel" @click="showPopup= !showPopup">取消</button>
+          <button class="btn-confirm" @click="showPopup= !showPopup">确定</button>
+        </div>
       </div>
     </popup>
   </div>
@@ -58,6 +57,7 @@
 <script>
   import { mapState, mapActions } from 'vuex'
   import { requestMainData } from '../../api/request'
+  import XButton from "vux/src/components/x-button/index";
   import Flexbox from '../../../../../node_modules/vux/src/components/flexbox/flexbox'
   import FlexboxItem from '../../../../../node_modules/vux/src/components/flexbox/flexbox-item'
   import XImg from '../../../../../node_modules/vux/src/components/x-img/index'
@@ -84,6 +84,7 @@
       }
     },
     components: {
+      XButton,
       Checker,
       CheckerItem,
       XImg,
@@ -106,14 +107,9 @@
       })
     },
     methods: {
-      filterClick(){
-        this.showPopup = true;
-      },
       cancelClick(){
-        alert('fjeooifjo')
       },
       confirmClick(){
-        alert('fewfwefw')
       },
       //列表项跳转
       itemJump(){
@@ -126,7 +122,7 @@
   .filter-wrap {
     top: 0;
     position: absolute;
-    background-color: #E5E5E5;
+    background-color: #EFEFF4;
     width: 100%;
     height: 50px;
     justify-content: center;
@@ -150,12 +146,8 @@
     text-align: center;
   }
 
-  .filter {
-    display: inline-flex;
-    width: 50px;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  .filter1 {
+    margin-right: 12px;
   }
 
   .complaint_item_wrap {
