@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import App from './water_open.vue'
-import router from '../../router/water_open'
+import App from './water_knowledge.vue'
+import router from '../../router/water_knowledge'
 /**
  * 额外配置
  */

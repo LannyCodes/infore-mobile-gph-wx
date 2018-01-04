@@ -10,7 +10,6 @@
   import {mapState} from 'vuex'
 
   export default {
-    name: 'water_open',
     components: {
       Loading
     },

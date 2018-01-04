@@ -1,4 +1,4 @@
 const Urls = {
-  getWaterOpenList: '/gph/app/wateropen/getWaterOpenList',
+  getKnowledgeList: '/gph/app/envir_knowledge/getKnowledgeList'
 };
 export default Urls
