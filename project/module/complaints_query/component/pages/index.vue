@@ -37,13 +37,13 @@
           <span style="display: flex;padding: 10px 20px 10px 0;">
             <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
             <span class="time-select">2017-11-21</span>
-            <i class="fa fa-angle-right "></i>
+            <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
           <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
           <span style="display: flex;padding: 10px 20px 10px 0;">
             <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
             <span class="time-select">2017-11-21</span>
-            <i class="fa fa-angle-right "></i>
+            <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
         </div>
         <div style="margin-top: 10px;width: 100%;height: 35px;display: inline-flex;margin-bottom: 10px">
@@ -237,6 +237,7 @@
   }
 
   .btn-cancel {
+    border:none;
     font-size: 14px;
     color: #353535;
     background-color: #ffffff;
@@ -250,6 +251,6 @@
     color: #FFFFFF;
     background-color: #398DEE;
     text-align: center;
-    /*width: 50%*/
+    border:none;
   }
 </style>

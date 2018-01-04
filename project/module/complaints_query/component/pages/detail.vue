@@ -28,7 +28,7 @@
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span class="extend" @click="funExtend">
         <span style="font-size: 12px; color: #398DEE;margin-right: 5px">展开</span>
-        <i class="fa fa-angle-double-down "></i>
+        <img src="../../../../assets/images/arrow_expand.png" style="width: 12px;height: 12px;"/>
       </span>
       <div v-if="extend" class="extendContent"></div>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
