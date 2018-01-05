@@ -12,9 +12,8 @@
     <div class="complaint_audio_wrapper">
       <span class="_text">图片/视频</span>
       <div class="picture-list">
-        <div v-for="item in pics">
-          <img class="picture-item" :src="item" @click="toggle($event)"/>
-        </div>
+        <img v-for="(item,index) of pics" class="picture-item" :src="typeof item === 'string' ?item :item.poster"
+             @click="toggle($event,item)" :key="index"/>
       </div>
     </div>
     <div class="complaint_content_wrapper">
@@ -43,9 +42,10 @@
     </x-button>
 
     <big-img v-if="show" @clickBigImg="dismiss">
-      <img v-if="showType()===false" :src="urlStr" class="big-img"/>
-      <video v-else-if="showType()===true" autoplay="autoplay" class="__cov-video" controls="controls">
-        <source :src="urlStr" type="video/mp4"/>
+      <img v-if="identify() === false" :src="urlStr" class="big-img"/>
+      <video v-else-if="identify()===true" autoplay="autoplay" class="__cov-video"
+             controls="controls" :poster="postUrl">
+        <source :src="urlStr" :type="videoType"/>
         Your browser does not support the video tag.
       </video>
     </big-img>
@@ -64,33 +64,38 @@
     },
     data(){
       return {
-        pics: ['https://o5omsejde.qnssl.com/demo/test1.jpg',
+        pics: [
+          'https://o5omsejde.qnssl.com/demo/test1.jpg',
           'https://o5omsejde.qnssl.com/demo/test2.jpg',
           'https://o5omsejde.qnssl.com/demo/test4.jpg',
           'https://o5omsejde.qnssl.com/demo/test5.jpg',
           'https://o5omsejde.qnssl.com/demo/test6.jpg',
           'https://o5omsejde.qnssl.com/demo/test7.jpg',
-          'https://o5omsejde.qnssl.com/demo/test8.jpg'],
+          'https://o5omsejde.qnssl.com/demo/test8.jpg',
+          {
+            src: 'http://vjs.zencdn.net/v/oceans.mp4',
+            type: 'video/mp4',
+            poster: 'http://covteam.u.qiniudn.com/poster.png'
+          },],
         show: false,
         urlStr: '',
+        postUrl: '',//如果是视频，为缩略图的地址
+        videoType: '',//视频类型---.rmvb .mp4 .avi .ts等
         extend: false,
-        video: {
-          sources: [{
-            src: 'http://vjs.zencdn.net/v/oceans.mp4',
-            type: 'video/mp4'
-          }],
-          options: {
-            autoplay: true,
-            volume: 0.6,
-            poster: 'http://covteam.u.qiniudn.com/poster.png'
-          }
-        }
       }
     },
     methods: {
-      toggle(e){
+      toggle(e, item){
         e.preventDefault();
-        this.urlStr = e.target.src;
+        if (typeof item === 'string') {
+          this.urlStr = e.target.src;
+        } else if (typeof item === "object") {
+          let {src, type, poster} = item;
+          this.urlStr = src;
+          this.postUrl = poster;
+          this.videoType = type;
+        }
+
         this.show = true;
       },
       dismiss(e){
@@ -100,16 +105,15 @@
       funExtend(){
         this.extend = !this.extend;
       },
-      showType(){
-//        console.log('showTypeshowType')
-       let index = this.urlStr.lastIndexOf('.');
-       let str= this.urlStr.substring(index);
-       if(str === '.mp4'|| str === '.rmvb'|| str==='.avi'|| str==='.ts'){//视频格式
-         return true;
-       }else if(str === '.bmp'|| str==='.png'||str==='.gif'||str==='.jpg'||str==='.jpeg'){
-         return false
-       }
-       return false;//默认是图片
+      identify(){
+        let index = this.urlStr.lastIndexOf('.');
+        let str = this.urlStr.substring(index);
+        if (str === '.mp4' || str === '.rmvb' || str === '.avi' || str === '.ts') {//视频格式
+          return true;
+        } else if (str === '.bmp' || str === '.png' || str === '.gif' || str === '.jpg' || str === '.jpeg') {
+          return false
+        }
+        return false;//默认是图片
       }
     }
   }
@@ -157,6 +161,7 @@
   }
 
   .picture-list {
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 10px;
     list-style: none;
@@ -164,10 +169,9 @@
   }
 
   .picture-item {
-    margin-right: 12px;
-    margin-bottom: 5px;
-    width: 103px;
-    height: 103px;
+    margin-bottom: 7px;
+    width: 107px;
+    height: 107px;
   }
 
   .extend {
@@ -217,6 +221,7 @@
     display: block;
     max-width: 100%;
   }
+
   .__cov-video {
     width: 100%;
     height: 100%;
