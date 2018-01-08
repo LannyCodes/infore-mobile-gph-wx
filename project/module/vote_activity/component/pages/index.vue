@@ -1,0 +1,236 @@
+<template>
+  <div style="background-color: #FFFFFF">
+    <flexbox class="filter-wrap">
+      <flexbox-item class="filter_content">
+        <span class="filter_time">2017-01</span>
+        <span>~</span>
+        <span class="filter_time">2017-11</span>
+      </flexbox-item>
+      <div class="filter filter1" @click='showPopup = !showPopup'></div>
+    </flexbox>
+    <div class="container">
+      <div class="item-wrapper" v-for="(itemMes, index) of messages" :key="index">
+        <span class="item-title">{{itemMes.title}}</span>
+        <span class="vote-time">投票时间：{{itemMes.voteTime}}</span>
+        <span class="content">{{itemMes.content}}</span>
+        <div v-if="itemMes.status === '0'" class="separate-line"></div>
+        <div v-if="itemMes.status === '0'" class="vote-container">
+          <div class="voting">
+            <span style="font-size: 12px; color: #586C94;">立即参与</span>
+            <img src="../../../../assets/images/arrow_right.png" class="to-vote"/>
+          </div>
+          <img class="voting-img" src="../../../../assets/images/voting.png"/>
+        </div>
+        <img v-else-if="itemMes.status === '1'" class="voted-img" src="../../../../assets/images/voted.png"/>
+      </div>
+    </div>
+    <popup v-model="showPopup" @on-hide="" @on-show="" position="top">
+      <div class="popup-wrapper">
+        <span class="popup_wrapper_disc">查询时间段</span>
+        <div style="padding: 0 0 0 20px; background-color: #ffffff;align-items: center">
+          <span style="display: flex;padding: 10px 20px 10px 0;">
+            <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
+            <span class="time-select">2017-11-21</span>
+            <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
+          </span>
+          <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
+          <span style="display: flex;padding: 10px 20px 10px 0;">
+            <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
+            <span class="time-select">2017-11-21</span>
+            <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
+          </span>
+        </div>
+        <div style="margin-top: 10px;width: 100%;height: 35px;display: inline-flex;margin-bottom: 10px">
+          <button class="btn-cancel" @click="showPopup= !showPopup">取消</button>
+          <button class="btn-confirm" @click="showPopup= !showPopup">确定</button>
+        </div>
+      </div>
+    </popup>
+  </div>
+</template>
+<script>
+  import { mapState, mapActions } from 'vuex'
+  import{ getVoteActivityList } from '../../api/request';
+  import Flexbox from '../../../../../node_modules/vux/src/components/flexbox/flexbox'
+  import FlexboxItem from '../../../../../node_modules/vux/src/components/flexbox/flexbox-item'
+  import Popup from '../../../../../node_modules/vux/src/components/popup/index'
+  export default{
+    data(){
+      return {
+        showPopup: false,
+        messages:[]
+      }
+    },
+    components: {
+      FlexboxItem,
+      Flexbox,
+      Popup,
+    },
+    computed: {
+      ...mapState({
+        dataList: state => state.list,
+      })
+    },
+    mounted(){
+      getVoteActivityList(this, null, (success) => {
+        this.$vux.toast.text('succ', 'bottom');
+        this.messages = success;
+      }, (error) => {
+        this.$vux.toast.text('err', 'bottom');
+        console.log(error.code);
+      }, () => {
+
+      })
+    },
+    methods: {}
+  }
+</script>
+<style lang="less" scoped>
+  .filter-wrap {
+    top: 0;
+    position: absolute;
+    background-color: #EFEFF4;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .filter_content {
+    padding-left: 50px;
+    display: inline-flex;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    flex-direction: row;
+
+  }
+
+  .filter_time {
+    color: #222222;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .filter1 {
+    margin-right: 12px;
+  }
+
+  .popup-wrapper {
+    background-color: #F0EFF5;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .popup_wrapper_disc {
+    font-size: 14px;
+    color: #888888;
+    margin-left: 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .time-select {
+    margin-right: 10px;
+    color: #888888;
+    font-size: 12px;
+  }
+
+  .btn-cancel {
+    border: none;
+    font-size: 14px;
+    color: #353535;
+    background-color: #ffffff;
+    text-align: center;
+    flex: 1;
+  }
+
+  .btn-confirm {
+    flex: 1;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #398DEE;
+    text-align: center;
+    border: none;
+  }
+
+  .container {
+    background-color: #F0EFF5;
+    margin-top: 50px;
+  }
+  .item-wrapper{
+    position: relative;
+    padding-top: 12px;
+    display: flex;
+    width: auto;
+    height: auto;
+    background-color: #FFFFFF;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .item-title {
+    margin-left: 15px;
+    font-size: 14px;
+    color: #222222;
+    font-weight: 100;
+  }
+  .vote-time{
+    line-height: 20px;
+    margin-left: 15px;
+    font-size: 12px;
+    color:#666666;
+  }
+  .content{
+    padding-right: 50px;
+    margin-bottom: 10px;
+    margin-top: 7px;
+    margin-left: 15px;
+    font-size: 12px;
+    color: #999999;
+  }
+  .separate-line{
+    opacity: .5;
+    width: 100%;
+    height: 1px;
+    margin-left: 15px;
+    background-color: #E5E5E5;
+
+  }
+  .vote-container{
+    justify-content: center;
+    align-items: center;
+    position: relative
+  }
+  .voting{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .to-vote{
+    margin-left: 8px;
+    width:10px;
+    height:12px;
+    resize: both;
+  }
+  .voting-img{
+    position: absolute;
+    top:0;
+    right:0;
+    width:auto;
+    height:100%;
+    resize: both;
+  }
+  .voted-img{
+    position: absolute;
+    bottom:0;
+    right:0;
+    width:auto;
+    height: 42px;
+    resize: both;
+  }
+</style>

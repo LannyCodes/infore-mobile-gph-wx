@@ -7,7 +7,7 @@
 
 ## 框架优势
 
-* 相比使用vue-cli构建项目，减少webpack的开发和维护成本，整个框架通过对webpack的完善可以直接作为一个项目生成器，每新建一个项目，不需要自己再去vue-cli搭建一个脚手架，整个框架模块化，基于module开发，每个项目相当于一个模块，我们只需要按着文件规则ctrl+c/v template项目，然后更改config的项目名称即可快速开发。 
+* 相比使用vue-cli构建项目，减少webpack的开发和维护成本，整个框架通过对webpack的完善可以直接作为一个项目生成器，每新建一个项目，不需要自己再去vue-cli搭建一个脚手架，整个框架模块化，基于module开发，每个项目相当于一个模块，我们只需要按着文件规则ctrl+c/v template项目，然后更改config的项目名称即可快速开发。
 * 项目已经完成WebpackConfig、WechatPlugin、ToastPlugin、Request框架、页面跳转Loading、防重复点击、Vuex、移动端适配等的配置和优化，方便后续开发。
 
 
@@ -42,7 +42,7 @@
 │  	│   │   ├──moduleName.js			        // module入口文件，加载各种公共组件
 │  	│   │   ├──moduleName.vue			        // module页面入口文件
 │   ├── store                                   // vuex的状态管理
-│   │   ├── index.js                            // 引用vuex，创建store
+│   │   ├── handleEvent.js                            // 引用vuex，创建store
 │   │   ├── modules                             // store模块
 │   │   ├── mutation-types.js                   // 定义常量muations名
 │   └── router                                  // 路由

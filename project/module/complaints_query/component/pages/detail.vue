@@ -48,10 +48,13 @@
         <source :src="urlStr" :type="videoType"/>
         Your browser does not support the video tag.
       </video>
+      <!--<vue-video v-else-if="identify()===true" :sources="video.sources" :options="video.options"></vue-video>-->
     </big-img>
   </div>
 </template>
 <script>
+  // script
+//  import VueVideo from './VueVideo.vue'
   import BigImg from './bigImg.vue'
   import XButton from '../../../../../node_modules/vux/src/components/x-button/index.vue'
   import XImg from '../../../../../node_modules/vux/src/components/x-img/index'
@@ -61,6 +64,7 @@
       XImg,
       XButton,
       BigImg,
+//      VueVideo
     },
     data(){
       return {
@@ -76,7 +80,18 @@
             src: 'http://vjs.zencdn.net/v/oceans.mp4',
             type: 'video/mp4',
             poster: 'http://covteam.u.qiniudn.com/poster.png'
-          },],
+          }],
+        video: {
+          sources: [{
+            src: 'http://covteam.u.qiniudn.com/oceans.mp4',
+            type: 'video/mp4'
+          }],
+          options: {
+            autoplay: true,
+            volume: 0.6,
+            poster: 'http://covteam.u.qiniudn.com/poster.png'
+          }
+        },
         show: false,
         urlStr: '',
         postUrl: '',//如果是视频，为缩略图的地址
