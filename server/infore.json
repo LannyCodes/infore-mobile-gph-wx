@@ -458,5 +458,63 @@
         }
       ]
     }
+  },
+  {
+    "url":"/gph/app/voteHistory/getVoteHistoryList",
+    "method":"post",
+    "response":{
+      "code":"0",
+      "message":"success",
+      "body":[
+        {
+          "title":"水环境综合整治群众性意向调查问卷",
+          "issue":"环运局",
+          "issueDate":"2017-11-21 8:00",
+          "voteStart":"2017-11-21 8:00",
+          "voteEnd":"2017-11-21 8:00",
+          "status":"0"
+        },
+        {
+          "title":"水环境综合整治群众性意向调查问卷",
+          "issue":"环运局",
+          "issueDate":"2017-11-21 8:00",
+          "voteStart":"2017-11-21 8:00",
+          "voteEnd":"2017-11-21 8:00",
+          "status":"1"
+        },
+        {
+          "title":"水环境综合整治群众性意向调查问卷",
+          "issue":"环运局",
+          "issueDate":"2017-11-21 8:00",
+          "voteStart":"2017-11-21 8:00",
+          "voteEnd":"2017-11-21 8:00",
+          "status":"1"
+        },
+        {
+          "title":"水环境综合整治群众性意向调查问卷",
+          "issue":"环运局",
+          "issueDate":"2017-11-21 8:00",
+          "voteStart":"2017-11-21 8:00",
+          "voteEnd":"2017-11-21 8:00",
+          "status":"0"
+        },
+        {
+          "title":"水环境综合整治群众性意向调查问卷",
+          "issue":"环运局",
+          "issueDate":"2017-11-21 8:00",
+          "voteStart":"2017-11-21 8:00",
+          "voteEnd":"2017-11-21 8:00",
+          "status":"1"
+        },
+        {
+          "title":"水环境综合整治群众性意向调查问卷",
+          "issue":"环运局",
+          "issueDate":"2017-11-21 8:00",
+          "voteStart":"2017-11-21 8:00",
+          "voteEnd":"2017-11-21 8:00",
+          "status":"0"
+        }
+      ]
+    }
   }
 ]

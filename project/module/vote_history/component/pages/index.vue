@@ -11,21 +11,23 @@
     <div class="container">
       <div class="item-wrapper" v-for="(itemMes, index) of messages" :key="index">
         <span class="item-title">{{itemMes.title}}</span>
-        <span class="vote-time">投票时间：{{itemMes.voteTime}}</span>
-        <span class="content">{{itemMes.content}}</span>
-        <div v-if="itemMes.status === '0'" class="separate-line"></div>
-        <div v-if="itemMes.status === '0'" class="vote-container">
+        <span class="item-issue">发布单位：{{itemMes.issue}}</span>
+        <span class="item-issue">发布时间：{{itemMes.issueDate}}</span>
+        <span style="flex-direction: row">
+             <span class="vote-time">投票期限：{{itemMes.voteStart}}</span>
+             <span style="font-size: 12px;color: #666666;">~{{itemMes.voteEnd}}</span>
+          </span>
+
+        <div class="separate-line"></div>
+        <div class="vote-container">
           <div class="voting">
-            <span style="font-size: 12px; color: #586C94;">立即参与</span>
+            <span style="font-size: 12px; color: #586C94;">立即查看</span>
             <img src="../../../../assets/images/arrow_right.png" class="to-vote"/>
+            <img v-if="itemMes.status === '0'" class="voting-img" src="../../../../assets/images/participated.png"/>
+            <img v-else-if="itemMes.status === '1'" class="voted-img" src="../../../../assets/images/unparticipate.png"/>
           </div>
-          <img class="voting-img" src="../../../../assets/images/voting.png"/>
         </div>
-        <img v-else-if="itemMes.status === '1'" class="voted-img" src="../../../../assets/images/voted.png"/>
       </div>
-    </div>
-    <div v-transfer-dom>
-      <alert v-model="show" :title="'提示'" @on-show="onShow" @on-hide="onHide" buttonText="确定">当前活动已结束</alert>
     </div>
     <popup v-model="showPopup" @on-hide="" @on-show="" position="top">
       <div class="popup-wrapper">
@@ -53,24 +55,21 @@
 </template>
 <script>
   import { mapState, mapActions } from 'vuex'
-  import{ getVoteActivityList } from '../../api/request';
+  import{ getVoteHistoryList } from '../../api/request';
   import Flexbox from '../../../../../node_modules/vux/src/components/flexbox/flexbox'
   import FlexboxItem from '../../../../../node_modules/vux/src/components/flexbox/flexbox-item'
   import Popup from '../../../../../node_modules/vux/src/components/popup/index'
-  import Alert from '../../../../../node_modules/vux/src/components/Alert/index'
   export default{
     data(){
       return {
         showPopup: false,
-        messages:[],
-        show:true,
+        messages: []
       }
     },
     components: {
       FlexboxItem,
       Flexbox,
       Popup,
-      Alert,
     },
     computed: {
       ...mapState({
@@ -78,7 +77,7 @@
       })
     },
     mounted(){
-      getVoteActivityList(this, null, (success) => {
+      getVoteHistoryList(this, null, (success) => {
         this.$vux.toast.text('succ', 'bottom');
         this.messages = success;
       }, (error) => {
@@ -165,7 +164,8 @@
     background-color: #F0EFF5;
     margin-top: 50px;
   }
-  .item-wrapper{
+
+  .item-wrapper {
     position: relative;
     padding-top: 12px;
     display: flex;
@@ -176,19 +176,22 @@
     margin-bottom: 10px;
   }
 
-  .item-title {
-    margin-left: 15px;
-    font-size: 14px;
-    color: #222222;
-    font-weight: 100;
-  }
-  .vote-time{
+  .item-issue {
     line-height: 20px;
     margin-left: 15px;
     font-size: 12px;
-    color:#666666;
+    color: #666666;
+    font-weight: 100;
   }
-  .content{
+
+  .vote-time {
+    /*line-height: 20px;*/
+    margin-left: 15px;
+    font-size: 12px;
+    color: #666666;
+  }
+
+  .content {
     padding-right: 50px;
     margin-bottom: 10px;
     margin-top: 7px;
@@ -196,7 +199,8 @@
     font-size: 12px;
     color: #999999;
   }
-  .separate-line{
+
+  .separate-line {
     opacity: .5;
     width: 100%;
     height: 1px;
@@ -204,12 +208,14 @@
     background-color: #E5E5E5;
 
   }
-  .vote-container{
+
+  .vote-container {
     justify-content: center;
     align-items: center;
     position: relative
   }
-  .voting{
+
+  .voting {
     padding-top: 12px;
     padding-bottom: 12px;
     display: flex;
@@ -217,26 +223,35 @@
     align-items: center;
     justify-content: center;
   }
-  .to-vote{
+
+  .to-vote {
     margin-left: 8px;
-    width:10px;
-    height:12px;
+    width: 10px;
+    height: 12px;
     resize: both;
   }
-  .voting-img{
+
+  .voting-img {
     position: absolute;
-    top:0;
-    right:0;
-    width:auto;
-    height:100%;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: 100%;
     resize: both;
   }
-  .voted-img{
+
+  .voted-img {
     position: absolute;
-    bottom:0;
-    right:0;
-    width:auto;
+    bottom: 0;
+    right: 0;
+    width: auto;
     height: 42px;
     resize: both;
+  }
+  .item-title {
+    margin-left: 15px;
+    font-size: 16px;
+    color: #222222;
+    font-weight: 100;
   }
 </style>
