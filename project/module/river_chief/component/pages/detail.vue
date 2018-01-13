@@ -126,28 +126,28 @@
 
   .icon(@url: "../../../../assets/images/icon_river_title_0.png") {
     background: url(@url) no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 
   .title1 {
     .icon("../../../../assets/images/icon_river_title_0.png");
-    width: 16px;
+    width: 13px;
     height: 16px;
-    margin-right: 10px;
+    margin-right: 7px;
   }
 
   .title2 {
     .icon("../../../../assets/images/icon_river_title_1.png");
-    width: 25px;
-    height: 20px;
-    margin-right: 10px;
+    width: 17.5px;
+    height: 14.5px;
+    margin-right: 7px;
   }
 
   .title3 {
     .icon("../../../../assets/images/icon_river_title_2.png");
-    width: 14px;
-    height: 20px;
-    margin-right: 10px;
+    width: 12.5px;
+    height: 17px;
+    margin-right:7px;
   }
 
   .title {

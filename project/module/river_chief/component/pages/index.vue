@@ -26,26 +26,22 @@
             <checker-item value="1" @on-item-click="onItemClick">大良</checker-item>
             <checker-item value="2" @on-item-click="onItemClick">容桂</checker-item>
             <checker-item value="3" @on-item-click="onItemClick">伦教</checker-item>
-            <checker-item value="4" @on-item-click="onItemClick">伦教</checker-item>
-            <checker-item value="5" @on-item-click="onItemClick">伦教</checker-item>
-            <checker-item value="6" @on-item-click="onItemClick">伦教</checker-item>
+            <checker-item value="4" @on-item-click="onItemClick">勒流</checker-item>
+            <checker-item value="5" @on-item-click="onItemClick">陈村</checker-item>
+            <checker-item value="6" @on-item-click="onItemClick">君安</checker-item>
           </checker>
         </div>
-        <flexbox class="btn-tab">
-          <flexbox-item>
-            <x-button style="font-size: 15px" @click.native="showFilter=!showFilter">取消</x-button>
-          </flexbox-item>
-          <flexbox-item>
-            <x-button style="font-size: 15px"  class="sure" @click.native="showFilter=!showFilter">确定</x-button>
-          </flexbox-item>
-        </flexbox>
+        <div style="margin-top: 10px;width: 100%;height: 35px;display: inline-flex;margin-bottom: 10px">
+          <button class="btn-cancel" @click="showFilter=!showFilter">取消</button>
+          <button class="btn-confirm" @click="showFilter=!showFilter">确定</button>
+        </div>
       </popup>
     </div>
 
     <div class="time-filter">
       <i class="fa" aria-hidden="true"></i>
       <p>全部</p>
-      <div class="filter" @click="showFilter=!showFilter"></div>
+      <div class="filter" @click="showFilter= !showFilter"></div>
     </div>
     <div class="container" v-for="(item,index) in riverChiefList" :key="index">
       <div class="river-item" :id="item.index" @click="enterDetail(item.river)">
@@ -67,8 +63,8 @@
   </div>
 </template>
 <script>
-  import {mapState} from "vuex";
-  import {getRiverChiefList} from "../../api/request";
+  import { mapState } from "vuex";
+  import { getRiverChiefList } from "../../api/request";
   import LetterSection from "~/components/letter-section";
   import TransferDom from "vux/src/directives/transfer-dom/index.js";
   import Popup from "vux/src/components/popup/index.vue";
@@ -122,7 +118,7 @@
         return a.index.charCodeAt(0) - b.index.charCodeAt(0);
       },
       currentLetter(letter) {
-        letter === this.letterList[0]&& $('body,html').animate({scrollTop:0},100);
+        letter === this.letterList[0] && $('body,html').animate({scrollTop: 0}, 100);
         let target = document.getElementById(letter);
         if (target) {
           target.scrollIntoView();
@@ -181,18 +177,18 @@
     color: #888888;
     background-color: #f0eff5;
     .type-checker {
+      padding-left: 15px;
       background-color: white;
     }
 
     .type-checker-item {
       text-align: center;
-      width: 28%;
+      /*width: 18%;*/
       color: #888888;
-      font-size: 12px;
-      padding: 5px 10px;
-      margin: 5px;
-      line-height: 18px;
-      border-radius: 2px;
+      font-size: 14px;
+      padding: 5px 18.5px 5px 18.5px;
+      line-height: 20px;
+      border-radius: 1px;
     }
 
     .type-checker-item-selected {
@@ -205,18 +201,18 @@
     }
 
     .location-checker {
+      padding-left: 15px;
       background-color: white;
     }
 
     .location-checker-item {
-      width: 20%;
-      margin: 5px;
       text-align: center;
+      /*width: 16%;*/
       color: #888888;
-      font-size: 12px;
-      padding: 5px 10px;
-      line-height: 18px;
-      border-radius: 2px;
+      font-size: 14px;
+      padding: 5px 18.5px 5px 18.5px;
+      line-height: 20px;
+      border-radius: 1px;
     }
 
     .location-checker-item-selected {
@@ -264,12 +260,30 @@
     p {
       margin-bottom: 3px;
     }
-    .river-length{
+    .river-length {
       width: 14px;
       height: 14px;
       margin-right: 3px;
-      background:url("../../../../assets/images/icon_water_length.png") no-repeat;
+      background: url("../../../../assets/images/icon_water_length.png") no-repeat;
       background-size: cover;
     }
+  }
+
+  .btn-cancel {
+    border: none;
+    font-size: 14px;
+    color: #353535;
+    background-color: #ffffff;
+    text-align: center;
+    flex: 1;
+  }
+
+  .btn-confirm {
+    flex: 1;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #398DEE;
+    text-align: center;
+    border: none;
   }
 </style>

@@ -2,32 +2,32 @@
   <div>
     <div class="popup-tip-dom" v-transfer-dom>
       <popup v-model="showTip" class="popup-tip" height="100%">
-        <div>
+        <div style="padding-left: 20px;padding-right: 20px">
           <div class="popup-tip-content">
             <p>水质类别说明</p>
             <div class="text">
               <div class="icon" style="background-color: #35BBE0">I</div>
-              主要适用于源头水、国家自然保护区
+              <label>主要适用于源头水、国家自然保护区</label>
             </div>
             <div class="text">
               <div class="icon" style="background-color: #3DE697">II</div>
-              主要适用于源头水、国家自然保护区
+              <label>主要适用于源头水、国家自然保护区</label>
             </div>
             <div class="text">
               <div class="icon" style="background-color: #FFD55E">III</div>
-              主要适用于源头水、国家自然保护区
+              <label>主要适用于集中式生活饮用水地表水源 地一级保护区、珍惜水生生物栖息地、 鱼虾类产卵场、仔稚幼鱼的梭饵场等；</label>
             </div>
             <div class="text">
               <div class="icon" style="background-color: #BB55D0">V</div>
-              主要适用于源头水、国家自然保护区
+              <label>主要适用于集中式生活饮用水地表水源 地一级保护区、珍惜水生生物栖息地、 鱼虾类产卵场、仔稚幼鱼的梭饵场等；</label>
             </div>
             <div class="text">
               <div class="icon" style="background-color: #F63D78">IV</div>
-              主要适用于源头水、国家自然保护区
+              <label>主要适用于源头水、国家自然保护区</label>
             </div>
             <div class="text">
               <div class="icon" style="background-color: #627498">劣V</div>
-              主要适用于源头水、国家自然保护区
+              <label>主要适用于源头水、国家自然保护区</label>
             </div>
           </div>
           <div class="popup-tip-btn" @click="showTip=false">确定</div>
@@ -39,8 +39,8 @@
       <div class="basic-item">测站名称 <span class="basic-catch"> {{basic.name}}</span></div>
       <div class="basic-item">行政区域 <span class="basic-catch">{{basic.location}}</span></div>
       <div class="basic-item">所在河涌 <span class="basic-catch">{{basic.atWater}}</span></div>
-      <div class="basic-item">水质类别 <span class="basic-catch">{{basic.waterType}}类</span>
-        <i class="fa fa-info-circle" aria-hidden="true" @click="showTip=true"></i></div>
+      <div class="basic-item" style="display: inline-flex;">水质类别 <span class="basic-catch">&nbsp;{{basic.waterType}}类</span>
+        <img src="../../../../assets/images/water_type.png" class="water_type_img" aria-hidden="true" @click="showTip=true"/></div>
       <div class="basic-item">数据来源 <span class="basic-catch">{{basic.source}}</span></div>
     </div>
     <p class="title">{{place}}水质监测项</p>
@@ -142,6 +142,12 @@
               fontSize: 16,
             },
           },
+          grid:{
+            left:'0%',
+            right:'0%',
+            bottom: '20%',
+            containLabel: true
+          },
           xAxis: {
             name: '时间(m)',
             nameTextStyle: {
@@ -159,6 +165,7 @@
               show: false,
             },
             type: 'category',
+            boundaryGap:false,
             data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
           },
           yAxis: {
@@ -199,26 +206,29 @@
 
 <style lang="less" scoped>
   .title {
-    font-size: 15px;
+    font-size: 16px;
     margin: 10px;
     color: #222222;
+    line-height:22.5px;
+    font-weight: bold;
   }
 
   .basic {
     background-color: white;
-    font-size: 14px;
+    font-size: 15px;
     color: #666666;
+    line-height:21px;
     .basic-item {
       padding: 5px 0 5px 10px;
     }
     .basic-catch {
       color: #999999;
-      margin-left: 5px;
+      margin-left: 15px;
     }
-    .fa-info-circle {
+    .water_type_img {
       margin-left: 5px;
-      font-size: 20px;
-      color: #FF2E2E;
+      width: 22.5px;
+      height: 22.5px;
     }
   }
 
@@ -232,11 +242,11 @@
       padding: 5px 10px;
       margin: 5px;
       line-height: 18px;
-      border-radius: 2px;
+      border-radius: 5px;
     }
 
     .type-checker-item-selected {
-      background-color: #398DEE;
+      background: linear-gradient(to bottom,#6BC1F8,#398DEE);
       color: #fff;
     }
 
@@ -254,7 +264,9 @@
         justify-content: space-between;
         align-items: center;
         p {
-          margin: 5px 0 5px 0;
+          margin: 3px 0 3px 0;
+          font-size: 13px;
+          line-height: 18.5px;
         }
       }
     }
@@ -274,7 +286,7 @@
     background-color: rgba(0, 0, 0, 0.2);
     .popup-tip-content {
       background-color: white;
-      padding: 20px;
+      padding: 20px 30px 10px 30px;
       text-align: center;
       border-radius: 8px 8px 0 0;
       color: #888;
@@ -282,26 +294,35 @@
       .text {
         display: flex;
         margin-top: 10px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #ddd;
-        padding: 5px;
-        align-items: center;
+        /*margin-bottom: 10px;*/
+        border-bottom: 1px solid rgba(229,229,229,0.5);
+        padding: 5px 0 8px 0;
+        label{
+          font-size: 14px;
+          color: #888888;
+          text-align: start;
+          flex: 1;
+        }
       }
       .icon {
+        font-size: 10px;
         color: white;
         background-color: #10aeff;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
+        width: 25px;
+        height: 25px;
         border: 1px solid;
         border-radius: 20%;
-        margin-right: 10px;
+        margin-right: 5px;
       }
       p {
-        font-size: 17px;
+        font-size: 18px;
         color: #222;
+      }
+      :last-child{
+        border-bottom: none;
       }
     }
     .popup-tip-btn {

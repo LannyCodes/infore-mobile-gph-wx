@@ -2,18 +2,16 @@
   <div class="container">
     <div class="icon_bg"></div>
     <div class="content">
-      <div class="item" v-for="(item,index) in data" :key="index">
-          <div class="textarea">
-            <p class="title">{{item.title}}</p>
-            <p>{{item.content}}</p>
-        </div>
+      <div class="item" v-for="(item, index) in data" :key="index">
+        <p class="title">{{item.title}}</p>
+        <p class="content1">{{item.content}}</p>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import {mapState} from "vuex";
-  import {getKnowledgeList} from "../../api/request";
+  import { mapState } from "vuex";
+  import { getKnowledgeList } from "../../api/request";
 
   export default {
     mounted() {
@@ -82,7 +80,7 @@
       margin: 10px 0;
       background-color: white;
       border-radius: 5px;
-      padding: 5px;
+      padding: 16px 12px;
       color: #999999;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -95,9 +93,15 @@
         height: 59px;
       }
       .title {
-        font-size: 20px;
+        font-size: 16px;
         color: #222222;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
+        line-height: 22.5px;
+      }
+      .content1 {
+        font-size: 13px;
+        color: #999999;
+        line-height: 18.5px;
       }
     }
   }

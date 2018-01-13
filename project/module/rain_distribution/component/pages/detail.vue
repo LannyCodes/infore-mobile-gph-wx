@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="basic">
-      <div class="row"><p class="deepFontColor" style="margin-right: 10px">行政区</p>{{data.location}}</div>
+      <div class="row"><p class="deepFontColor" style="margin-right: 5px">行政区</p>{{data.location}}</div>
       <div class="row"><p class="deepFontColor" style="margin-right: 10px">数据来源</p>{{data.dataSource}}</div>
     </div>
     <div class="echart">
@@ -53,6 +53,7 @@
   import {getRainDistributionDetail} from "../../api/request";
   import ECharts from "vue-echarts/components/ECharts.vue";
   import "echarts/lib/chart/line";
+  import "echarts/lib/chart/bar";
   import "echarts/lib/component/title";
 
   // import ECharts modules manually to reduce bundle size
@@ -80,6 +81,7 @@
     data() {
       return {
         data: {},
+
         options: {
           title: {
             textStyle: {
@@ -87,8 +89,18 @@
               fontSize: 16
             }
           },
+          barWidth: 10,
+          itemStyle:{
+            normal: {
+              barBorderRadius:10,
+//              barBorderWidth:10,
+              color: ['#BAABFC'],
+//              barBorderColor:''
+            },
+          },
+
           xAxis: {
-            name: "时间(m)",
+            name: "时间(h)",
             nameTextStyle: {
               color: "#999",
               padding: [30, 0, 0, -20]
@@ -109,27 +121,19 @@
               "2015-2",
               "2015-3",
               "2015-4",
-              "2015-5",
-              "2015-6",
-              "2015-7",
-              "2015-8",
-              "2015-9",
-              "2015-10",
-              "2015-11",
-              "2015-12"
             ]
           },
           yAxis: {
             type: "value",
-            name: "含量(mg/L)",
+            name: "雨量(mm)",
             nameGap: 10,
             nameTextStyle: {
               color: "#999",
               padding: [0, -80, 0, 0]
             },
             min: 0,
-            max: 10,
-            interval: 2,
+            max: 1.0,
+            interval: 0.2,
             axisLine: {
               lineStyle: {
                 color: "#666"
@@ -141,21 +145,13 @@
           },
           series: [
             {
-              type: "line",
-              smooth: true,
+              type: "bar",
+//              smooth: true,
               data: [
-                3.72,
-                5.12,
-                5.72,
-                6.73,
-                7.72,
-                5.52,
-                3.72,
-                5.12,
-                5.72,
-                6.73,
-                7.72,
-                5.52
+                0.72,
+                0.12,
+                0.72,
+                0.73,
               ]
             }
           ]
@@ -173,6 +169,8 @@
 <style lang="less" scoped>
   .deepFontColor {
     color: #666666;
+    line-height: 21px;
+    font-size: 15px;
   }
 
   .lightFontColor {
@@ -182,7 +180,7 @@
   .row {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
   }
 

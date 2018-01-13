@@ -15,7 +15,10 @@ import WechatPlugin from 'vux/src/plugins/wechat' //wechat
 import 'vux/src/styles/close.less' // 叉号
 const FastClick = require('fastclick') // 防重复点击
 FastClick.attach(document.body)
-
+import { RadioGroup,  Radio} from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(RadioGroup);
+Vue.use(Radio)
 Vue.use(Vuex);
 Vue.use(ToastPlugin);
 Vue.use(WechatPlugin);

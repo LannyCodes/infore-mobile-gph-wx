@@ -3,47 +3,48 @@
     <div v-transfer-dom>
       <popup class="pop-filter" v-model="showFilter" position="top">
         <div>
-          <div style="margin: 10px 15px">河道类型</div>
+          <div style="margin: 10px 15px">行政区域</div>
           <checker
             class="type-checker"
             default-item-class="type-checker-item"
             selected-item-class="type-checker-item-selected"
             disabled-item-class="type-checker-item-disabled">
             <checker-item value="0" @on-item-click="onItemClick">全部</checker-item>
-            <checker-item value="1" @on-item-click="onItemClick">主河道</checker-item>
-            <checker-item value="2" @on-item-click="onItemClick">内河涌</checker-item>
-            <checker-item value="3" @on-item-click="onItemClick">其他河涌</checker-item>
-            <checker-item value="4" @on-item-click="onItemClick">其他河涌</checker-item>
-            <checker-item value="5" @on-item-click="onItemClick">其他河涌</checker-item>
-            <checker-item value="6" @on-item-click="onItemClick">其他河涌</checker-item>
-          </checker>
-          <div style="margin: 10px 15px">行政区域</div>
-          <checker class="location-checker"
-                   default-item-class="location-checker-item"
-                   selected-item-class="location-checker-item-selected"
-                   disabled-item-class="location-checker-item-disabled">
-            <checker-item value="0" @on-item-click="onItemClick">全部</checker-item>
             <checker-item value="1" @on-item-click="onItemClick">大良</checker-item>
             <checker-item value="2" @on-item-click="onItemClick">容桂</checker-item>
             <checker-item value="3" @on-item-click="onItemClick">伦教</checker-item>
-            <checker-item value="4" @on-item-click="onItemClick">伦教</checker-item>
-            <checker-item value="5" @on-item-click="onItemClick">伦教</checker-item>
-            <checker-item value="6" @on-item-click="onItemClick">伦教</checker-item>
+            <checker-item value="4" @on-item-click="onItemClick">勒河</checker-item>
+            <checker-item value="5" @on-item-click="onItemClick">陈村</checker-item>
+            <checker-item value="7" @on-item-click="onItemClick">君安</checker-item>
+            <checker-item value="8" @on-item-click="onItemClick">杏坛</checker-item>
+            <checker-item value="9" @on-item-click="onItemClick">龙江</checker-item>
+            <checker-item value="10" @on-item-click="onItemClick">乐从</checker-item>
+            <checker-item value="11" @on-item-click="onItemClick">北滘</checker-item>
           </checker>
+          <div class="popup_wrapper_disc">查询时间段</div>
+          <div style="padding: 0 0 0 20px; background-color: #ffffff;align-items: center">
+            <span style="display: flex;padding: 10px 20px 10px 0;">
+              <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
+              <span class="time-select">2017-11-21</span>
+              <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
+            </span>
+              <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
+              <span style="display: flex;padding: 10px 20px 10px 0;">
+              <span style="font-size: 12px;color:#000000;flex:1">结束时间</span>
+              <span class="time-select">2017-11-21</span>
+              <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
+            </span>
+          </div>
         </div>
-        <flexbox class="btn-tab">
-          <flexbox-item>
-            <x-button style="font-size: 15px" @click.native="showFilter=!showFilter">取消</x-button>
-          </flexbox-item>
-          <flexbox-item>
-            <x-button style="font-size: 15px" class="sure" @click.native="showFilter=!showFilter">确定</x-button>
-          </flexbox-item>
-        </flexbox>
+        <div style="margin-top: 10px;width: 100%;height: 35px;display: inline-flex;margin-bottom: 10px">
+          <button class="btn-cancel" @click="showFilter=!showFilter">取消</button>
+          <button class="btn-confirm" @click="showFilter=!showFilter">确定</button>
+        </div>
       </popup>
     </div>
 
     <div class="time-filter">
-      <i class="fa" aria-hidden="true"></i>
+      <i class="fa" aria-hidden="false"></i>
       <p>2017-09</p>
       <div class="filter" @click="showFilter=!showFilter"></div>
     </div>
@@ -54,18 +55,18 @@
             <div class="item-name">{{item.name}}</div>
             <div class="icon_1"></div>
           </div>
-          <p>行政区域 {{item.position}}</p>
+          <p style="font-size: 13px;line-height:18.5px;margin-top: 10px;">行政区域 {{item.position}}</p>
         </div>
         <div>
           <div class="row">
             <div>
               <p class="item-rainsize">{{item.rainsize}}</p>
-              <p>累计降雨量</p>
+              <p style="font-size: 13px;line-height: 18.5px;margin-top: 5px">累计降雨量</p>
             </div>
             <div class="icon_2"></div>
           </div>
-          <p>{{item.starttime}}至</p>
-          <p>{{item.endtime}}</p>
+          <p style="line-height: 16.5px;font-size: 12px;margin-top: 5px">{{item.starttime}}至</p>
+          <p style="line-height: 16.5px;font-size: 12px;margin-top: 5px">{{item.endtime}}</p>
         </div>
       </div>
     </div>
@@ -73,8 +74,8 @@
   </div>
 </template>
 <script>
-  import {mapState} from "vuex";
-  import {getRainDistributionList} from "../../api/request";
+  import { mapState } from "vuex";
+  import { getRainDistributionList } from "../../api/request";
   import LetterSection from "~/components/letter-section";
   import TransferDom from "vux/src/directives/transfer-dom/index.js";
   import Popup from "vux/src/components/popup/index.vue";
@@ -192,12 +193,12 @@
 
     .type-checker-item {
       text-align: center;
-      width: 28%;
+      width: 16%;
       color: #888888;
-      font-size: 12px;
+      font-size: 14px;
       padding: 5px 10px;
-      margin: 5px;
-      line-height: 18px;
+      margin: 2px;
+      line-height: 20px;
       border-radius: 2px;
     }
 
@@ -246,36 +247,73 @@
   .rain-item {
     width: 96%;
     margin: 5px 0 5px 0;
-    height: 120px;
+    height: 140px;
     color: white;
     font-size: 13px;
     background: url("../../../../assets/images/ic_rain_bg.png") no-repeat;
-    background-size: cover;
+    background-size: contain;
     border-radius: 4px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     .item-name {
-      font-size: 25px;
+      font-size: 24px;
       margin-bottom: 5px;
+      line-height: 33.5px;
     }
     .item-rainsize {
-      font-size: 15px;
+      font-size: 17px;
+      line-height: 24px;
     }
   }
+
   .icon_1 {
-    height: 26px;
-    width: 26px;
+    height: 21.5px;
+    width: 15.5px;
     background: url("../../../../assets/images/ic_rain_1.png") no-repeat;
-    background-size: cover;
+    background-size: contain;
     margin-left: 10px;
   }
+
   .icon_2 {
-    height: 24px;
+    height: 21px;
     width: 24px;
     background: url("../../../../assets/images/ic_rain_2.png") no-repeat;
-    background-size: cover;
+    background-size: contain;
     margin-left: 10px;
+  }
+
+  .time-select {
+    /*flex: 1*/
+    margin-right: 15px;
+    color: #888888;
+    font-size: 12px;
+  }
+
+  .popup_wrapper_disc {
+    font-size: 14px;
+    color: #888888;
+    margin-left: 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .btn-cancel {
+    border: none;
+    font-size: 14px;
+    color: #353535;
+    background-color: #ffffff;
+    text-align: center;
+    flex: 1;
+  }
+
+  .btn-confirm {
+    flex: 1;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #398DEE;
+    text-align: center;
+    border: none;
   }
 </style>

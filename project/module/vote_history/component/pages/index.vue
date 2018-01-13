@@ -9,14 +9,15 @@
       <div class="filter filter1" @click='showPopup = !showPopup'></div>
     </flexbox>
     <div class="container">
-      <div class="item-wrapper" v-for="(itemMes, index) of messages" :key="index">
+      <div class="item-wrapper" v-for="(itemMes, index) of messages"
+           :key="index" @click="jumpDetail()">
         <span class="item-title">{{itemMes.title}}</span>
         <span class="item-issue">发布单位：{{itemMes.issue}}</span>
         <span class="item-issue">发布时间：{{itemMes.issueDate}}</span>
         <span style="flex-direction: row">
              <span class="vote-time">投票期限：{{itemMes.voteStart}}</span>
              <span style="font-size: 12px;color: #666666;">~{{itemMes.voteEnd}}</span>
-          </span>
+        </span>
 
         <div class="separate-line"></div>
         <div class="vote-container">
@@ -87,7 +88,11 @@
 
       })
     },
-    methods: {}
+    methods: {
+      jumpDetail(item){
+        this.$router.push({path: '/detail'})
+      }
+    }
   }
 </script>
 <style lang="less" scoped>

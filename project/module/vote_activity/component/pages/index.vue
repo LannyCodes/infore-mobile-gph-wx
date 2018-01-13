@@ -9,14 +9,16 @@
       <div class="filter filter1" @click='showPopup = !showPopup'></div>
     </flexbox>
     <div class="container">
-      <div class="item-wrapper" v-for="(itemMes, index) of messages" :key="index">
+      <div class="item-wrapper" v-for="(itemMes, index) of messages"
+           :key="index" @click="jumpDetail()">
         <span class="item-title">{{itemMes.title}}</span>
         <span class="vote-time">投票时间：{{itemMes.voteTime}}</span>
-        <span class="content">{{itemMes.content}}</span>
+        <span style="font-size: 13px;color: #999999;padding-left: 15px;margin-top: 5px;">尊敬的市民，您好！</span>
+        <span class="content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{itemMes.content}}</span>
         <div v-if="itemMes.status === '0'" class="separate-line"></div>
         <div v-if="itemMes.status === '0'" class="vote-container">
           <div class="voting">
-            <span style="font-size: 12px; color: #586C94;">立即参与</span>
+            <span style="font-size: 14px; color: #586C94; line-height:20px;">立即参与</span>
             <img src="../../../../assets/images/arrow_right.png" class="to-vote"/>
           </div>
           <img class="voting-img" src="../../../../assets/images/voting.png"/>
@@ -88,7 +90,11 @@
 
       })
     },
-    methods: {}
+    methods: {
+      jumpDetail(item){
+        this.$router.push({path: '/detail'})
+      }
+    }
   }
 </script>
 <style lang="less" scoped>
@@ -177,23 +183,24 @@
   }
 
   .item-title {
+    line-height:24px;
     margin-left: 15px;
-    font-size: 14px;
+    font-size: 17px;
     color: #222222;
-    font-weight: 100;
   }
   .vote-time{
-    line-height: 20px;
+    line-height: 18.5px;
     margin-left: 15px;
-    font-size: 12px;
+    font-size: 13px;
     color:#666666;
   }
   .content{
-    padding-right: 50px;
-    margin-bottom: 10px;
-    margin-top: 7px;
+    line-height: 18.5px;
+    padding-right: 70px;
+    margin-bottom: 5px;
+    /*margin-top: 5px;*/
     margin-left: 15px;
-    font-size: 12px;
+    font-size: 13px;
     color: #999999;
   }
   .separate-line{
@@ -218,9 +225,9 @@
     justify-content: center;
   }
   .to-vote{
-    margin-left: 8px;
+    margin-left: 10px;
     width:10px;
-    height:12px;
+    height:12.5px;
     resize: both;
   }
   .voting-img{
