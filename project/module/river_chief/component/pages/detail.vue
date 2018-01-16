@@ -10,7 +10,7 @@
           <div v-if="index>3?isShowHZDetail:true" class="hz-item row">
             <div class="row">
               <div :class="getHZIconClass(item.level)"></div>
-              <p>{{item.level}}</p>
+              <p style="">{{item.level}}</p>
             </div>
             <div>{{item.name}}</div>
             <div>{{item.tab}}</div>
@@ -107,7 +107,7 @@
               <p>水质类别</p>
               <div>{{item.szlb}}</div>
             </div>
-            <div v-if="index!==(waterDetail.length-1)&&isShowWaterDetail" class="vux-1px" style="margin-bottom: 10px"></div>
+            <div v-if="index!==(waterDetail.length-1)&&isShowWaterDetail" class="vux-1px" style="margin-bottom: 10px;opacity: 0.2;"></div>
           </div>
         </div>
       </div>
@@ -119,6 +119,7 @@
 <style lang="less" scoped>
 
   .row {
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -158,22 +159,22 @@
 
   .hz-icon-0 {
     .icon("../../../../assets/images/icon_river_level0.png");
-    width: 14px;
-    height: 15px;
+    width: 20px;
+    height: 18px;
     margin-right: 10px;
   }
 
   .hz-icon-1 {
     .icon("../../../../assets/images/icon_river_level1.png");
-    width: 14px;
-    height: 15px;
+    width: 20px;
+    height: 18px;
     margin-right: 10px;
   }
 
   .hz-icon-2 {
     .icon("../../../../assets/images/icon_river_level2.png");
-    width: 14px;
-    height: 15px;
+    width: 20px;
+    height: 18px;
     margin-right: 10px;
   }
 
@@ -183,6 +184,7 @@
     font-size: 15px;
     color: #999999;
     .hz-item {
+      line-height: 25px;
       justify-content: space-between;
       margin: 0 8px 8px 0;
       p {
@@ -190,6 +192,7 @@
       }
     }
     .basic-item {
+      line-height: 30px;
       justify-content: space-between;
       margin: 0 5px 5px 0;
       p {
@@ -197,6 +200,7 @@
       }
     }
     .water-item {
+      line-height: 28px;
       justify-content: space-between;
       margin: 0 5px 5px 0;
       p {

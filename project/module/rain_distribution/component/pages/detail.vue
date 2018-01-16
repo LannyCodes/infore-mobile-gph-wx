@@ -1,48 +1,59 @@
 <template>
   <div>
     <div class="basic">
-      <div class="row"><p class="deepFontColor" style="margin-right: 5px">行政区</p>{{data.location}}</div>
-      <div class="row"><p class="deepFontColor" style="margin-right: 10px">数据来源</p>{{data.dataSource}}</div>
+      <div class="row" style="margin-top: 10px"><p class="deepFontColor" style="margin-right: 5px">行政区</p>
+        {{data.location}}
+      </div>
+      <div class="row" style="margin-top: 10px"><p class="deepFontColor" style="margin-right: 10px;">数据来源</p>
+        {{data.dataSource}}
+      </div>
     </div>
     <div class="echart">
+      <div class="time_date_container">
+        <span class="time_date">选择日期日期和时间<img src="../../../../assets/images/arrow_right.png" class="img"/></span>
+        <div style="align-items: center;display: inline-flex;">
+          <label style="width: 12px;height: 12px;border-radius: 2px ;background-color: #BAABFC "></label>
+          <label style="margin-left: 3px;color: #666666;font-size: 12px">雨量</label>
+        </div>
+      </div>
       <chart class="chart" :options="options" auto-resize></chart>
     </div>
     <div class="basic deepFontColor">
       <div class="size-item">
-        <div class="row">
+        <div class="row marginRightDisc">
           <div class="icon_2"></div>
           <div>
-            <p>{{data.rainAll.size}}</p>
-            <p>累积雨量</p>
+            <p class="rain-num">{{data.rainAll.size}}</p>
+            <p class="rain-disc">累积雨量</p>
           </div>
         </div>
         <div>
-          <div>开始时间 {{data.rainAll.startTime}}</div>
-          <div>结束时间 {{data.rainAll.endTime}}</div>
+          <div class="rain-disc rain-disc-color">开始时间 {{data.rainAll.startTime}}</div>
+          <div class="rain-disc rain-disc-color">结束时间 {{data.rainAll.endTime}}</div>
         </div>
       </div>
       <div class="size-item">
-        <div class="row">
+        <div class="row marginRightDisc">
           <div class="icon_3"></div>
           <div>
-            <p>{{data.rainHigh.size}}</p>
-            <p>最高雨量</p>
+            <p class="rain-num">{{data.rainHigh.size}}</p>
+            <p class="rain-disc">最高雨量</p>
           </div>
         </div>
         <div>
-          <div>发生时间 {{data.rainHigh.time}}</div>
+          <div class="rain-disc rain-disc-color">发生时间 {{data.rainHigh.time}}</div>
         </div>
       </div>
       <div class="size-item">
-        <div class="row">
+        <div class="row marginRightDisc">
           <div class="icon_1"></div>
           <div>
-            <p>{{data.rainLow.size}}</p>
-            <p>最低雨量</p>
+            <p class="rain-num">{{data.rainLow.size}}</p>
+            <p class="rain-disc">最低雨量</p>
           </div>
         </div>
         <div>
-          <div>发生时间 {{data.rainLow.time}}</div>
+          <div class="rain-disc rain-disc-color">发生时间 {{data.rainLow.time}}</div>
         </div>
       </div>
     </div>
@@ -50,7 +61,7 @@
 </template>
 
 <script>
-  import {getRainDistributionDetail} from "../../api/request";
+  import { getRainDistributionDetail } from "../../api/request";
   import ECharts from "vue-echarts/components/ECharts.vue";
   import "echarts/lib/chart/line";
   import "echarts/lib/chart/bar";
@@ -90,9 +101,9 @@
             }
           },
           barWidth: 10,
-          itemStyle:{
+          itemStyle: {
             normal: {
-              barBorderRadius:10,
+              barBorderRadius: 10,
 //              barBorderWidth:10,
               color: ['#BAABFC'],
 //              barBorderColor:''
@@ -194,8 +205,34 @@
     font-size: 15px;
     background-color: white;
     .chart {
+      height: 300px;
       width: 100%;
     }
+  }
+
+  .img {
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+  }
+  .time_date_container{
+    margin-top: 10px;
+    position: relative;
+    justify-content: flex-end;
+    display:flex;
+    align-items: center;
+  }
+  .time_date {
+    display: flex;
+    align-items: center;
+    left: 50%;
+    margin-left: -61px;
+    font-size: 13px;
+    padding: 1px 5px;
+    color: #CECECE;
+    border-radius: 5px;
+    border: 1px solid rgba(57, 141, 238,0.3);
+    position: absolute;
   }
 
   .size-item {
@@ -207,15 +244,28 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
   }
 
   .icon(@url: "../../../../assets/images/ic_rain_size_1.png") {
     background: url(@url) no-repeat;
     background-size: cover;
     margin-right: 10px;
-    height: 26px;
-    width: 26px;
+    height: 40px;
+    width: 40px;
+  }
+
+  .rain-disc{
+    font-size: 12px;
+  }
+  .rain-disc-color{
+    color: #CECECE;
+  }
+  .rain-num{
+    font-size: 14px;
+  }
+  .marginRightDisc{
+    margin-right: 20px;
   }
 
   .icon_1 {

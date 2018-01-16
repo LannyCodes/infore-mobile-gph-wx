@@ -1,9 +1,9 @@
 <template>
   <div @click="viewClick">
-    <div class="vux-1px" style="margin:0 10px;"></div>
+    <div class="vux-1px" style="margin:0 10px;opacity: 0.2;"></div>
     <div class="openorclose">
-      {{content}}
-      <div :class="open? 'imgOpen': 'imgClose' "></div>
+      <label>{{content}}</label>
+      <span :class="open? 'imgOpen': 'imgClose' "></span>
     </div>
   </div>
 </template>
@@ -47,18 +47,18 @@
     background-color: white;
     justify-content: center;
     padding: 10px;
-    font-size: 15px;
+    font-size: 13px;
     color: #398DEE;
     .imgOpen {
       .icon("../../assets/images/icon_river_open.png");
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       margin-left: 10px;
     }
     .imgClose {
       .icon("../../assets/images/icon_river_close.png");
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       margin-left: 10px;
     }
   }

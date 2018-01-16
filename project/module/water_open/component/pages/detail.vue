@@ -174,7 +174,7 @@
             nameGap: 10,
             nameTextStyle: {
               color: '#999',
-              padding: [0, -80, 0, 0]
+//              padding: [0, 0, 0, 0]
             },
             min: 0,
             max: 10,
@@ -276,6 +276,7 @@
     }
     .chart {
       width: 100%;
+      height: 350px;
     }
   }
 

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="icon_bg"></div>
     <div class="content">
-      <div class="item" v-for="(item, index) in data" :key="index">
+      <div class="item" v-for="(item, index) in data" :key="index" @click="enterDetail()">
         <p class="title">{{item.title}}</p>
         <p class="content1">{{item.content}}</p>
       </div>
