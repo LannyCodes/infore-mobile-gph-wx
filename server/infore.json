@@ -7,52 +7,111 @@
       "message": "",
       "body": [
         {
-          "time": "2017-09",
-          "position": "大良街道",
-          "name": "石排涌",
-          "index": "S"
+          "letter": "D",
+          "rivers": [
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "大东公路涌",
+              "index": "D"
+            }
+          ]
         },
         {
-          "time": "2017-09",
-          "position": "大良街道",
-          "name": "古鉴涌",
-          "index": "G"
+          "letter": "S",
+          "rivers": [
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "石排涌",
+              "index": "S"
+            },
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "石排涌2",
+              "index": "S"
+            },
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "石排涌3",
+              "index": "S"
+            }
+          ]
         },
         {
-          "time": "2017-09",
-          "position": "大良街道",
-          "name": "云路初街涌",
-          "index": "Y"
+          "letter": "L",
+          "rivers": [
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "龙公涌",
+              "index": "L"
+            },
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "龙公涌2",
+              "index": "L"
+            },
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "龙公涌3",
+              "index": "L"
+            },
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "龙公涌4",
+              "index": "L"
+            }
+          ]
         },
         {
-          "time": "2017-09",
-          "position": "大良街道",
-          "name": "龙公涌",
-          "index": "L"
+          "letter": "G",
+          "rivers": [
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "古鉴涌",
+              "index": "G"
+            }
+          ]
         },
         {
-          "time": "2017-09",
-          "position": "大良街道",
-          "name": "合耕围涌",
-          "index": "H"
+          "letter": "H",
+          "rivers": [
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "合耕围涌",
+              "index": "H"
+            }
+          ]
         },
         {
-          "time": "2017-09",
-          "position": "大良街道",
-          "name": "大东公路涌",
-          "index": "D"
+          "letter": "Y",
+          "rivers": [
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "云路初街涌",
+              "index": "Y"
+            }
+          ]
         },
         {
-          "time": "2017-09",
-          "position": "大良街道",
-          "name": "石排涌",
-          "index": "S"
-        },
-        {
-          "time": "2017-09",
-          "position": "大良街道",
-          "name": "排涌",
-          "index": "P"
+          "letter": "P",
+          "rivers": [
+            {
+              "time": "2017-09",
+              "position": "大良街道",
+              "name": "排涌",
+              "index": "P"
+            }
+          ]
         }
       ]
     }
@@ -129,6 +188,22 @@
           "position": "勒河街道",
           "rainsize": "0.3mm",
           "name": "勒河",
+          "index": "L"
+        },
+        {
+          "starttime": "2017-09-21 8:00",
+          "endtime": "2017-09-21 11:00",
+          "position": "勒河街道",
+          "rainsize": "0.3mm",
+          "name": "勒河2",
+          "index": "L"
+        },
+        {
+          "starttime": "2017-09-21 8:00",
+          "endtime": "2017-09-21 11:00",
+          "position": "勒河街道",
+          "rainsize": "0.3mm",
+          "name": "勒河3",
           "index": "L"
         },
         {
@@ -424,7 +499,6 @@
           "voteTime": "2017-11-21 8:00",
           "content": "为了深入了解公众参与水环境综合整治以及",
           "status": "0"
-
         },
         {
           "title": "水环境综合整治群众性意向调查问卷",
@@ -460,122 +534,122 @@
     }
   },
   {
-    "url":"/gph/app/voteHistory/getVoteHistoryList",
-    "method":"post",
-    "response":{
-      "code":"0",
-      "message":"success",
-      "body":[
+    "url": "/gph/app/voteHistory/getVoteHistoryList",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "success",
+      "body": [
         {
-          "title":"水环境综合整治群众性意向调查问卷",
-          "issue":"环运局",
-          "issueDate":"2017-11-21 8:00",
-          "voteStart":"2017-11-21 8:00",
-          "voteEnd":"2017-11-21 8:00",
-          "status":"0"
+          "title": "水环境综合整治群众性意向调查问卷",
+          "issue": "环运局",
+          "issueDate": "2017-11-21 8:00",
+          "voteStart": "2017-11-21 8:00",
+          "voteEnd": "2017-11-21 8:00",
+          "status": "0"
         },
         {
-          "title":"水环境综合整治群众性意向调查问卷",
-          "issue":"环运局",
-          "issueDate":"2017-11-21 8:00",
-          "voteStart":"2017-11-21 8:00",
-          "voteEnd":"2017-11-21 8:00",
-          "status":"1"
+          "title": "水环境综合整治群众性意向调查问卷",
+          "issue": "环运局",
+          "issueDate": "2017-11-21 8:00",
+          "voteStart": "2017-11-21 8:00",
+          "voteEnd": "2017-11-21 8:00",
+          "status": "1"
         },
         {
-          "title":"水环境综合整治群众性意向调查问卷",
-          "issue":"环运局",
-          "issueDate":"2017-11-21 8:00",
-          "voteStart":"2017-11-21 8:00",
-          "voteEnd":"2017-11-21 8:00",
-          "status":"1"
+          "title": "水环境综合整治群众性意向调查问卷",
+          "issue": "环运局",
+          "issueDate": "2017-11-21 8:00",
+          "voteStart": "2017-11-21 8:00",
+          "voteEnd": "2017-11-21 8:00",
+          "status": "1"
         },
         {
-          "title":"水环境综合整治群众性意向调查问卷",
-          "issue":"环运局",
-          "issueDate":"2017-11-21 8:00",
-          "voteStart":"2017-11-21 8:00",
-          "voteEnd":"2017-11-21 8:00",
-          "status":"0"
+          "title": "水环境综合整治群众性意向调查问卷",
+          "issue": "环运局",
+          "issueDate": "2017-11-21 8:00",
+          "voteStart": "2017-11-21 8:00",
+          "voteEnd": "2017-11-21 8:00",
+          "status": "0"
         },
         {
-          "title":"水环境综合整治群众性意向调查问卷",
-          "issue":"环运局",
-          "issueDate":"2017-11-21 8:00",
-          "voteStart":"2017-11-21 8:00",
-          "voteEnd":"2017-11-21 8:00",
-          "status":"1"
+          "title": "水环境综合整治群众性意向调查问卷",
+          "issue": "环运局",
+          "issueDate": "2017-11-21 8:00",
+          "voteStart": "2017-11-21 8:00",
+          "voteEnd": "2017-11-21 8:00",
+          "status": "1"
         },
         {
-          "title":"水环境综合整治群众性意向调查问卷",
-          "issue":"环运局",
-          "issueDate":"2017-11-21 8:00",
-          "voteStart":"2017-11-21 8:00",
-          "voteEnd":"2017-11-21 8:00",
-          "status":"0"
+          "title": "水环境综合整治群众性意向调查问卷",
+          "issue": "环运局",
+          "issueDate": "2017-11-21 8:00",
+          "voteStart": "2017-11-21 8:00",
+          "voteEnd": "2017-11-21 8:00",
+          "status": "0"
         }
       ]
     }
   },
   {
-    "url":"/gph/app/voteActivity/getVoteActivityDetail",
-    "method":"post",
-    "response":{
-      "code":"0",
-      "message":"success",
-      "body":{
-        "title":"水环境综合整治群众性意向调查问卷",
-        "issue":"环运局",
-        "issueDate":"2017-01-05 8:00",
-        "voteStart":"2017-01",
-        "voteEnd":"2017-12",
-        "content":"为了深入了解公众参与水环境综合整治以及环境信息公开的状况，现通过调查问卷的形式进行调研，希望能得到您的支持，请根据您的实际情况回答下列问题，衷心感谢您的配合！"
+    "url": "/gph/app/voteActivity/getVoteActivityDetail",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "success",
+      "body": {
+        "title": "水环境综合整治群众性意向调查问卷",
+        "issue": "环运局",
+        "issueDate": "2017-01-05 8:00",
+        "voteStart": "2017-01",
+        "voteEnd": "2017-12",
+        "content": "为了深入了解公众参与水环境综合整治以及环境信息公开的状况，现通过调查问卷的形式进行调研，希望能得到您的支持，请根据您的实际情况回答下列问题，衷心感谢您的配合！"
       }
     }
   },
   {
-    "url":"/gph/app/voteHistory/getVoteHistoryDetail",
-    "method":"post",
-    "response":{
-      "code":"0",
-      "message":"success",
-      "body":{
-        "title":"水环境综合整治群众性意向调查问卷",
-        "issue":"环运局",
-        "issueDate":"2017-01-05 8:00",
-        "voteStart":"2017-01",
-        "voteEnd":"2017-12",
-        "content":"为了深入了解公众参与水环境综合整治以及环境信息公开的状况，现通过调查问卷的形式进行调研，希望能得到您的支持，请根据您的实际情况回答下列问题，衷心感谢您的配合！"
+    "url": "/gph/app/voteHistory/getVoteHistoryDetail",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "success",
+      "body": {
+        "title": "水环境综合整治群众性意向调查问卷",
+        "issue": "环运局",
+        "issueDate": "2017-01-05 8:00",
+        "voteStart": "2017-01",
+        "voteEnd": "2017-12",
+        "content": "为了深入了解公众参与水环境综合整治以及环境信息公开的状况，现通过调查问卷的形式进行调研，希望能得到您的支持，请根据您的实际情况回答下列问题，衷心感谢您的配合！"
       }
     }
   },
   {
-    "url":"/gph/app/water_knowledge/getKnowledgeDetail",
-    "method":"post",
-    "response":{
-      "code":"0",
-      "message":"success",
-      "body":{
-        "title":"推广使用无磷洗衣粉",
-        "issueDate":"2017-01-05",
-        "issuePerson":"张三",
-        "themeImg":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516008751494&di=ce8bf5c206fcbc29d0f5d66993e26be3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F09fa513d269759ee0ed0a0e6b9fb43166d22df1f.jpg",
-        "html":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生活垃圾圾一般可分为四大类：可回收垃圾、厨房垃圾、有害垃圾和其他垃圾。可回收垃圾包括纸类、金属类等，回收可减少污染，节约资源;厨房垃圾包括剩饭、骨头、菜叶等废物，经处理后可生产有机肥;有害垃圾包括含汞电池、废日光灯管、过期药品等，需进行安全处理;其他垃圾主要采取焚烧和卫生填埋的方式处理。<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp使用节水型水具;杜绝跑冒滴漏;洗漱随手关龙头;一水多用;减少干洗;拒绝化学清洁剂;"
+    "url": "/gph/app/water_knowledge/getKnowledgeDetail",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "success",
+      "body": {
+        "title": "推广使用无磷洗衣粉",
+        "issueDate": "2017-01-05",
+        "issuePerson": "张三",
+        "themeImg": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516008751494&di=ce8bf5c206fcbc29d0f5d66993e26be3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F09fa513d269759ee0ed0a0e6b9fb43166d22df1f.jpg",
+        "html": "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生活垃圾圾一般可分为四大类：可回收垃圾、厨房垃圾、有害垃圾和其他垃圾。可回收垃圾包括纸类、金属类等，回收可减少污染，节约资源;厨房垃圾包括剩饭、骨头、菜叶等废物，经处理后可生产有机肥;有害垃圾包括含汞电池、废日光灯管、过期药品等，需进行安全处理;其他垃圾主要采取焚烧和卫生填埋的方式处理。<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp使用节水型水具;杜绝跑冒滴漏;洗漱随手关龙头;一水多用;减少干洗;拒绝化学清洁剂;"
       }
     }
   },
   {
-    "url":"/gph/app/envir_knowledge/getKnowledgeDetail",
-    "method":"post",
-    "response":{
-      "code":"0",
-      "message":"success",
-      "body":{
-        "title":"分类处理生活垃圾",
-        "issueDate":"2017-01-05",
-        "issuePerson":"张三",
-        "themeImg":"http://img60.hbzhan.com/3/20161117/636149869201810113328.jpg",
-        "html":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生活垃圾圾一般可分为四大类：可回收垃圾、厨房垃圾、有害垃圾和其他垃圾。可回收垃圾包括纸类、金属类等，回收可减少污染，节约资源;厨房垃圾包括剩饭、骨头、菜叶等废物，经处理后可生产有机肥;有害垃圾包括含汞电池、废日光灯管、过期药品等，需进行安全处理;其他垃圾主要采取焚烧和卫生填埋的方式处理。<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp使用节水型水具;杜绝跑冒滴漏;洗漱随手关龙头;一水多用;减少干洗;拒绝化学清洁剂;"
+    "url": "/gph/app/envir_knowledge/getKnowledgeDetail",
+    "method": "post",
+    "response": {
+      "code": "0",
+      "message": "success",
+      "body": {
+        "title": "分类处理生活垃圾",
+        "issueDate": "2017-01-05",
+        "issuePerson": "张三",
+        "themeImg": "http://img60.hbzhan.com/3/20161117/636149869201810113328.jpg",
+        "html": "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生活垃圾圾一般可分为四大类：可回收垃圾、厨房垃圾、有害垃圾和其他垃圾。可回收垃圾包括纸类、金属类等，回收可减少污染，节约资源;厨房垃圾包括剩饭、骨头、菜叶等废物，经处理后可生产有机肥;有害垃圾包括含汞电池、废日光灯管、过期药品等，需进行安全处理;其他垃圾主要采取焚烧和卫生填埋的方式处理。<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp使用节水型水具;杜绝跑冒滴漏;洗漱随手关龙头;一水多用;减少干洗;拒绝化学清洁剂;"
       }
     }
   }

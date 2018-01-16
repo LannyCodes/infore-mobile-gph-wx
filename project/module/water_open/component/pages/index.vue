@@ -42,24 +42,27 @@
       <p>2017-09</p>
       <div class="filter" @click="showFilter=!showFilter"></div>
     </div>
-    <div class="container" v-for="(item,index) in waterOpenList" :key="index">
-      <div class="water-item" :id="item.index" @click="enterDetail">
-        <div>
-          <div class="water-item-icon">I</div>
+    <div v-for="(item,index) in waterOpenList" :key="index">
+      <div :id="item.letter" class="letterText">{{item.letter}}</div>
+      <div class="container" v-for="(i,key) in item.rivers">
+        <div class="water-item" :id="key" @click="enterDetail">
           <div>
-            <div class="item-time">监测时间 {{item.time}}</div>
-            <div class="item-position"><i class="fa fa-map-marker" aria-hidden="true"></i> 行政区域 {{item.position}}</div>
+            <div class="water-item-icon">I</div>
+            <div>
+              <div class="item-time">监测时间 {{i.time}}</div>
+              <div class="item-position"><i class="fa fa-map-marker" aria-hidden="true"></i> 行政区域 {{i.position}}</div>
+            </div>
           </div>
+          <div class="water-name">{{i.name}}</div>
         </div>
-        <div class="water-name">{{item.name}}</div>
       </div>
     </div>
-    <LetterSection :letters="letterList" @onCurrentLetter="currentLetter"></LetterSection>
+    <LetterSection :letters="letterList" @onCurrentLetter="currentLetter"/>
   </div>
 </template>
 <script>
-  import { mapState } from "vuex";
-  import { getWaterOpenList } from "../../api/request";
+  import {mapState} from "vuex";
+  import {getWaterOpenList} from "../../api/request";
   import LetterSection from "~/components/letter-section";
   import TransferDom from "vux/src/directives/transfer-dom/index.js";
   import Popup from "vux/src/components/popup/index.vue";
@@ -89,9 +92,9 @@
         null,
         succ => {
           let tempArr = [];
-          me.waterOpenList = succ.sort(this.sortList);
+          me.waterOpenList = succ.sort((a, b) => (this.sortList(a, b, 'letter')));
           me.waterOpenList.map(val => {
-            tempArr.push(val.index);
+            tempArr.push(val.letter);
           });
           me.letterList = [...new Set(tempArr)]; // 数组去重
         },
@@ -108,9 +111,9 @@
       };
     },
     methods: {
-      sortList(a, b) {
+      sortList(a, b, props) {
         // 根据字母排序
-        return a.index.charCodeAt(0) - b.index.charCodeAt(0);
+        return a[props].charCodeAt(0) - b[props].charCodeAt(0);
       },
       currentLetter(letter) {
         letter === this.letterList[0] && $('body,html').animate({scrollTop: 0}, 100);
@@ -262,12 +265,14 @@
       color: white;
     }
   }
+
   .time-select {
     /*flex: 1*/
     margin-right: 15px;
     color: #888888;
     font-size: 12px;
   }
+
   .btn-cancel {
     border: none;
     font-size: 14px;
@@ -284,5 +289,11 @@
     background-color: #398DEE;
     text-align: center;
     border: none;
+  }
+
+  .letterText {
+    font-size: 15px;
+    margin-left: 15px;
+    color: #888888
   }
 </style>
