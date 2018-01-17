@@ -10,7 +10,7 @@
     </flexbox>
     <div class="container">
       <div class="item-wrapper" v-for="(itemMes, index) of messages"
-           :key="index" @click="jumpDetail()">
+           :key="index" @click="itemMes.status === '1' ?(show = true) :jumpDetail()">
         <span class="item-title">{{itemMes.title}}</span>
         <span class="vote-time">投票时间：{{itemMes.voteTime}}</span>
         <span style="font-size: 13px;color: #999999;padding-left: 15px;margin-top: 5px;">尊敬的市民，您好！</span>
@@ -29,6 +29,7 @@
     <div v-transfer-dom>
       <alert v-model="show" :title="'提示'" @on-show="onShow" @on-hide="onHide" buttonText="确定">当前活动已结束</alert>
     </div>
+    <!--<confirm v-model="show"></confirm>-->
     <popup v-model="showPopup" @on-hide="" @on-show="" position="top">
       <div class="popup-wrapper">
         <span class="popup_wrapper_disc">查询时间段</span>
@@ -60,12 +61,13 @@
   import FlexboxItem from '../../../../../node_modules/vux/src/components/flexbox/flexbox-item'
   import Popup from '../../../../../node_modules/vux/src/components/popup/index'
   import Alert from '../../../../../node_modules/vux/src/components/Alert/index'
+  import Confirm from '../widget/Confirm.vue'
   export default{
     data(){
       return {
         showPopup: false,
-        messages:[],
-        show:true,
+        messages: [],
+        show: false,
       }
     },
     components: {
@@ -73,6 +75,7 @@
       Flexbox,
       Popup,
       Alert,
+      Confirm,
     },
     computed: {
       ...mapState({
@@ -171,7 +174,8 @@
     background-color: #F0EFF5;
     margin-top: 50px;
   }
-  .item-wrapper{
+
+  .item-wrapper {
     position: relative;
     padding-top: 12px;
     display: flex;
@@ -183,18 +187,20 @@
   }
 
   .item-title {
-    line-height:24px;
+    line-height: 24px;
     margin-left: 15px;
     font-size: 17px;
     color: #222222;
   }
-  .vote-time{
+
+  .vote-time {
     line-height: 18.5px;
     margin-left: 15px;
     font-size: 13px;
-    color:#666666;
+    color: #666666;
   }
-  .content{
+
+  .content {
     line-height: 18.5px;
     padding-right: 70px;
     margin-bottom: 5px;
@@ -203,7 +209,8 @@
     font-size: 13px;
     color: #999999;
   }
-  .separate-line{
+
+  .separate-line {
     opacity: .5;
     width: 100%;
     height: 1px;
@@ -211,12 +218,14 @@
     background-color: #E5E5E5;
 
   }
-  .vote-container{
+
+  .vote-container {
     justify-content: center;
     align-items: center;
     position: relative
   }
-  .voting{
+
+  .voting {
     padding-top: 12px;
     padding-bottom: 12px;
     display: flex;
@@ -224,25 +233,28 @@
     align-items: center;
     justify-content: center;
   }
-  .to-vote{
+
+  .to-vote {
     margin-left: 10px;
-    width:10px;
-    height:12.5px;
+    width: 10px;
+    height: 12.5px;
     resize: both;
   }
-  .voting-img{
+
+  .voting-img {
     position: absolute;
-    top:0;
-    right:0;
-    width:auto;
-    height:100%;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: 100%;
     resize: both;
   }
-  .voted-img{
+
+  .voted-img {
     position: absolute;
-    bottom:0;
-    right:0;
-    width:auto;
+    bottom: 0;
+    right: 0;
+    width: auto;
     height: 42px;
     resize: both;
   }

@@ -67,7 +67,7 @@
             <div>3.161(mg/L)</div>
           </checker-item>
         </div>
-        <div class="vux-1px"></div>
+        <div class="vux-1px" style="opacity: 0.3;"></div>
         <div class="flex-line">
           <checker-item class="item" value="2" @on-item-click="onItemClick">
             <div>
@@ -84,7 +84,7 @@
             <div>3.161(mg/L)</div>
           </checker-item>
         </div>
-        <div class="vux-1px"></div>
+        <div class="vux-1px" style="opacity: 0.3;"></div>
       </checker>
       <chart class="chart" :options="options" auto-resize></chart>
     </div>
@@ -145,7 +145,7 @@
           grid:{
             left:'0%',
             right:'0%',
-            bottom: '20%',
+            bottom: '5%',
             containLabel: true
           },
           xAxis: {
@@ -154,7 +154,7 @@
               color: '#999',
               padding: [30, 0, 0, -20]
             },
-            interval: 2,
+            interval: 1,
             nameGap: 5,
             axisLine: {
               lineStyle: {
@@ -165,7 +165,6 @@
               show: false,
             },
             type: 'category',
-            boundaryGap:false,
             data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
           },
           yAxis: {
@@ -174,7 +173,7 @@
             nameGap: 10,
             nameTextStyle: {
               color: '#999',
-//              padding: [0, 0, 0, 0]
+              padding: [0, -80, 0, 0]
             },
             min: 0,
             max: 10,
@@ -191,6 +190,7 @@
           series: [{
             type: 'line',
             smooth: true,
+            itemStyle : { normal: {label : {show: true}}},
             data: [3.72, 5.12, 5.72, 6.73, 7.72, 5.52, 3.72, 5.12, 5.72, 6.73, 7.72, 5.52]
           }]
         }

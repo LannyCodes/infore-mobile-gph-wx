@@ -109,7 +109,13 @@
 //              barBorderColor:''
             },
           },
-
+          grid:{
+            top:'10%',
+            left:'0%',
+            right:'0%',
+            bottom: '5%',
+            containLabel: true
+          },
           xAxis: {
             name: "时间(h)",
             nameTextStyle: {
@@ -140,6 +146,7 @@
             nameGap: 10,
             nameTextStyle: {
               color: "#999",
+              fontSize:"10px",
               padding: [0, -80, 0, 0]
             },
             min: 0,
@@ -157,7 +164,7 @@
           series: [
             {
               type: "bar",
-//              smooth: true,
+              smooth: true,
               data: [
                 0.72,
                 0.12,

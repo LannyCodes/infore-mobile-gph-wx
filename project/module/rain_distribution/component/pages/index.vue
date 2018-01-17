@@ -189,6 +189,8 @@
     background-color: #f0eff5;
     .type-checker {
       background-color: white;
+      padding-left: 15px;
+      padding-right: 15px;
     }
 
     .type-checker-item {
@@ -197,7 +199,7 @@
       color: #888888;
       font-size: 14px;
       padding: 5px 10px;
-      margin: 2px;
+      margin: 2px 0;
       line-height: 20px;
       border-radius: 2px;
     }

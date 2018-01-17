@@ -2,13 +2,13 @@
   <div>
     <div style="padding: 0 0 0 0; background-color: #ffffff;align-items: center;display: block;">
      <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
-            <span style="font-size: 15px;color:#000000;margin-right: 20px">污染类型</span>
+            <span style="font-size: 15px;color:#000000;margin-right: 20px;font-family:PingFangSC-Regular;">污染类型</span>
        <input class="dirty-style" placeholder="水漏啦" v-model="inputValue"/>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
      </span>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
-            <span style="font-size: 15px;color:#000000;margin-right: 20px">现场位置</span>
+            <span style="font-size: 15px;color:#000000;margin-right: 20px;font-family:PingFangSC-Regular;">现场位置</span>
             <input class="dirty-style" placeholder="请选择现场位置" v-model="location"/>
             <img src="../../../../assets/images/destination.png" class="mark-img"/>
      </span>
@@ -55,12 +55,12 @@
       </div>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
-            <span style="font-size: 15px;color:#000000;margin-right: 20px">联系电话</span>
+            <span style="font-size: 15px;color:#000000;margin-right: 20px;font-family:PingFangSC-Regular;">联系电话</span>
             <input class="dirty-style" placeholder="请输入联系方式" />
      </span>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
-            <span style="font-size: 15px;color:#000000;margin-right: 35px">联系人</span>
+            <span style="font-size: 15px;color:#000000;margin-right: 35px;font-family:PingFangSC-Regular;">联系人</span>
             <input class="dirty-style" placeholder="请输入联系人"/>
      </span>
 
@@ -121,17 +121,26 @@
     margin-right: 10px;
     color: #888888;
     font-size: 15px;
+    font-family:PingFangSC-Regular;
     border: none;
   }
   input::-webkit-input-placeholder{
+    font-family:PingFangSC-Regular;
     color: #B2B2B2;
     font-size: 15px;
   }
   input:-moz-placeholder{
+    font-family:PingFangSC-Regular;
     color: #B2B2B2;
     font-size: 15px;
   }
   input:-ms-input-placeholder{
+    font-family:PingFangSC-Regular;
+    color: #B2B2B2;
+    font-size: 15px;
+  }
+  x-textarea::-webkit-input-placeholder{
+    font-family:PingFangSC-Regular;
     color: #B2B2B2;
     font-size: 15px;
   }

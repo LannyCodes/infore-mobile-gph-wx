@@ -105,12 +105,14 @@ table {
 body {
   font-size: 0.124rem;
   color: #333;
+  font-weight: 100;
+  font-family: PingFangSC-Regular;
 }
 
-.filter{
+.filter {
   width: 16px;
   height: 17px;
-  background:url("../images/icon_filter.png") no-repeat;
+  background: url("../images/icon_filter.png") no-repeat;
   background-size: contain;
 }
 

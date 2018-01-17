@@ -34,14 +34,13 @@
         </checker>
         <span class="popup_wrapper_disc">查询时间段</span>
         <div style="padding: 0 0 0 20px; background-color: #ffffff;align-items: center">
-          <span style="display: flex;padding: 10px 20px 10px 0;">
-            <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
+          <span class="time-filter">
+            <span style="font-size: 14px;color:#000000;flex:1">开始时间</span>
             <span class="time-select">2017-11-21</span>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
-          <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
-          <span style="display: flex;padding: 10px 20px 10px 0;">
-            <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
+          <span style="display: flex;padding: 10px 20px 10px 0;align-items: center;">
+            <span style="font-size: 14px;color:#000000;flex:1">结束时间</span>
             <span class="time-select">2017-11-21</span>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
@@ -153,12 +152,9 @@
   .complaint_item_wrap {
     display: inline-flex;
     flex-direction: row;
-    padding: 25px 25px 20px 25px;
+    padding: 18.5px 25px 15px 25px;
     justify-content: center;
     align-items: center;
-    /*&_right{*/
-    /**/
-    /*}*/
   }
 
   .complaint_item_right {
@@ -224,6 +220,13 @@
     font-size: 14px;
   }
 
+  .time-filter{
+    display: flex;
+    padding: 10px 20px 10px 0;
+    align-items: center;
+    border-bottom: 1px solid rgba(229,229,229,0.5);
+  }
+
   .checker-wrapper {
     padding: 12px 20px;
     background-color: white;
@@ -233,7 +236,7 @@
     /*flex: 1*/
     margin-right: 10px;
     color: #888888;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .btn-cancel {
