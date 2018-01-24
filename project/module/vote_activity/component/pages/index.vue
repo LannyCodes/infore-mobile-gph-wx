@@ -2,9 +2,7 @@
   <div style="background-color: #FFFFFF">
     <flexbox class="filter-wrap">
       <flexbox-item class="filter_content">
-        <span class="filter_time">2017-01</span>
-        <span>~</span>
-        <span class="filter_time">2017-11</span>
+        <p>{{startFilterTime}} ~ {{endFilterTime}}</p>
       </flexbox-item>
       <div class="filter filter1" @click='showPopup = !showPopup'></div>
     </flexbox>
@@ -32,17 +30,17 @@
     <!--<confirm v-model="show"></confirm>-->
     <popup v-model="showPopup" @on-hide="" @on-show="" position="top">
       <div class="popup-wrapper">
-        <span class="popup_wrapper_disc">查询时间段</span>
+        <span class="popup_wrapper_disc">投票期限</span>
         <div style="padding: 0 0 0 20px; background-color: #ffffff;align-items: center">
-          <span style="display: flex;padding: 10px 20px 10px 0;">
-            <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
-            <span class="time-select">2017-11-21</span>
+          <span style="display: flex;padding: 10px 20px 10px 0;" @click="chooseTime(1)">
+            <span style="font-size: 14px;color:#000000;flex:1">开始时间</span>
+            <span class="time-select">{{startFilterTime}}</span>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
           <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
-          <span style="display: flex;padding: 10px 20px 10px 0;">
-            <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
-            <span class="time-select">2017-11-21</span>
+          <span style="display: flex;padding: 10px 20px 10px 0;"  @click="chooseTime(2)">
+            <span style="font-size: 14px;color:#000000;flex:1">结束时间</span>
+            <span class="time-select">{{endFilterTime}}</span>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
         </div>
@@ -62,12 +60,15 @@
   import Popup from '../../../../../node_modules/vux/src/components/popup/index'
   import Alert from '../../../../../node_modules/vux/src/components/Alert/index'
   import Confirm from '../widget/Confirm.vue'
+  import 'vux/src/components/datetime/style.less'
   export default{
     data(){
       return {
         showPopup: false,
         messages: [],
         show: false,
+        startFilterTime: '2017-11-21',
+        endFilterTime: '2017-11-22',
       }
     },
     components: {
@@ -96,7 +97,30 @@
     methods: {
       jumpDetail(item){
         this.$router.push({path: '/detail'})
-      }
+      },
+      chooseTime (which) {
+        let that = this;
+        let temp = (which === 1) ? that.startFilterTime : that.endFilterTime;
+        that.$vux.datetime.show({
+          cancelText: '取消',
+          confirmText: '确定',
+          format: 'YYYY-MM-DD',
+          value: temp,
+          onConfirm (val) {
+            if (which === 1) {
+              that.startFilterTime = val;
+            } else if (which === 2) {
+              that.endFilterTime = val;
+            }
+          },
+          onShow () {
+            console.log('plugin show')
+          },
+          onHide () {
+            console.log('plugin hide')
+          }
+        })
+      },
     }
   }
 </script>

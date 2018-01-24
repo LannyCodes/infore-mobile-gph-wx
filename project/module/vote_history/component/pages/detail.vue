@@ -5,8 +5,8 @@
       <span class="item-issue">发布单位：{{msg.issue}}</span>
       <span class="item-issue">发布时间：{{msg.issueDate}}</span>
       <span style="flex-direction: row">
-             <span class="vote-time">投票期限：{{msg.voteStart}}</span>
-             <span style="font-size: 12px;color: #666666;">~{{msg.voteEnd}}</span>
+             <span class="item-issue">投票期限：{{msg.voteStart}}</span>
+             <span class="item-issue" style="margin-left: 0">~ {{msg.voteEnd}}</span>
       </span>
       <div class="separate-line"></div>
       <span style="font-size: 15px;color: #222222;padding-left: 15px;margin-top: 5px;">尊敬的市民，您好！</span>
@@ -15,7 +15,7 @@
     <div class="text-desc">1.您对环境信息公开了解多少？</div>
     <form class="form">
       <div class="vote-item">
-        <input type="radio" id="f-option"  name="selector" value="z">
+        <input type="radio" id="f-option" name="selector" value="z" :checked="hasParticipate === '0'">
         <label for="f-option">
           <span class="label-content">非常了解</span>
           <span class="label-count">285票</span>
@@ -24,10 +24,9 @@
         <div class="check"></div>
       </div>
       <div class="separate-line" style="display: block;overflow: auto;">
-        <div class="progress-line"></div>
       </div>
       <div class="vote-item">
-        <input type="radio"  id="s-option" name="selector" value="c">
+        <input type="radio" id="s-option" name="selector" value="c" :checked="false">
         <label for="s-option">
           <span class="label-content">比较了解</span>
           <span class="label-count">285票</span>
@@ -36,10 +35,9 @@
         <div class="check"></div>
       </div>
       <div class="separate-line" style="display: block;overflow: auto;">
-        <div class="progress-line"></div>
       </div>
       <div class="vote-item">
-        <input type="radio" id="t-option"  name="selector" value="a">
+        <input type="radio" id="t-option" name="selector" value="a">
         <label for="t-option">
           <span class="label-content">了解较少</span>
           <span class="label-count">285票</span>
@@ -48,13 +46,12 @@
         <div class="check"></div>
       </div>
       <div class="separate-line" style="display: block;overflow: auto;">
-        <div class="progress-line"></div>
       </div>
     </form>
     <div class="text-desc">2.您了解环境信息的原因？</div>
     <form class="form">
       <div class="vote-item">
-        <input type="radio" id="govSupervise"  name="reason" value="z">
+        <input type="radio" id="govSupervise" name="reason" value="z">
         <label for="govSupervise">
           <span class="label-content">监督政府</span>
           <span class="label-count">285票</span>
@@ -62,11 +59,10 @@
         </label>
         <div class="check"></div>
       </div>
-      <div class="separate-line"style="display: block;overflow: auto;">
-        <div class="progress-line"></div>
+      <div class="separate-line" style="display: block;overflow: auto;">
       </div>
       <div class="vote-item">
-        <input type="radio"  id="invirNeed" name="reason" value="c">
+        <input type="radio" id="invirNeed" name="reason" value="c">
         <label for="invirNeed">
           <span class="label-content">环保需要</span>
           <span class="label-count">285票</span>
@@ -75,10 +71,9 @@
         <div class="check"></div>
       </div>
       <div class="separate-line" style="display: block;overflow: auto;">
-        <div class="progress-line"></div>
       </div>
       <div class="vote-item">
-        <input type="radio" id="neverGiveup"  name="reason" value="a">
+        <input type="radio" id="neverGiveup" name="reason" value="a" :checked="hasParticipate === '0'">
         <label for="neverGiveup">
           <span class="label-content">自己的一项权利，不能放弃</span>
           <span class="label-count">285票</span>
@@ -87,7 +82,6 @@
         <div class="check"></div>
       </div>
       <div class="separate-line" style="display: block;overflow: auto;">
-        <div class="progress-line"></div>
       </div>
     </form>
   </div>
@@ -107,18 +101,34 @@
         testValue: false,
         msg: [],
         radio2: 3,
+        hasParticipate: 1,
       }
     },
-    methods: {},
+    methods: {
+     getParams(){
+       this.hasParticipate = this.$route.params.hasParticipate;
+     }
+
+    },
+    created(){
+      this.getParams();
+    },
     mounted(){
       getVoteHistoryDetail(this, null, (success) => {
         this.$vux.toast.text('succ', 'bottom');
         this.msg = success;
       }, (error) => {
-        this.$vux.toast.text('err', 'bottom');
+        this.$vux.toast.text('err', error);
       }, () => {
+      });
 
-      })
+    },
+    watch: {
+      '$route'(to, from){
+        console.log(to);
+        console.log(from);
+        this.getParams()
+      }
     },
   }
 
@@ -143,15 +153,9 @@
   }
 
   .item-issue {
-    line-height: 18.5px;
+    line-height: 20px;
     margin-left: 15px;
     font-size: 13px;
-    color: #666666;
-  }
-
-  .vote-time {
-    margin-left: 15px;
-    font-size: 12px;
     color: #666666;
   }
 
@@ -247,13 +251,13 @@
 
   .vote-item label {
     color: #000;
-    /*display: flex;*/
-    display: block;
+    display: flex;
+    /*display: block;*/
     position: relative;
     font-weight: 300;
     font-size: 17px;
     padding: 0 0 0 20px;
-    margin: 10px 10px 10px 30px;
+    margin: 10px 20px 10px 30px;
     height: 20px;
     z-index: 9;
 
@@ -261,13 +265,15 @@
     -webkit-transition: all 0.25s linear;
   }
 
-  .label-content{
-    flex:1;
+  .label-content {
+    flex: 1;
   }
-  .label-count{
-    font-size:13px;
+
+  .label-count {
+    margin-right: 5px;
+    font-size: 13px;
     color: #666666;
-    line-height:18.5px;
+    line-height: 18.5px;
   }
 
   .vote-item .check {
@@ -291,12 +297,4 @@
   /*input[type=radio]:checked ~ label {*/
   /*color: #0DFF92;*/
   /*}*/
-  .progress-line{
-    position: absolute;
-    /*opacity: .5;*/
-    width: 100%;
-    height: 1px;
-    /*margin-left: 15px;*/
-    background-color: #398DEE;
-  }
 </style>

@@ -22,11 +22,12 @@
             <checker-item value="10" @on-item-click="onItemClick">北滘</checker-item>
           </checker>
         </div>
-        <div style="margin: 10px 15px">监测时间</div>
-        <div style="padding: 0 0 0 15px; background-color: #ffffff;align-items: center">
+        <div style="margin: 10px 15px"></div>
+        <div style="padding: 0 0 0 15px; background-color: #ffffff;align-items: center"
+             @click="chooseStartTime">
             <span style="display: flex;padding: 12px 20px 12px 0;align-items: center">
-              <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
-              <span class="time-select">2017-11-21</span>
+              <span style="font-size: 14px;color:#000000;flex:1">监测时间</span>
+              <span class="time-select">{{value}}</span>
               <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
             </span>
         </div>
@@ -39,7 +40,7 @@
 
     <div class="time-filter">
       <i class="fa" aria-hidden="true"></i>
-      <p>2017-09</p>
+      <p>{{value}}</p>
       <div class="filter" @click="showFilter=!showFilter"></div>
     </div>
     <div v-for="(item,index) in waterOpenList" :key="index">
@@ -61,8 +62,8 @@
   </div>
 </template>
 <script>
-  import {mapState} from "vuex";
-  import {getWaterOpenList} from "../../api/request";
+  import { mapState } from "vuex";
+  import { getWaterOpenList } from "../../api/request";
   import LetterSection from "~/components/letter-section";
   import TransferDom from "vux/src/directives/transfer-dom/index.js";
   import Popup from "vux/src/components/popup/index.vue";
@@ -71,7 +72,7 @@
   import XButton from "vux/src/components/x-button/index";
   import Flexbox from "vux/src/components/flexbox/flexbox.vue";
   import FlexboxItem from "vux/src/components/flexbox/flexbox-item.vue";
-
+  import 'vux/src/components/datetime/style.less'
   export default {
     directives: {
       TransferDom
@@ -83,7 +84,7 @@
       CheckerItem,
       XButton,
       Flexbox,
-      FlexboxItem
+      FlexboxItem,
     },
     mounted() {
       let me = this;
@@ -107,7 +108,8 @@
       return {
         waterOpenList: [],
         letterList: [],
-        showFilter: false
+        showFilter: false,
+        value: '2015-11-12',
       };
     },
     methods: {
@@ -132,6 +134,25 @@
             name: "增江"
           }
         });
+      },
+      chooseStartTime () {
+        let that = this
+        that.$vux.datetime.show({
+          cancelText: '取消',
+          confirmText: '确定',
+          format: 'YYYY-MM-DD',
+          value: that.value,
+          onConfirm (val) {
+            console.log('plugin confirm', val)
+            that.value = val;
+          },
+          onShow () {
+            console.log('plugin show')
+          },
+          onHide () {
+            console.log('plugin hide')
+          }
+        })
       }
     },
     computed: {
@@ -140,7 +161,7 @@
         path: state => state.route.path
       })
     }
-  };
+  }
 </script>
 
 <style lang="less" scoped>

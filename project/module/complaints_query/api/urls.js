@@ -1,4 +1,5 @@
 const Urls = {
-  mainData: '/gph/app/mainData', //登陆
+  getComplaintsQueryList: '/gph/app/complaints_query/getComplaintsQueryList',
+  getComplaintsQueryDetail: '/gph/app/complaints_query/getComplaintsQueryDetail'
 };
 export default Urls

@@ -15,7 +15,8 @@ import WechatPlugin from 'vux/src/plugins/wechat' //wechat
 import 'vux/src/styles/close.less' // 叉号
 const FastClick = require('fastclick') // 防重复点击
 FastClick.attach(document.body)
-
+import {DatetimePlugin } from 'vux'
+Vue.use(DatetimePlugin)
 Vue.use(Vuex)
 Vue.use(ToastPlugin)
 Vue.use(WechatPlugin)

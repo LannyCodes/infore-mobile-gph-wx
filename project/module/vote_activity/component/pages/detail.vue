@@ -5,12 +5,12 @@
       <span class="item-issue">发布单位：{{msg.issue}}</span>
       <span class="item-issue">发布时间：{{msg.issueDate}}</span>
       <span style="flex-direction: row">
-             <span class="vote-time">投票期限：{{msg.voteStart}}</span>
-             <span style="font-size: 12px;color: #666666;">~{{msg.voteEnd}}</span>
+             <span class="item-issue">投票期限：{{msg.voteStart}}</span>
+             <span class="item-issue" style="margin-left: 0">~ {{msg.voteEnd}}</span>
       </span>
       <div class="separate-line"></div>
       <span style="font-size: 15px;color: #222222;padding-left: 15px;margin-top: 5px;">尊敬的市民，您好！</span>
-      <span class="item-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{msg.content}}</span>
+      <span class="item-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{msg.content}}</span>
     </div>
     <div class="text-desc">1.您对环境信息公开了解多少？</div>
     <form class="form">
@@ -131,12 +131,6 @@
     line-height: 18.5px;
     margin-left: 15px;
     font-size: 13px;
-    color: #666666;
-  }
-
-  .vote-time {
-    margin-left: 15px;
-    font-size: 12px;
     color: #666666;
   }
 
@@ -284,6 +278,7 @@
     height: 45px;
     font-size: 16px;
     margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 20px;
     margin-right: 20px;
     justify-content: center;

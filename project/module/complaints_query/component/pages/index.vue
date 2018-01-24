@@ -11,13 +11,11 @@
     <div style="margin-top: 50px">
       <div v-for="item in items" @click="itemJump">
         <span class="complaint_item_wrap">
-          <img class="complaint_item_img" src="../../../../assets/images/answer.png"/>
+          <img v-if="item.status === 1" class="complaint_item_img" src="../../../../assets/images/answer.png"/>
+          <img v-else-if="item.status === 0" class="complaint_item_img" src="../../../../assets/images/unanswer.png"/>
           <span class="complaint_item_right">
-            <span class="complaint_item_right_top">
               <span class="complaint_item_right_top_title">{{item.title}}</span>
               <span class="complaint_item_right_top_time">投诉时间：{{item.timeStr}}</span>
-            </span>
-            <span class="complaint_item_right_top_content">{{item.content}}</span>
           </span>
         </span>
         <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5);margin-left: 25px"></div>
@@ -34,14 +32,15 @@
         </checker>
         <span class="popup_wrapper_disc">查询时间段</span>
         <div style="padding: 0 0 0 20px; background-color: #ffffff;align-items: center">
-          <span class="time-filter">
+          <span class="time-filter" @click="chooseTime(1)">
             <span style="font-size: 14px;color:#000000;flex:1">开始时间</span>
-            <span class="time-select">2017-11-21</span>
+            <span class="time-select">{{startFilterTime}}</span>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
-          <span style="display: flex;padding: 10px 20px 10px 0;align-items: center;">
+          <span style="display: flex;padding: 10px 20px 10px 0;align-items: center;"
+                @click="chooseTime(2)">
             <span style="font-size: 14px;color:#000000;flex:1">结束时间</span>
-            <span class="time-select">2017-11-21</span>
+            <span class="time-select">{{endFilterTime}}</span>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
         </div>
@@ -55,35 +54,24 @@
 </template>
 <script>
   import { mapState, mapActions } from 'vuex'
-  import { requestMainData } from '../../api/request'
-  import XButton from "vux/src/components/x-button/index";
+  import { getComplaintsQueryList } from '../../api/request'
   import Flexbox from '../../../../../node_modules/vux/src/components/flexbox/flexbox'
   import FlexboxItem from '../../../../../node_modules/vux/src/components/flexbox/flexbox-item'
   import XImg from '../../../../../node_modules/vux/src/components/x-img/index'
   import Popup from '../../../../../node_modules/vux/src/components/popup/index'
   import Checker from '../../../../../node_modules/vux/src/components/checker/checker'
   import CheckerItem from '../../../../../node_modules/vux/src/components/checker/checker-item.vue'
+  import 'vux/src/components/datetime/style.less'
   export default {
     data(){
       return {
         showPopup: false,
-        options: ['China', 'Japan'],
-        items: [
-          {img: 'xxxxx', title: '巴基斯坦', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '切格瓦拉', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '莎哟哪啦', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '巴勒斯坦', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '窃格瓦拉', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '沈从文', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '湘江北去', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '橘子洲头', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '多情自古空余恨', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'},
-          {img: 'xxxxx', title: '大话西游', timeStr: '2017-11-21', content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。'}
-        ]
+        items: [],
+        startFilterTime: '2017-11-21',
+        endFilterTime: '2017-11-22',
       }
     },
     components: {
-      XButton,
       Checker,
       CheckerItem,
       XImg,
@@ -93,8 +81,10 @@
     },
     mounted() {
       console.log(this.router);
-      requestMainData(this, null, (succ) => {
+      let me = this;
+      getComplaintsQueryList(this, null, (succ) => {
         this.$vux.toast.text('succ', 'bottom')
+        me.items = succ
       }, (err) => {
         this.$vux.toast.text('err', 'bottom')
       })
@@ -113,7 +103,30 @@
       //列表项跳转
       itemJump(){
         this.$router.push({path: '/detail'})
-      }
+      },
+      chooseTime (which) {
+        let that = this;
+        let temp = (which === 1) ? that.startFilterTime : that.endFilterTime;
+        that.$vux.datetime.show({
+          cancelText: '取消',
+          confirmText: '确定',
+          format: 'YYYY-MM-DD',
+          value: temp,
+          onConfirm (val) {
+            if (which === 1) {
+              that.startFilterTime = val;
+            } else if (which === 2) {
+              that.endFilterTime = val;
+            }
+          },
+          onShow () {
+            console.log('plugin show')
+          },
+          onHide () {
+            console.log('plugin hide')
+          }
+        })
+      },
     }
   }
 </script>
@@ -150,7 +163,7 @@
   }
 
   .complaint_item_wrap {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     padding: 18.5px 25px 15px 25px;
     justify-content: center;
@@ -160,7 +173,8 @@
   .complaint_item_right {
     margin-left: 10px;
     flex-direction: column;
-    display: inline-flex;
+    flex: 1;
+    display: flex;
   }
 
   .complaint_item_right_top {
@@ -174,7 +188,7 @@
   }
 
   .complaint_item_right_top_time {
-    margin-left: 5px;
+    margin-top: 10px;
     color: #666666;
     font-size: 12px;
   }
@@ -220,11 +234,11 @@
     font-size: 14px;
   }
 
-  .time-filter{
+  .time-filter {
     display: flex;
     padding: 10px 20px 10px 0;
     align-items: center;
-    border-bottom: 1px solid rgba(229,229,229,0.5);
+    border-bottom: 1px solid rgba(229, 229, 229, 0.5);
   }
 
   .checker-wrapper {
@@ -240,7 +254,7 @@
   }
 
   .btn-cancel {
-    border:none;
+    border: none;
     font-size: 14px;
     color: #353535;
     background-color: #ffffff;
@@ -254,6 +268,6 @@
     color: #FFFFFF;
     background-color: #398DEE;
     text-align: center;
-    border:none;
+    border: none;
   }
 </style>

@@ -26,7 +26,7 @@
       </div>
       <div class="content">
         <div class="basic-item row">
-          <p>名称</p>
+          <p>河涌名称</p>
           <div>{{basicDetail.name}}</div>
         </div>
         <div class="basic-item row">
@@ -34,18 +34,10 @@
           <div>{{basicDetail.location}}</div>
         </div>
         <div class="basic-item row">
-          <p>经度</p>
-          <div>{{basicDetail.jd}}</div>
+          <p>所属片区</p>
+          <div>{{basicDetail.pq}}</div>
         </div>
         <div v-if="isShowBasicDetail">
-          <div class="basic-item row">
-            <p>纬度</p>
-            <div>{{basicDetail.wd}}</div>
-          </div>
-          <div class="basic-item row">
-            <p>所属片区</p>
-            <div>{{basicDetail.pq}}</div>
-          </div>
           <div class="basic-item row">
             <p>所属流域</p>
             <div>{{basicDetail.ly}}</div>
@@ -90,13 +82,16 @@
       <div class="content">
         <div v-for="(item,index) in waterDetail" :key="index">
           <div v-if="index>0?isShowWaterDetail:true">
-            <h1 style="color: #222222;margin: 5px 0 5px 0 ">{{item.name}}</h1>
             <div class="basic-item row">
-              <p>行政区</p>
+              <h1 style="color: #222222;margin: 5px 0 5px 0 ">测站名称</h1>
+              <h1 style="color: #222222;margin: 5px 0 5px 0 ">{{item.name}}</h1>
+            </div>
+            <div class="basic-item row">
+              <p>行政区域</p>
               <div>{{item.xzq}}</div>
             </div>
             <div class="water-item row">
-              <p>所在河涌</p>
+              <p>所属河涌</p>
               <div>{{item.szhy}}</div>
             </div>
             <div class="water-item row">
@@ -119,7 +114,6 @@
 <style lang="less" scoped>
 
   .row {
-
     display: flex;
     flex-direction: row;
     align-items: center;

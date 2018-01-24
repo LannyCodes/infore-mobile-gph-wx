@@ -2,15 +2,13 @@
   <div style="background-color: #FFFFFF">
     <flexbox class="filter-wrap">
       <flexbox-item class="filter_content">
-        <span class="filter_time">2017-01</span>
-        <span>~</span>
-        <span class="filter_time">2017-11</span>
+        <p>{{startFilterTime}} ~ {{endFilterTime}}</p>
       </flexbox-item>
       <div class="filter filter1" @click='showPopup = !showPopup'></div>
     </flexbox>
     <div class="container">
       <div class="item-wrapper" v-for="(itemMes, index) of messages"
-           :key="index" @click="jumpDetail()">
+           :key="index" @click="jumpDetail(itemMes.status)">
         <span class="item-title">{{itemMes.title}}</span>
         <span class="item-issue">发布单位：{{itemMes.issue}}</span>
         <span class="item-issue">发布时间：{{itemMes.issueDate}}</span>
@@ -18,31 +16,31 @@
              <span class="vote-time">投票期限：{{itemMes.voteStart}}</span>
              <span style="font-size: 12px;color: #666666;">~{{itemMes.voteEnd}}</span>
         </span>
-
         <div class="separate-line"></div>
         <div class="vote-container">
           <div class="voting">
             <span style="font-size: 12px; color: #586C94;">立即查看</span>
             <img src="../../../../assets/images/arrow_right.png" class="to-vote"/>
             <img v-if="itemMes.status === '0'" class="voting-img" src="../../../../assets/images/participated.png"/>
-            <img v-else-if="itemMes.status === '1'" class="voted-img" src="../../../../assets/images/unparticipate.png"/>
+            <img v-else-if="itemMes.status === '1'" class="voted-img"
+                 src="../../../../assets/images/unparticipate.png"/>
           </div>
         </div>
       </div>
     </div>
     <popup v-model="showPopup" @on-hide="" @on-show="" position="top">
       <div class="popup-wrapper">
-        <span class="popup_wrapper_disc">查询时间段</span>
+        <span class="popup_wrapper_disc">投票期限</span>
         <div style="padding: 0 0 0 20px; background-color: #ffffff;align-items: center">
-          <span style="display: flex;padding: 10px 20px 10px 0;">
-            <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
-            <span class="time-select">2017-11-21</span>
+          <span style="display: flex;padding: 10px 20px 10px 0;" @click="chooseTime(1)">
+            <span style="font-size: 14px;color:#000000;flex:1">开始时间</span>
+            <span class="time-select">{{startFilterTime}}</span>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
           <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
-          <span style="display: flex;padding: 10px 20px 10px 0;">
-            <span style="font-size: 12px;color:#000000;flex:1">开始时间</span>
-            <span class="time-select">2017-11-21</span>
+          <span style="display: flex;padding: 10px 20px 10px 0;" @click="chooseTime(2)">
+            <span style="font-size: 14px;color:#000000;flex:1">结束时间</span>
+            <span class="time-select">{{endFilterTime}}</span>
             <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
           </span>
         </div>
@@ -60,11 +58,14 @@
   import Flexbox from '../../../../../node_modules/vux/src/components/flexbox/flexbox'
   import FlexboxItem from '../../../../../node_modules/vux/src/components/flexbox/flexbox-item'
   import Popup from '../../../../../node_modules/vux/src/components/popup/index'
+  import 'vux/src/components/datetime/style.less'
   export default{
     data(){
       return {
         showPopup: false,
-        messages: []
+        messages: [],
+        startFilterTime: '2017-11-21',
+        endFilterTime: '2017-11-22',
       }
     },
     components: {
@@ -89,9 +90,36 @@
       })
     },
     methods: {
-      jumpDetail(item){
-        this.$router.push({path: '/detail'})
-      }
+      jumpDetail(status){
+        this.$router.push({
+          name: 'Detail',
+          path: '/detail',
+          params: {'hasParticipate': status}
+        })
+      },
+      chooseTime (which) {
+        let that = this;
+        let temp = (which === 1) ? that.startFilterTime : that.endFilterTime;
+        that.$vux.datetime.show({
+          cancelText: '取消',
+          confirmText: '确定',
+          format: 'YYYY-MM-DD',
+          value: temp,
+          onConfirm (val) {
+            if (which === 1) {
+              that.startFilterTime = val;
+            } else if (which === 2) {
+              that.endFilterTime = val;
+            }
+          },
+          onShow () {
+            console.log('plugin show')
+          },
+          onHide () {
+            console.log('plugin hide')
+          }
+        })
+      },
     }
   }
 </script>
@@ -253,6 +281,7 @@
     height: 42px;
     resize: both;
   }
+
   .item-title {
     margin-left: 15px;
     font-size: 16px;

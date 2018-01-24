@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="basic">
-      <div class="row" style="margin-top: 10px"><p class="deepFontColor" style="margin-right: 5px">行政区</p>
+      <div class="row" style="margin-top: 10px"><p class="deepFontColor" style="margin-right: 10px">行政区域</p>
         {{data.location}}
       </div>
       <div class="row" style="margin-top: 10px"><p class="deepFontColor" style="margin-right: 10px;">数据来源</p>
@@ -10,7 +10,7 @@
     </div>
     <div class="echart">
       <div class="time_date_container">
-        <span class="time_date">选择日期日期和时间<img src="../../../../assets/images/arrow_right.png" class="img"/></span>
+        <span class="time_date">选择日期和时间<img src="../../../../assets/images/arrow_right.png" class="img"/></span>
         <div style="align-items: center;display: inline-flex;">
           <label style="width: 12px;height: 12px;border-radius: 2px ;background-color: #BAABFC "></label>
           <label style="margin-left: 3px;color: #666666;font-size: 12px">雨量</label>

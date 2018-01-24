@@ -13,9 +13,6 @@
             <checker-item value="1" @on-item-click="onItemClick">主河道</checker-item>
             <checker-item value="2" @on-item-click="onItemClick">内河涌</checker-item>
             <checker-item value="3" @on-item-click="onItemClick">其他河涌</checker-item>
-            <checker-item value="4" @on-item-click="onItemClick">其他河涌</checker-item>
-            <checker-item value="5" @on-item-click="onItemClick">其他河涌</checker-item>
-            <checker-item value="6" @on-item-click="onItemClick">其他河涌</checker-item>
           </checker>
           <div style="margin: 10px 15px">行政区域</div>
           <checker class="location-checker"
@@ -177,13 +174,14 @@
     color: #888888;
     background-color: #f0eff5;
     .type-checker {
+      padding-top: 10px;
+      padding-bottom: 10px;
       padding-left: 15px;
       background-color: white;
     }
 
     .type-checker-item {
       text-align: center;
-      /*width: 18%;*/
       color: #888888;
       font-size: 14px;
       padding: 5px 18.5px 5px 18.5px;
