@@ -20,11 +20,9 @@
         this,
         null,
         succ => {
-          console.log(succ)
           me.data = succ
         },
         err => {
-          console.log(err);
         }
       );
     },

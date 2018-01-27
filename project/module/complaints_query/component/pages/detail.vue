@@ -1,39 +1,50 @@
 <template xmlns:v-swiper="http://www.w3.org/1999/xhtml">
   <div>
     <div class="complaint_content_wrapper">
-      <div class="content_top">
+      <div class="content_top" style="padding-top: 12px">
+        <span class="text">投诉标题</span>
+        <span class="complaints_time">河涌垃圾</span>
+      </div>
+      <div class="content_top" >
+        <span class="text">投诉位置</span>
+        <span class="complaints_time">桂畔海下游</span>
+      </div>
+      <div class="content_top" >
         <span class="text">投诉内容</span>
         <span class="complaints_time">投诉时间 2017-11-21 8:20</span>
       </div>
       <div class="complaint_content">
-        看了历史留言沙河涌问题由来已久，主要责任在同和片雨污 未分流，请有了原因难道就不解决了吗？有没有具体的方案 和时间表，雨天臭，不下雨也臭，可能不一定完全是这原因 吧？亚运会花那么大代价整治就这结果如何让民众满意？
+        桂畔海水利枢纽存在大量垃圾，河水脏乱臭。
       </div>
     </div>
     <div class="complaint_audio_wrapper">
       <span class="_text">图片/视频</span>
       <div class="picture-list">
-        <img v-for="(item, index) of pics" class="picture-item" :src="typeof item === 'string' ?item :item.poster"
+        <img v-for="(item, index) in pics" class="picture-item" :src="typeof item === 'string' ?item :item.poster"
              @click="show = true; initialIndex = index" :key="index"/>
       </div>
     </div>
     <div class="complaint_content_wrapper">
       <div class="content_top" style="padding-top: 12px">
         <span class="text">回复单位</span>
-        <span class="complaints_time">迎风环境监测事业部</span>
+        <span class="complaints_time">顺德区环境运输和城市管理局</span>
       </div>
       <div class="content_top" >
+        <span class="text">回复时间</span>
+        <span class="complaints_time">2017-11-21</span>
+      </div>
+      <div class="content_top">
         <span class="text">回复内容</span>
-        <span class="complaints_time">2017-11-21 8:20</span>
       </div>
       <div class="complaint_content">
-        看了历史留言沙河涌问题由来已久，主要责任在同和片雨污 未分流，请有了原因难道就不解决了吗？有没有具体的方案 和时间表，雨天臭，不下雨也臭，可能不一定完全是这原因 吧？亚运会花那么大代价整治就这结果如何让民众满意？
+        经查由于昨天下雨导致上游垃圾冲到下游，已经派人解决。
       </div>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
-      <span class="extend" @click="funExtend">
+      <span class="extend" @click="openMore">
         <span style="font-size: 13px; color: #398DEE;margin-right: 5px">更多</span>
         <img src="../../../../assets/images/arrow_expand.png" style="width: 12px;height: 12px;"/>
       </span>
-      <div v-if="extend" class="extendContent"></div>
+      <!--<div v-if="extend" class="extendContent"></div>-->
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
 
     </div>
@@ -44,13 +55,9 @@
 
     <big-img v-if="show" @clickBigImg="dismiss">
       <swiper :options="swiperOption" ref="mySwiper">
-        <swiper-slide v-for="(item, index) of pics" style="align-self: center" :key="index">
+        <swiper-slide v-for="(item, index) in pics" style="align-self: center" :key="index">
           <img v-if="isImg(item)" :src="imgUrl" class="big_img"/>
-          <video v-else-if="!isImg(item)" autoplay="none" class="__cov-video"
-                 controls="controls" :poster="postUrl">
-            <source :src="imgUrl" :type="videoType"/>
-            Your browser does not support the video tag.
-          </video>
+
         </swiper-slide>
       </swiper>
       <!--<vue-video v-else-if="isImg()===true" :sources="video.sources" :options="video.options"></vue-video>-->
@@ -58,12 +65,15 @@
   </div>
 </template>
 <script>
-    import VueVideo from './VueVideo.vue'
+  import VueVideo from './VueVideo.vue'
   import'swiper/dist/css/swiper.css';
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
   import BigImg from './BigImg.vue'
   import XButton from '../../../../../node_modules/vux/src/components/x-button/index.vue'
   import XImg from '../../../../../node_modules/vux/src/components/x-img/index'
+
+  let initialIndex=0;
+  let count = 0;
   export default{
 //    el:'',
     components: {
@@ -76,7 +86,7 @@
     },
     data(){
       return {
-        initialIndex: 0,
+
         pics: [
           'https://o5omsejde.qnssl.com/demo/test1.jpg',
           'https://o5omsejde.qnssl.com/demo/test2.jpg',
@@ -91,7 +101,7 @@
             poster: 'http://covteam.u.qiniudn.com/poster.png'
           }],
         swiperOption: {
-          initialSlide: this.initialIndex || 0,
+          initialSlide: initialIndex || 0,
         },
         show: false,
         imgUrl: '',
@@ -105,18 +115,22 @@
 //        e.preventDefault();
         this.show = false;
       },
-      funExtend(){
+      openMore(){
         this.extend = !this.extend;
       },
       isImg(item){
         if (typeof item === 'string') {
+//          debugger;
           this.imgUrl = item;
         } else if (typeof item === "object") {
+//          debugger;
           let {src, type, poster} = item;
           this.imgUrl = src;
           this.postUrl = poster;
           this.videoType = type;
         }
+        count++;
+        console.log(count);
 //        return this.imgUrl;
         let index = this.imgUrl.lastIndexOf('.');
         let str = this.imgUrl.substring(index);
@@ -150,7 +164,7 @@
       padding-right: 14px;
       flex-direction: row;
       .text {
-        font-size: 17px;
+        font-size: 15px;
         color: #000000;
       }
       .complaints_time {
@@ -160,6 +174,9 @@
       }
     }
     .complaint_content {
+      -webkit-line-clamp: 3;
+      text-overflow: ellipsis;
+      overflow: hidden;
       padding-bottom: 12px;
       padding-left: 14px;
       padding-right: 14px;
@@ -175,7 +192,7 @@
     flex-direction: column;
     padding: 12px 14px 0;
     ._text {
-      font-size: 16px;
+      font-size: 15px;
       color: #000000;
     }
   }

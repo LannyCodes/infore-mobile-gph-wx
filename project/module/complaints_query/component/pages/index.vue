@@ -9,15 +9,13 @@
       <div class="filter filter1" @click='showPopup = !showPopup'></div>
     </flexbox>
     <div style="margin-top: 50px">
-      <div v-for="item in items" @click="itemJump">
-        <span class="complaint_item_wrap">
+      <div v-for="item in items" class="complaint_item_wrap" @click="itemJump">
           <img v-if="item.status === 1" class="complaint_item_img" src="../../../../assets/images/answer.png"/>
           <img v-else-if="item.status === 0" class="complaint_item_img" src="../../../../assets/images/unanswer.png"/>
           <span class="complaint_item_right">
               <span class="complaint_item_right_top_title">{{item.title}}</span>
               <span class="complaint_item_right_top_time">投诉时间：{{item.timeStr}}</span>
           </span>
-        </span>
         <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5);margin-left: 25px"></div>
       </div>
     </div>

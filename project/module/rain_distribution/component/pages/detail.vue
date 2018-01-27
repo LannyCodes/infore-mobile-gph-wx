@@ -92,6 +92,9 @@
     data() {
       return {
         data: {},
+//        yMin:100,
+//        yMax:500,
+//        dataSet:[200,300,400,500],
 
         options: {
           title: {
@@ -120,10 +123,10 @@
             name: "时间(h)",
             nameTextStyle: {
               color: "#999",
-              padding: [30, 0, 0, -20]
+              padding: [30, 0, 0, -24]
             },
             interval: 2,
-            nameGap: 5,
+            nameGap: 2,
             axisLine: {
               lineStyle: {
                 color: "#666"
@@ -149,9 +152,9 @@
               fontSize:"10px",
               padding: [0, -80, 0, 0]
             },
-            min: 0,
-            max: 1.0,
-            interval: 0.2,
+//            min: this.yMin,
+//            max: this.yMax,
+//            interval: 0.2,
             axisLine: {
               lineStyle: {
                 color: "#666"
@@ -165,12 +168,7 @@
             {
               type: "bar",
               smooth: true,
-              data: [
-                0.72,
-                0.12,
-                0.72,
-                0.73,
-              ]
+              data:[200,300,400,500]
             }
           ]
         }

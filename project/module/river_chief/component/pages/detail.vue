@@ -18,6 +18,7 @@
         </div>
       </div>
       <open-close @onToggle="(e)=>{isShowHZDetail=e}"></open-close>
+
     </div>
     <div>
       <div class="row title">
@@ -26,7 +27,7 @@
       </div>
       <div class="content">
         <div class="basic-item row">
-          <p>河涌名称</p>
+          <p>河道名称</p>
           <div>{{basicDetail.name}}</div>
         </div>
         <div class="basic-item row">

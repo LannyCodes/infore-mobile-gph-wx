@@ -10,9 +10,9 @@
           "letter": "D",
           "rivers": [
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
-              "name": "大东公路涌",
+              "name": "福田涌",
               "index": "D"
             }
           ]
@@ -21,19 +21,19 @@
           "letter": "S",
           "rivers": [
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "石排涌",
               "index": "S"
             },
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "石排涌2",
               "index": "S"
             },
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "石排涌3",
               "index": "S"
@@ -44,25 +44,25 @@
           "letter": "L",
           "rivers": [
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "龙公涌",
               "index": "L"
             },
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "龙公涌2",
               "index": "L"
             },
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "龙公涌3",
               "index": "L"
             },
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "龙公涌4",
               "index": "L"
@@ -73,7 +73,7 @@
           "letter": "G",
           "rivers": [
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "古鉴涌",
               "index": "G"
@@ -84,7 +84,7 @@
           "letter": "H",
           "rivers": [
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "合耕围涌",
               "index": "H"
@@ -95,7 +95,7 @@
           "letter": "Y",
           "rivers": [
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "云路初街涌",
               "index": "Y"
@@ -106,7 +106,7 @@
           "letter": "P",
           "rivers": [
             {
-              "time": "2017-09",
+              "time": "2017-11-12",
               "position": "大良街道",
               "name": "排涌",
               "index": "P"
@@ -124,11 +124,11 @@
       "message": "",
       "body": {
         "basic": {
-          "name": "增江",
-          "location": "增城区",
-          "atWater": "伦教大涌",
-          "waterType": "I",
-          "source": "顺德区国土城建和水利局"
+          "name": "福田涌",
+          "location": "大良街道",
+          "atWater": "福田涌",
+          "waterType": "IV",
+          "source": "顺德区环境运输和城市管理局"
         },
         "echart": {
           "DO": [
@@ -177,54 +177,54 @@
         {
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
-          "position": "大良街道",
-          "rainsize": "0.3mm",
-          "name": "蛇河",
+          "position": "伦教街道",
+          "rainsize": "19.1mm",
+          "name": "伦教中学",
           "index": "S",
           "variety":1
         },
         {
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
-          "position": "勒河街道",
-          "rainsize": "0.3mm",
-          "name": "勒河",
+          "position": "伦教街道",
+          "rainsize": "20mm",
+          "name": "伦教良仁涌水闸",
           "index": "L",
           "variety":2
         },
         {
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
-          "position": "勒河街道",
-          "rainsize": "0.3mm",
-          "name": "勒河2",
+          "position": "大良",
+          "rainsize": "23mm",
+          "name": "顺德区政府",
           "index": "L",
           "variety":3
         },
         {
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
-          "position": "勒河街道",
-          "rainsize": "0.3mm",
-          "name": "勒河3",
+          "position": "伦教街道",
+          "rainsize": "19mm",
+          "name": "伦教大洲水闸",
           "index": "L",
           "variety":4
         },
         {
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
-          "position": "乐从街道",
-          "rainsize": "0.3mm",
-          "name": "乐从",
+          "position": "大良街道",
+          "rainsize": "21mm",
+          "name": "大良顺德港",
           "index": "L",
           "variety":1
         },
         {
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
-          "position": "鞍山街道",
-          "rainsize": "0.3mm",
-          "name": "鞍山",
+          "position": "大良街道",
+          "rainsize": "22mm",
+          "name": "大良一中附小",
           "index": "A",
           "variety":3
         },
@@ -232,8 +232,8 @@
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
           "position": "大良街道",
-          "rainsize": "0.3mm",
-          "name": "大良",
+          "rainsize": "21mm",
+          "name": "大良沙头水闸",
           "index": "D",
           "variety":4
         },
@@ -241,8 +241,8 @@
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
           "position": "大良街道",
-          "rainsize": "0.3mm",
-          "name": "岔河",
+          "rainsize": "23mm",
+          "name": "顺峰山公园生态站",
           "index": "C",
           "variety":4
         },
@@ -250,8 +250,8 @@
           "starttime": "2017-09-21 8:00",
           "endtime": "2017-09-21 11:00",
           "position": "大良街道",
-          "rainsize": "0.3mm",
-          "name": "平庄",
+          "rainsize": "22mm",
+          "name": "逢沙电排站",
           "index": "P",
           "variety":2
         }
@@ -265,8 +265,8 @@
       "code": "0",
       "message": "",
       "body": {
-        "location": "顺德区",
-        "dataSource": "顺德区国土城建和水利局",
+        "location": "伦教街道",
+        "dataSource": "顺德区气象局",
         "rainAll": {
           "size": "0.8mm",
           "startTime": "2017-11-23 1:00",
@@ -291,76 +291,49 @@
       "message": "",
       "body": [
         {
-          "river": "汾江河",
+          "river": "桂畔海河",
           "level": "区级河长",
-          "name": "东方不败",
+          "name": "黄海",
           "length": "13500",
           "start": "桂畔海水利枢纽",
-          "end": "桂畔海顺德大良实验中学",
-          "index": "H"
+          "end": "新滘节制闸",
+          "index": "G"
         },
         {
-          "river": "东平河",
+          "river": "大良河",
           "level": "区级河长",
-          "name": "洪七公",
+          "name": "黄海",
           "length": "13500",
-          "start": "桂畔海水利枢纽",
-          "end": "桂畔海顺德大良实验中学",
-          "index": "P"
+          "start": "金桔咀桥",
+          "end": "新滘四河口",
+          "index": "D"
         },
         {
-          "river": "佛山涌",
+          "river": "龙工涌",
           "level": "区级河长",
-          "name": "逍遥子",
+          "name": "黄海",
           "length": "13500",
-          "start": "桂畔海水利枢纽",
-          "end": "桂畔海顺德大良实验中学",
-          "index": "R"
+          "start": "合成涵闸",
+          "end": "大东人工河",
+          "index": "L"
         },
         {
-          "river": "沧江河",
+          "river": "大门河",
           "level": "区级河长",
-          "name": "李秋水",
+          "name": "黄海",
           "length": "13500",
-          "start": "桂畔海水利枢纽",
-          "end": "桂畔海顺德大良实验中学",
-          "index": "O"
+          "start": "大门滘船闸",
+          "end": "金桔咀桥",
+          "index": "D"
         },
         {
-          "river": "顺德水道",
+          "river": "银涌河",
           "level": "区级河长",
-          "name": "李沧海",
+          "name": "吴显强",
           "length": "13500",
-          "start": "桂畔海水利枢纽",
-          "end": "桂畔海顺德大良实验中学",
-          "index": "W"
-        },
-        {
-          "river": "陈村水道",
-          "level": "区级河长",
-          "name": "敏敏特穆尔",
-          "length": "13500",
-          "start": "桂畔海水利枢纽",
-          "end": "桂畔海顺德大良实验中学",
-          "index": "V"
-        },
-        {
-          "river": "西江",
-          "level": "区级河长",
-          "name": "绾绾",
-          "length": "13500",
-          "start": "桂畔海水利枢纽",
-          "end": "桂畔海顺德大良实验中学",
-          "index": "T"
-        },
-        {
-          "river": "东江",
-          "level": "区级河长",
-          "name": "天山童姥",
-          "length": "13500",
-          "start": "桂畔海水利枢纽",
-          "end": "桂畔海顺德大良实验中学",
-          "index": "P"
+          "start": "桂畔海逢沙三眼桥",
+          "end": "金桔咀桥",
+          "index": "Y"
         }
       ]
     }
@@ -375,38 +348,38 @@
         "riverChiefDetail": [
           {
             "level": "区级河长",
-            "name": "gai",
+            "name": "黄海",
             "tab": "顺德区区长"
           },
           {
             "level": "镇级河长",
-            "name": "艾福杰尼",
+            "name": "吴显强",
             "tab": "大良街道办主任"
           },
           {
             "level": "村级河长",
-            "name": "黄旭",
+            "name": "高锡洪",
             "tab": "新滘居委会书记"
           },
           {
             "level": "村级河长",
-            "name": "bridge",
+            "name": "李荣基",
             "tab": "北区居委会书记"
           },
           {
             "level": "村级河长",
-            "name": "小青龙",
+            "name": "钟丽珊",
             "tab": "南区居委会书记"
           },
           {
             "level": "村级河长",
-            "name": "孙八一",
+            "name": "潘礼全",
             "tab": "东区居委会书记"
           },
           {
             "level": "村级河长",
-            "name": "鬼卞",
-            "tab": "小学语文老师"
+            "name": "李慰健",
+            "tab": "近良居委会书记"
           }
         ],
         "basicDetail": {
@@ -414,10 +387,10 @@
           "location": "广东省佛山市顺德区大良街区查理街84号",
           "jd": "东经100°",
           "wd": "北纬91°",
-          "pq": "东南沿海",
-          "ly": "东南沿海",
-          "lw": "东南沿海",
-          "sx": "东南沿海",
+          "pq": "大良",
+          "ly": "桂畔海",
+          "lw": "桂畔海水系",
+          "sx": "桂畔海水系",
           "start": "大良",
           "end": "伦教",
           "length": "13800",
@@ -639,11 +612,11 @@
       "code": "0",
       "message": "success",
       "body": {
-        "title": "推广使用无磷洗衣粉",
+        "title": "暴雨期间，如何防灾避险？",
         "issueDate": "2017-01-05",
-        "issuePerson": "张三",
+        "issuePerson": "顺德区国土城建和水利局",
         "themeImg": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516008751494&di=ce8bf5c206fcbc29d0f5d66993e26be3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F09fa513d269759ee0ed0a0e6b9fb43166d22df1f.jpg",
-        "html": "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生活垃圾圾一般可分为四大类：可回收垃圾、厨房垃圾、有害垃圾和其他垃圾。可回收垃圾包括纸类、金属类等，回收可减少污染，节约资源;厨房垃圾包括剩饭、骨头、菜叶等废物，经处理后可生产有机肥;有害垃圾包括含汞电池、废日光灯管、过期药品等，需进行安全处理;其他垃圾主要采取焚烧和卫生填埋的方式处理。<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp使用节水型水具;杜绝跑冒滴漏;洗漱随手关龙头;一水多用;减少干洗;拒绝化学清洁剂;"
+        "html": "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp暴雨期间，如何防灾避险？<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp第一是远离河道。暴雨期间，河流水位极易在短时间内暴涨。原本很浅的河道非常容易成为致命隐患。尤其是住在河道周边危房旧房的居民，要提前组织转移。<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp第二是远离危险边坡、挡墙等地区。暴雨容易导致边坡、挡墙倒塌，发生伤人事件。<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp第三是注意内涝积水处。如果驾车遭遇内涝积水，不能冒险涉水强行通过，否则极易导致车辆熄火，人员被困。如果遭遇熄火，应第一时间弃车逃生，并报警求助。"
       }
     }
   },
@@ -654,11 +627,11 @@
       "code": "0",
       "message": "success",
       "body": {
-        "title": "分类处理生活垃圾",
+        "title": "怎样评估河流的整治效果？",
         "issueDate": "2017-01-05",
-        "issuePerson": "张三",
+        "issuePerson": "顺德区环境运输和城市管理局",
         "themeImg": "http://img60.hbzhan.com/3/20161117/636149869201810113328.jpg",
-        "html": "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生活垃圾圾一般可分为四大类：可回收垃圾、厨房垃圾、有害垃圾和其他垃圾。可回收垃圾包括纸类、金属类等，回收可减少污染，节约资源;厨房垃圾包括剩饭、骨头、菜叶等废物，经处理后可生产有机肥;有害垃圾包括含汞电池、废日光灯管、过期药品等，需进行安全处理;其他垃圾主要采取焚烧和卫生填埋的方式处理。<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp使用节水型水具;杜绝跑冒滴漏;洗漱随手关龙头;一水多用;减少干洗;拒绝化学清洁剂;"
+        "html": "&nbsp&nbsp&nbsp（一）怎样评估河流的整治效果？<p>&nbsp&nbsp&nbsp&nbsp对河流状况作出评价，可借鉴医生看病对病人的“望、闻、问、切”等诊断方法，考察河流水体的色泽、气味、透明度；测定水质和底泥的理化指标；考察河流生态系统的结构；分析生态系统的功能及其变化和发展的趋势。严格按照《GB3838-2002 地表水环境质量标准》等国家标准规范来评估治理效果。<p>&nbsp&nbsp&nbsp（二）河水为什么会发黑、发臭？<p>&nbsp&nbsp&nbsp&nbsp&nbsp生活污水和一部分工业废水排入水体，其中的有机污染物，如以碳水化合物、蛋白质、脂肪、氨基酸等形式存在的天然有机物质及某些其它可生物降解人工合成的有机物质等进入水体后，使水体中的物质组成发生了变化，破坏了原有的物质平衡状态。在有氧即溶解氧水平较高的情况下，排入水体的有机污染物质，通过物理、化学、物理化学和生物化学反应，而被分离和分解，使水体基本或完全恢复到原来的平衡状态。这称之为水的自我净化能力。"
       }
     }
   },
@@ -669,14 +642,14 @@
       "code": "0",
       "message": "success",
       "body": [
-        {"status": 0, "title": "巴基斯坦", "timeStr": "2017-11-21", "content": "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"},
-        {"status": 1, "title": "巴基斯坦", "timeStr": "2017-11-21", "content": "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"},
-        {"status": 1, "title": "巴基斯坦", "timeStr": "2017-11-21", "content": "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"},
-        {"status": 1, "title": "巴基斯坦", "timeStr": "2017-11-21", "content": "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"},
-        {"status": 0, "title": "巴基斯坦", "timeStr": "2017-11-21", "content": "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"},
-        {"status": 1, "title": "巴基斯坦", "timeStr": "2017-11-21", "content": "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"},
-        {"status": 0, "title": "巴基斯坦", "timeStr": "2017-11-21", "content": "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"},
-        {"status": 0, "title": "巴基斯坦", "timeStr": "2017-11-21", "content": "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"}
+        {"status": 0, "title": "河涌垃圾", "timeStr": "2017-11-21", "content": ""},
+        {"status": 1, "title": "红岗涌水臭", "timeStr": "2017-11-21", "content": ""},
+        {"status": 1, "title": "污水处理站废水外流", "timeStr": "2017-11-21", "content": ""},
+        {"status": 1, "title": "管道井盖丢失", "timeStr": "2017-11-21", "content": ""},
+        {"status": 0, "title": "河涌垃圾", "timeStr": "2017-11-21", "content": ""},
+        {"status": 1, "title": "南涌涵闸旁边河道垃圾", "timeStr": "2017-11-21", "content": ""},
+        {"status": 0, "title": "三村水闸垃圾很多", "timeStr": "2017-11-21", "content": ""},
+        {"status": 0, "title": "偷排工业污水", "timeStr": "2017-11-21", "content": ""}
       ]
     }
   }

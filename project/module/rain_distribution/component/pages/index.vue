@@ -302,7 +302,7 @@
     justify-content: space-around;
     align-items: center;
     .item-name {
-      font-size: 24px;
+      font-size: 20px;
       margin-bottom: 5px;
       line-height: 33.5px;
     }

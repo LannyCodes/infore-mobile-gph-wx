@@ -9,12 +9,7 @@
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
             <span style="font-size: 15px;color:#000000;margin-right: 20px;font-family:PingFangSC-Regular;">现场位置</span>
-            <input class="dirty-style" placeholder="请选择现场位置" v-model="location"/>
-            <img src="../../../../assets/images/destination.png" class="mark-img"/>
-     </span>
-      <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5);margin-left: 20px"></div>
-      <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
-            <input class="dirty-location" placeholder="请输入现场位置"/>
+            <input class="dirty-style" placeholder="请输入现场位置" v-model="location"/>
      </span>
       <x-textarea :max="200" placeholder="请描述现场污染情况" @on-focus="onEvent('focus')"
                   @on-blur="onEvent('blur')"></x-textarea>
@@ -60,7 +55,7 @@
      </span>
       <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
       <span style="display: flex;padding: 10px 20px 10px 20px;align-items: center">
-            <span style="font-size: 15px;color:#000000;margin-right: 35px;font-family:PingFangSC-Regular;">联系人</span>
+            <span style="font-size: 15px;color:#000000;margin-right: 35px; font-family:PingFangSC-Regular;">联系人</span>
             <input class="dirty-style" placeholder="请输入联系人"/>
      </span>
 
@@ -89,10 +84,8 @@
     mounted() {
       let me = this;
       getWaterOpenList(this, null, (succ) => {
-        console.log(succ);
         me.waterOpenList = succ;
       }, (err) => {
-        console.log(err);
       })
     },
     data() {
@@ -147,7 +140,7 @@
   }
 
   .dirty-location {
-    margin-left: 24%;
+    margin-left: 80px;
     flex: 1;
     margin-right: 10px;
     color: #888888;

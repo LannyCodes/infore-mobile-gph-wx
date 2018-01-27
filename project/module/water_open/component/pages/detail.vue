@@ -57,14 +57,14 @@
               <p>DO</p>
               <p>溶解氧</p>
             </div>
-            <div>3.161(mg/L)</div>
+            <div>6.16(mg/L)</div>
           </checker-item>
           <checker-item class="item" value="1" @on-item-click="onItemClick">
             <div>
-              <p>CDO</p>
-              <p>化学氧气</p>
+              <p>COD</p>
+              <p>化学需氧量</p>
             </div>
-            <div>3.161(mg/L)</div>
+            <div>10(mg/L)</div>
           </checker-item>
         </div>
         <div class="vux-1px" style="opacity: 0.3;"></div>
@@ -74,14 +74,14 @@
               <p>NH3-N</p>
               <p>氨氮</p>
             </div>
-            <div>3.161(mg/L)</div>
+            <div>0.316(mg/L)</div>
           </checker-item>
           <checker-item class="item" value="3" @on-item-click="onItemClick">
             <div>
               <p>TP</p>
               <p>总磷</p>
             </div>
-            <div>3.161(mg/L)</div>
+            <div>0.06(mg/L)</div>
           </checker-item>
         </div>
         <div class="vux-1px" style="opacity: 0.3;"></div>
@@ -152,7 +152,7 @@
             name: '时间(m)',
             nameTextStyle: {
               color: '#999',
-              padding: [30, 0, 0, -20]
+              padding: [30, 0, 0, -28]
             },
             interval: 1,
             nameGap: 5,
@@ -165,7 +165,7 @@
               show: false,
             },
             type: 'category',
-            data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
+            data: ["2015-01", "2015-02", "2015-03", "2015-04", "2015-05", "2015-06", "2015-07", "2015-08", "2015-09", "2015-10", "2015-11", "2015-12"]
           },
           yAxis: {
             type: 'value',
@@ -173,7 +173,7 @@
             nameGap: 10,
             nameTextStyle: {
               color: '#999',
-              padding: [0, -80, 0, 0]
+              padding: [0, -30, 0, 0]
             },
             min: 0,
             max: 10,

@@ -19,11 +19,9 @@
         this,
         null,
         succ => {
-          console.log(succ)
           me.data = succ
         },
         err => {
-          console.log(err);
         }
       );
     },
@@ -52,8 +50,8 @@
 </script>
 <style lang="less" scoped>
   .container{
-    width:100%;
-    height:100%;
+    /*width:100%;*/
+    /*height:100%;*/
     background-color: #ffffff;
     padding: 20px 15px 0 15px;
   }
