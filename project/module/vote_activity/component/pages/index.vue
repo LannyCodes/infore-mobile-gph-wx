@@ -85,10 +85,8 @@
     },
     mounted(){
       getVoteActivityList(this, null, (success) => {
-        this.$vux.toast.text('succ', 'bottom');
         this.messages = success;
       }, (error) => {
-        this.$vux.toast.text('err', 'bottom');
         console.log(error.code);
       }, () => {
 

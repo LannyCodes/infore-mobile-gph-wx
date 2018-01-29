@@ -115,10 +115,8 @@
     },
     mounted(){
       getVoteHistoryDetail(this, null, (success) => {
-        this.$vux.toast.text('succ', 'bottom');
         this.msg = success;
       }, (error) => {
-        this.$vux.toast.text('err', error);
       }, () => {
       });
 

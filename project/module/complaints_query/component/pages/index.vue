@@ -81,10 +81,8 @@
       console.log(this.router);
       let me = this;
       getComplaintsQueryList(this, null, (succ) => {
-        this.$vux.toast.text('succ', 'bottom')
         me.items = succ
       }, (err) => {
-        this.$vux.toast.text('err', 'bottom')
       })
     },
     computed: {

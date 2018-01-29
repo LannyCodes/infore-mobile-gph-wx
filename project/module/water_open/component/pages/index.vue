@@ -46,7 +46,7 @@
     <div v-for="(item,index) in waterOpenList" :key="index">
       <div :id="item.letter" class="letterText">{{item.letter}}</div>
       <div class="container" v-for="(i,key) in item.rivers">
-        <div class="water-item" :id="key" @click="enterDetail(i)">
+        <div class="water-item" :id="key" @click="enterDetail">
           <div>
             <div class="water-item-icon">I</div>
             <div>
@@ -127,11 +127,11 @@
       onItemClick(value, disabled) {
         console.log(value, disabled);
       },
-      enterDetail(i) {
+      enterDetail() {
         this.$router.push({
           name: "Detail",
           query: {
-            name: i.name
+            name: '福田涌'
           }
         });
       },

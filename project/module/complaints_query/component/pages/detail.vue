@@ -57,7 +57,11 @@
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide v-for="(item, index) in pics" style="align-self: center" :key="index">
           <img v-if="isImg(item)" :src="imgUrl" class="big_img"/>
-
+          <!--<video v-else-if="!isImg(item)" autoplay="none" class="__cov-video"-->
+                 <!--controls="controls" :poster="postUrl">-->
+            <!--<source :src="imgUrl" :type="videoType"/>-->
+            <!--Your browser does not support the video tag.-->
+          <!--</video>-->
         </swiper-slide>
       </swiper>
       <!--<vue-video v-else-if="isImg()===true" :sources="video.sources" :options="video.options"></vue-video>-->
