@@ -68,7 +68,7 @@
       return {
         info_open: [
           {label: "水质公示", module: "water_open"},
-          {label: "降雨分布", module: "rain_distribution"},
+          {label: "气象监测", module: "rain_distribution"},
           {label: "环保常识", module: "envir_knowledge"},
           {label: "水务常识", module: "water_knowledge"},
           {label: "河长信息", module: "river_chief"}

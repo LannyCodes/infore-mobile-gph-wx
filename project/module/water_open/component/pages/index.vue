@@ -311,7 +311,6 @@
     text-align: center;
     border: none;
   }
-
   .letterText {
     font-size: 15px;
     margin-left: 15px;

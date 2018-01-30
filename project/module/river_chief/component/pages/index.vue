@@ -41,18 +41,20 @@
       <div class="filter" @click="showFilter= !showFilter"></div>
     </div>
     <div class="container" v-for="(item,index) in riverChiefList" :key="index">
-      <div class="river-item" :id="item.index" @click="enterDetail(item.river)">
+      <div :id="item.letter" class="letterText">{{item.letter}}</div>
+      <div class="river-item" v-for="(subItem, index) in item.rivers" :id="index"
+           @click="enterDetail(subItem.river)">
         <div class="row">
-          <div class="river">{{item.river}}</div>
+          <div class="river">{{subItem.river}}</div>
           <div style="margin-left: 10px">
-            <p>{{item.level}} {{item.name}}</p>
-            <p style="color: #999999;">起 {{item.start}}</p>
-            <p style="color: #999999;">终 {{item.end}}</p>
+            <p>{{subItem.level}} {{subItem.warden}}</p>
+            <p style="color: #999999;">起 {{subItem.start}}</p>
+            <p style="color: #999999;">终 {{subItem.end}}</p>
           </div>
         </div>
         <div style="color: #398DEE; margin-right: 10px" class="row">
           <div class="river-length"></div>
-          <div>{{item.length}}m</div>
+          <div>{{subItem.length}}m</div>
         </div>
       </div>
     </div>
@@ -91,9 +93,9 @@
         null,
         succ => {
           let tempArr = [];
-          me.riverChiefList = succ.sort(this.sortList);
+          me.riverChiefList = succ.sort((a, b) => this.sortList(a, b, 'letter'));
           me.riverChiefList.map(val => {
-            tempArr.push(val.index);
+            tempArr.push(val.letter);
           });
           me.letterList = [...new Set(tempArr)]; // 数组去重
         },
@@ -110,9 +112,9 @@
       };
     },
     methods: {
-      sortList(a, b) {
+      sortList(a, b,props) {
         // 根据字母排序
-        return a.index.charCodeAt(0) - b.index.charCodeAt(0);
+        return a[props].charCodeAt(0) - b[props].charCodeAt(0);
       },
       currentLetter(letter) {
         letter === this.letterList[0] && $('body,html').animate({scrollTop: 0}, 100);
@@ -283,5 +285,11 @@
     background-color: #398DEE;
     text-align: center;
     border: none;
+  }
+  .letterText {
+    align-self: flex-start;
+    font-size: 15px;
+    margin-left: 15px;
+    color: #888888
   }
 </style>

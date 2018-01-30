@@ -5,13 +5,16 @@
         <span class="text">投诉标题</span>
         <span class="complaints_time">河涌垃圾</span>
       </div>
-      <div class="content_top" >
+      <div class="content_top">
         <span class="text">投诉位置</span>
         <span class="complaints_time">桂畔海下游</span>
       </div>
-      <div class="content_top" >
+      <div class="content_top">
+        <span class="text">投诉时间</span>
+        <span class="complaints_time">2017-11-21 8:20</span>
+      </div>
+      <div class="content_top">
         <span class="text">投诉内容</span>
-        <span class="complaints_time">投诉时间 2017-11-21 8:20</span>
       </div>
       <div class="complaint_content">
         桂畔海水利枢纽存在大量垃圾，河水脏乱臭。
@@ -20,8 +23,8 @@
     <div class="complaint_audio_wrapper">
       <span class="_text">图片/视频</span>
       <div class="picture-list">
-        <img v-for="(item, index) in pics" class="picture-item" :src="typeof item === 'string' ?item :item.poster"
-             @click="show = true; initialIndex = index" :key="index"/>
+        <img v-for="(item, index) in pics" class="picture-item" :src="item.src"
+             @click="showMask(index)" :key="index"/>
       </div>
     </div>
     <div class="complaint_content_wrapper">
@@ -29,7 +32,7 @@
         <span class="text">回复单位</span>
         <span class="complaints_time">顺德区环境运输和城市管理局</span>
       </div>
-      <div class="content_top" >
+      <div class="content_top">
         <span class="text">回复时间</span>
         <span class="complaints_time">2017-11-21</span>
       </div>
@@ -52,34 +55,41 @@
     <x-button class="btn-confirm" @click="">
       关闭
     </x-button>
+    <div v-transfer-dom>
+      <previewer :list="pics" ref="previewer" :options="options"></previewer>
+    </div>
 
-    <big-img v-if="show" @clickBigImg="dismiss">
-      <swiper :options="swiperOption" ref="mySwiper">
-        <swiper-slide v-for="(item, index) in pics" style="align-self: center" :key="index">
-          <img v-if="isImg(item)" :src="imgUrl" class="big_img"/>
+    <!--<big-img v-if="show" @clickBigImg="dismiss" >-->
+      <!--<swiper :options="swiperOption" ref="Swiper" @click="jumpTo()">-->
+        <!--<swiper-slide v-for="(item, index) in pics" style="align-self: center" :key="index">-->
+          <!--<img  :src="item" class="big_img"/>-->
           <!--<video v-else-if="!isImg(item)" autoplay="none" class="__cov-video"-->
-                 <!--controls="controls" :poster="postUrl">-->
-            <!--<source :src="imgUrl" :type="videoType"/>-->
-            <!--Your browser does not support the video tag.-->
+          <!--controls="controls" :poster="postUrl">-->
+          <!--<source :src="imgUrl" :type="videoType"/>-->
+          <!--Your browser does not support the video tag.-->
           <!--</video>-->
-        </swiper-slide>
-      </swiper>
-      <!--<vue-video v-else-if="isImg()===true" :sources="video.sources" :options="video.options"></vue-video>-->
-    </big-img>
+        <!--</swiper-slide>-->
+      <!--</swiper>-->
+      <!--&lt;!&ndash;<vue-video v-else-if="isImg()===true" :sources="video.sources" :options="video.options"></vue-video>&ndash;&gt;-->
+    <!--</big-img>-->
   </div>
 </template>
 <script>
-  import VueVideo from './VueVideo.vue'
+  //  import VueVideo from './VueVideo.vue'
   import'swiper/dist/css/swiper.css';
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
   import BigImg from './BigImg.vue'
   import XButton from '../../../../../node_modules/vux/src/components/x-button/index.vue'
   import XImg from '../../../../../node_modules/vux/src/components/x-img/index'
-
-  let initialIndex=0;
+  import Previewer from '../../../../../node_modules/vux/src/components/Previewer/index'
+  import {TransferDom } from 'vux'
+  let initialIndex = 0;
   let count = 0;
   export default{
 //    el:'',
+    directives: {
+      TransferDom
+    },
     components: {
       XImg,
       XButton,
@@ -87,26 +97,54 @@
 //      VueVideo
       swiper,
       swiperSlide,
+      Previewer,
     },
     data(){
       return {
-
+//        list: [{
+//          src: 'https://ooo.0o0.ooo/2017/05/17/591c271ab71b1.jpg',
+//          w: 800,
+//          h: 400
+//        },
+//          {
+//            src: 'https://ooo.0o0.ooo/2017/05/17/591c271acea7c.jpg'
+//          }, {
+//            src: 'https://ooo.0o0.ooo/2017/06/15/59425a592b949.jpeg'
+//          }],
         pics: [
-          'https://o5omsejde.qnssl.com/demo/test1.jpg',
-          'https://o5omsejde.qnssl.com/demo/test2.jpg',
-          'https://o5omsejde.qnssl.com/demo/test4.jpg',
-          'https://o5omsejde.qnssl.com/demo/test5.jpg',
-          'https://o5omsejde.qnssl.com/demo/test6.jpg',
-          'https://o5omsejde.qnssl.com/demo/test7.jpg',
-          'https://o5omsejde.qnssl.com/demo/test8.jpg',
           {
-            src: 'http://vjs.zencdn.net/v/oceans.mp4',
-            type: 'video/mp4',
-            poster: 'http://covteam.u.qiniudn.com/poster.png'
-          }],
-        swiperOption: {
-          initialSlide: initialIndex || 0,
+            src: 'https://o5omsejde.qnssl.com/demo/test1.jpg'
+          },
+          {
+            src: 'https://o5omsejde.qnssl.com/demo/test2.jpg'
+          },
+          {
+            src: 'https://o5omsejde.qnssl.com/demo/test4.jpg'
+          }
+//          {
+//            src: 'http://vjs.zencdn.net/v/oceans.mp4',
+//            type: 'video/mp4',
+//            poster: 'http://covteam.u.qiniudn.com/poster.png'
+//          }
+        ],
+        options: {
+          getThumbBoundsFn (index) {
+            // find thumbnail element
+            let thumbnail = document.querySelectorAll('.picture-item')[index]
+            // get window scroll Y
+            let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
+            // optionally get horizontal scroll
+            // get position of element relative to viewport
+            let rect = thumbnail.getBoundingClientRect()
+            // w = width
+            return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
+            // Good guide on how to get element coordinates:
+            // http://javascript.info/tutorial/coordinates
+          }
         },
+//        swiperOption: {
+//          initialSlide: 0,
+//        },
         show: false,
         imgUrl: '',
         postUrl: '',//如果是视频，为缩略图的地址
@@ -144,6 +182,14 @@
           return true
         }
         return true;//默认是图片
+      },
+      showMask(index){
+        this.$refs.previewer.show(index)
+      }
+    },
+    mounted: {
+      swiper() {
+        return this.$refs.Swiper.swiper
       }
     },
     watch: {
@@ -260,17 +306,6 @@
     display: block;
     max-width: 100%;
   }
-
-  /*.big-img {*/
-  /*position: absolute;*/
-  /*z-index: 1000;*/
-  /*left: 0;*/
-  /*right: 0;*/
-  /*margin: auto;*/
-  /*display: block;*/
-  /*max-width: 100%;*/
-  /*}*/
-
   .__cov-video {
     width: 100%;
     height: 100%;

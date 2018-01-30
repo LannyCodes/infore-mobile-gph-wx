@@ -4,7 +4,7 @@
     <div class="content">
       <div class="item" v-for="(item, index) in data" :key="index" @click="enterDetail()">
         <p class="title">{{item.title}}</p>
-        <p class="content1">{{item.content}}</p>
+        <p class="content1" v-html="item.content"></p>
       </div>
     </div>
   </div>

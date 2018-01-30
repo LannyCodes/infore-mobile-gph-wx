@@ -21,20 +21,6 @@
             <checker-item value="10" @on-item-click="onItemClick">乐从</checker-item>
             <checker-item value="11" @on-item-click="onItemClick">北滘</checker-item>
           </checker>
-          <div class="popup_wrapper_disc">查询时间段</div>
-          <div style="padding: 0 0 0 20px; background-color: #ffffff;align-items: center">
-            <span style="display: flex;padding: 10px 20px 10px 0;" @click="chooseTime(1)">
-              <span style="font-size: 14px;color:#000000;flex:1">开始时间</span>
-              <span class="time-select">{{startFilterTime}}</span>
-              <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
-            </span>
-            <div style="height: 1px;width: auto; background:rgba(229,229,229,0.5)"></div>
-            <span style="display: flex;padding: 10px 20px 10px 0;" @click="chooseTime(2)">
-              <span style="font-size: 14px;color:#000000;flex:1">结束时间</span>
-              <span class="time-select">{{endFilterTime}}</span>
-              <img src="../../../../assets/images/arrow_right.png" style="width: 10px;height: 14px;"/>
-            </span>
-          </div>
         </div>
         <div style="margin-top: 10px;width: 100%;height: 35px;display: inline-flex;margin-bottom: 10px">
           <button class="btn-cancel" @click="showFilter=!showFilter">取消</button>
@@ -45,27 +31,28 @@
 
     <div class="time-filter">
       <i class="fa" aria-hidden="false"></i>
-      <p>{{startFilterTime}} ~ {{endFilterTime}}</p>
+      <!--<p>{{startFilterTime}} ~ {{endFilterTime}}</p>-->
       <div class="filter" @click="showFilter=!showFilter"></div>
     </div>
     <div class="container" v-for="(item,index) in waterOpenList" :key="index">
-      <div class="rain-item" :id="item.index" @click="enterDetail">
+      <div :id="item.letter" class="letterText">{{item.letter}}</div>
+      <div class="rain-item" v-for="(subItem,index) in item.rains" :id="index" @click="enterDetail">
         <div>
           <div class="row">
-            <div class="item-name">{{item.name}}</div>
-            <div :class="selectIcon(item.variety)"></div>
+            <div class="item-name">{{subItem.name}}</div>
+            <!--<div :class="selectIcon(item.variety)"></div>-->
           </div>
-          <p style="font-size: 13px;line-height:18.5px;margin-top: 10px;">行政区域 {{item.position}}</p>
+          <p style="font-size: 13px;line-height:18.5px;margin-top: 10px;">行政区域 {{subItem.position}}</p>
         </div>
         <div>
           <div class="row">
             <div>
-              <p class="item-rainsize">{{item.rainsize}}</p>
-              <p style="font-size: 13px;line-height: 18.5px;margin-top: 5px">累计降雨量</p>
+              <!--<p class="item-rainsize"></p>-->
+              <p style="line-height: 16.5px;font-size: 12px;margin-top: 5px">降雨量：{{subItem.rainsize}}</p>
             </div>
           </div>
-          <p style="line-height: 16.5px;font-size: 12px;margin-top: 5px">{{item.starttime}}至</p>
-          <p style="line-height: 16.5px;font-size: 12px;margin-top: 5px">{{item.endtime}}</p>
+          <p style="line-height: 16.5px;font-size: 12px;margin-top: 5px">温度：{{subItem.temperature}}°C</p>
+          <p style="line-height: 16.5px;font-size: 12px;margin-top: 5px">{{subItem.starttime}}</p>
         </div>
       </div>
     </div>
@@ -104,9 +91,9 @@
         null,
         succ => {
           let tempArr = [];
-          me.waterOpenList = succ.sort(this.sortList);
+          me.waterOpenList = succ.sort((a,b)=>this.sortList(a,b,'letter'));
           me.waterOpenList.map(val => {
-            tempArr.push(val.index);
+            tempArr.push(val.letter);
           });
           me.letterList = [...new Set(tempArr)]; // 数组去重
         },
@@ -120,14 +107,14 @@
         waterOpenList: [],
         letterList: [],
         showFilter: false,
-        startFilterTime: '2017-11-21',
-        endFilterTime: '2017-11-22',
+//        startFilterTime: '2017-11-21',
+//        endFilterTime: '2017-11-22',
       };
     },
     methods: {
       sortList(a, b) {
         // 根据字母排序
-        return a.index.charCodeAt(0) - b.index.charCodeAt(0);
+        return a.letter.charCodeAt(0) - b.letter.charCodeAt(0);
       },
       currentLetter(letter) {
         letter === this.letterList[0] && $('body,html').animate({scrollTop: 0}, 100);
@@ -147,29 +134,29 @@
           }
         });
       },
-      chooseTime (which) {
-        let that = this;
-        let temp = (which === 1) ? that.startFilterTime : that.endFilterTime;
-        that.$vux.datetime.show({
-          cancelText: '取消',
-          confirmText: '确定',
-          format: 'YYYY-MM-DD HH:00',
-          value: temp,
-          onConfirm (val) {
-            if (which === 1) {
-              that.startFilterTime = val;
-            } else if (which === 2) {
-              that.endFilterTime = val;
-            }
-          },
-          onShow () {
-            console.log('plugin show')
-          },
-          onHide () {
-            console.log('plugin hide')
-          }
-        })
-      },
+//      chooseTime (which) {
+//        let that = this;
+//        let temp = (which === 1) ? that.startFilterTime : that.endFilterTime;
+//        that.$vux.datetime.show({
+//          cancelText: '取消',
+//          confirmText: '确定',
+//          format: 'YYYY-MM-DD HH:00',
+//          value: temp,
+//          onConfirm (val) {
+//            if (which === 1) {
+//              that.startFilterTime = val;
+//            } else if (which === 2) {
+//              that.endFilterTime = val;
+//            }
+//          },
+//          onShow () {
+//            console.log('plugin show')
+//          },
+//          onHide () {
+//            console.log('plugin hide')
+//          }
+//        })
+//      },
       selectIcon(variety){
         let vary;
         switch (variety){
@@ -365,5 +352,11 @@
     background-color: #398DEE;
     text-align: center;
     border: none;
+  }
+  .letterText {
+    align-self: flex-start;
+    font-size: 15px;
+    margin-left: 15px;
+    color: #888888
   }
 </style>

@@ -10,26 +10,27 @@
     </div>
     <div class="echart">
       <div class="time_date_container">
-        <span class="time_date">选择日期和时间<img src="../../../../assets/images/arrow_right.png" class="img"/></span>
+        <span class="time_date" @click="chooseTime">{{selectTime}}<img src="../../../../assets/images/arrow_right.png"
+                                                                       class="img"/></span>
         <div style="align-items: center;display: inline-flex;">
           <label style="width: 12px;height: 12px;border-radius: 2px ;background-color: #BAABFC "></label>
           <label style="margin-left: 3px;color: #666666;font-size: 12px">雨量</label>
         </div>
       </div>
-      <chart class="chart" :options="options" auto-resize></chart>
+      <chart class="chart" :options="options"></chart>
     </div>
     <div class="basic deepFontColor">
       <div class="size-item">
         <div class="row marginRightDisc">
           <div class="icon_2"></div>
           <div>
-            <p class="rain-num">{{data.rainAll.size}}</p>
-            <p class="rain-disc">累积雨量</p>
+            <p class="rain-disc">降雨量:{{data.rainAll.size}}</p>
+            <p class="rain-disc">温度:{{data.rainAll.temperature}}°C</p>
           </div>
         </div>
         <div>
-          <div class="rain-disc rain-disc-color">开始时间 {{data.rainAll.startTime}}</div>
-          <div class="rain-disc rain-disc-color">结束时间 {{data.rainAll.endTime}}</div>
+          <div class="rain-disc rain-disc-color">时间 {{data.rainAll.startTime}}</div>
+          <!--<div class="rain-disc rain-disc-color">结束时间 {{data.rainAll.endTime}}</div>-->
         </div>
       </div>
       <div class="size-item">
@@ -41,7 +42,7 @@
           </div>
         </div>
         <div>
-          <div class="rain-disc rain-disc-color">发生时间 {{data.rainHigh.time}}</div>
+          <div class="rain-disc rain-disc-color">时间 {{data.rainHigh.time}}</div>
         </div>
       </div>
       <div class="size-item">
@@ -53,7 +54,7 @@
           </div>
         </div>
         <div>
-          <div class="rain-disc rain-disc-color">发生时间 {{data.rainLow.time}}</div>
+          <div class="rain-disc rain-disc-color">时间 {{data.rainLow.time}}</div>
         </div>
       </div>
     </div>
@@ -91,16 +92,28 @@
     },
     data() {
       return {
+        selectTime: '选择日期和时间',
         data: {},
 //        yMin:100,
 //        yMax:500,
 //        dataSet:[200,300,400,500],
 
         options: {
-          title: {
-            textStyle: {
-              color: "#666666",
-              fontSize: 16
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              crossStyle: {
+                color: '#999'
+              }
+            }
+          },
+          toolbox: {
+            feature: {
+              dataView: {show: true, readOnly: false},
+              magicType: {show: true, type: ['line', 'bar']},
+              restore: {show: true},
+              saveAsImage: {show: true}
             }
           },
           barWidth: 10,
@@ -112,63 +125,84 @@
 //              barBorderColor:''
             },
           },
-          grid:{
-            top:'10%',
-            left:'0%',
-            right:'0%',
+          grid: {
+            top: '10%',
+            left: '0%',
+            right: '0%',
             bottom: '5%',
             containLabel: true
           },
-          xAxis: {
-            name: "时间(h)",
-            nameTextStyle: {
-              color: "#999",
-              padding: [30, 0, 0, -24]
+          xAxis: [
+            {
+              name: "时间(h)",
+              nameTextStyle: {
+                color: "#999",
+                padding: [30, 0, 0, -24]
+              },
+              interval: 2,
+              nameGap: 2,
+              axisLine: {
+                lineStyle: {
+                  color: "#666"
+                }
+              },
+              axisTick: {
+                show: false
+              },
+              type: "category",
+              data: [
+                "01-15",
+                "01-16",
+                "01-17",
+                "01-18",
+              ]
             },
-            interval: 2,
-            nameGap: 2,
-            axisLine: {
-              lineStyle: {
-                color: "#666"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            type: "category",
-            data: [
-              "2015-1",
-              "2015-2",
-              "2015-3",
-              "2015-4",
-            ]
-          },
-          yAxis: {
-            type: "value",
-            name: "雨量(mm)",
-            nameGap: 10,
-            nameTextStyle: {
-              color: "#999",
-              fontSize:"10px",
-              padding: [0, -80, 0, 0]
-            },
+          ],
+          yAxis: [
+            {
+              type: "value",
+              name: "雨量(mm)",
+              nameGap: 10,
+              nameTextStyle: {
+                color: "#999",
+                fontSize: "10px",
+                padding: [0, -80, 0, 0]
+              },
 //            min: this.yMin,
 //            max: this.yMax,
 //            interval: 0.2,
-            axisLine: {
-              lineStyle: {
-                color: "#666"
+              axisLine: {
+                lineStyle: {
+                  color: "#666"
+                }
+              },
+              axisTick: {
+                show: false
               }
-            },
-            axisTick: {
-              show: false
+            }, {
+              type: "value",
+              name: "温度°C",
+//            nameGap: 10,
+              position: 'right',
+              min: 0,
+              max: 25,
+//            interval: 5,
+              axisLine: {
+                lineStyle: {
+                  color: "#675bba"
+                }
+              },
             }
-          },
+          ],
           series: [
             {
               type: "bar",
               smooth: true,
-              data:[200,300,400,500]
+              data: [200, 300, 400, 500]
+            },
+            {
+              type: 'line',
+              data: [6.3, 20.3, 16.5, 6.2]
             }
           ]
         }
@@ -177,7 +211,25 @@
     methods: {
       onItemClick(value, disabled) {
         console.log(value, disabled);
-      }
+      },
+      chooseTime () {
+        let that = this;
+        this.$vux.datetime.show({
+          cancelText: '取消',
+          confirmText: '确定',
+          format: 'YYYY-MM-DD HH:00',
+          value: that.selectTime,
+          onConfirm (val) {
+            that.selectTime = val;
+          },
+          onShow () {
+            console.log('plugin show')
+          },
+          onHide () {
+            console.log('plugin hide')
+          }
+        })
+      },
     }
   };
 </script>
@@ -220,13 +272,15 @@
     height: 12px;
     margin-left: 5px;
   }
-  .time_date_container{
+
+  .time_date_container {
     margin-top: 10px;
     position: relative;
     justify-content: flex-end;
-    display:flex;
+    display: flex;
     align-items: center;
   }
+
   .time_date {
     display: flex;
     align-items: center;
@@ -236,7 +290,7 @@
     padding: 1px 5px;
     color: #CECECE;
     border-radius: 5px;
-    border: 1px solid rgba(57, 141, 238,0.3);
+    border: 1px solid rgba(57, 141, 238, 0.3);
     position: absolute;
   }
 
@@ -260,16 +314,19 @@
     width: 40px;
   }
 
-  .rain-disc{
+  .rain-disc {
     font-size: 12px;
   }
-  .rain-disc-color{
+
+  .rain-disc-color {
     color: #CECECE;
   }
-  .rain-num{
+
+  .rain-num {
     font-size: 14px;
   }
-  .marginRightDisc{
+
+  .marginRightDisc {
     margin-right: 20px;
   }
 
