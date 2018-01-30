@@ -60,11 +60,11 @@
             <div>{{basicDetail.length}}</div>
           </div>
           <div class="basic-item row">
-            <p>平均最小宽度(mm)</p>
+            <p>平均最小宽度(m)</p>
             <div>{{basicDetail.width}}</div>
           </div>
           <div class="basic-item row">
-            <p>平均最小深度(mm)</p>
+            <p>平均最小深度(m)</p>
             <div>{{basicDetail.deep}}</div>
           </div>
           <div class="basic-item row">

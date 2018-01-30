@@ -10,11 +10,14 @@
     </div>
     <div class="echart">
       <div class="time_date_container">
-        <span class="time_date" @click="chooseTime">{{selectTime}}<img src="../../../../assets/images/arrow_right.png"
-                                                                       class="img"/></span>
+        <span class="time_date" @click="chooseTime">{{selectTime}}<img
+          src="../../../../assets/images/icon_arrow_right.png"
+          class="img"/></span>
         <div style="align-items: center;display: inline-flex;">
           <label style="width: 12px;height: 12px;border-radius: 2px ;background-color: #BAABFC "></label>
           <label style="margin-left: 3px;color: #666666;font-size: 12px">雨量</label>
+          <label style="width: 12px;height: 12px;border-radius: 2px ;background-color: #C4CDDC "></label>
+          <label style="margin-left: 3px;color: #666666;font-size: 12px">温度</label>
         </div>
       </div>
       <chart class="chart" :options="options"></chart>
@@ -116,15 +119,7 @@
               saveAsImage: {show: true}
             }
           },
-          barWidth: 10,
-          itemStyle: {
-            normal: {
-              barBorderRadius: 10,
-//              barBorderWidth:10,
-              color: ['#BAABFC'],
-//              barBorderColor:''
-            },
-          },
+
           grid: {
             top: '10%',
             left: '0%',
@@ -184,24 +179,42 @@
               name: "温度°C",
 //            nameGap: 10,
               position: 'right',
-              min: 0,
-              max: 25,
+//              min: 0,
+//              max: 25,
+              axisTick: {
+                show: false
+              }
 //            interval: 5,
-              axisLine: {
-                lineStyle: {
-                  color: "#675bba"
-                }
-              },
+//              axisLine: {
+//                lineStyle: {
+//                  color: "#675bba"
+//                }
+//              },
             }
           ],
           series: [
             {
               type: "bar",
-              smooth: true,
-              data: [200, 300, 400, 500]
+              yAxisIndex: 0,
+              data: [60, 150, 40, 50],
+              barWidth: 10,
+              itemStyle: {
+                normal: {
+                  barBorderRadius: 10,
+//              barBorderWidth:10,
+                  color: ['#BAABFC'],
+//              barBorderColor:''
+                },
+              },
             },
             {
               type: 'line',
+              yAxisIndex: 1,
+              itemStyle: {
+                normal: {
+                  color: ['#C4CDDC']
+                }
+              },
               data: [6.3, 20.3, 16.5, 6.2]
             }
           ]
@@ -269,8 +282,9 @@
 
   .img {
     width: 12px;
-    height: 12px;
+    height: 10px;
     margin-left: 5px;
+    background-size: cover;
   }
 
   .time_date_container {

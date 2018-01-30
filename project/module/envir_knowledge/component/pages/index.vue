@@ -80,10 +80,7 @@
       border-radius: 5px;
       padding: 16px 12px;
       color: #999999;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      overflow: hidden;
+
       .icon_1 {
         flex: 1;
         background-color: #222222;
@@ -97,6 +94,10 @@
         line-height: 22.5px;
       }
       .content1 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
         font-size: 13px;
         color: #999999;
         line-height: 18.5px;

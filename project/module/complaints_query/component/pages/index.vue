@@ -28,7 +28,7 @@
           <checker-item value="2">已答复</checker-item>
           <checker-item value="3">未答复</checker-item>
         </checker>
-        <span class="popup_wrapper_disc">查询时间段</span>
+        <span class="popup_wrapper_disc">查询时段</span>
         <div style="padding: 0 0 0 20px; background-color: #ffffff;align-items: center">
           <span class="time-filter" @click="chooseTime(1)">
             <span style="font-size: 14px;color:#000000;flex:1">开始时间</span>
