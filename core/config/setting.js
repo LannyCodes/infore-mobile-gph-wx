@@ -4,19 +4,21 @@
  * @type {{$AppProjectName: string}}
  */
 let config = {
+  // $ModuleName: 'vote_activity'
+  // $ModuleName: 'vote_history'
   $ModuleName: '*'
-  // $ModuleName: '*' // * flag   is building all modules or dev.
 };
 
 if (process.env.NODE_ENV === 'production') {
+  // 生产环境
   Object.assign(config, {
-    WebServerUrl: 'http://192.168.39.34:10086',
+    WebServerUrl: 'http://192.168.33.139:10086',
   })
 } else {
   // 开发环境
   Object.assign(config, {
     // WebServerUrl: 'http://localhost:10086',
-    WebServerUrl: 'http://192.168.39.34:10086',
+    WebServerUrl: 'http://192.168.33.139:10086',
   })
 }
 
